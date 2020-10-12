@@ -82,7 +82,7 @@ class ResponsMenu:
                                             "type": "button",
                                             "action": {
                                                 "type": "uri",
-                                                "label": "NEWS",
+                                                "label": "News",
                                                 "uri": "https://liff.line.me/1654967329-5AMQZKN1"
                                             },
                                             "color": "#D39D2B",
@@ -153,7 +153,7 @@ class ResponsMenu:
                                             "type": "button",
                                             "action": {
                                                 "type": "uri",
-                                                "label": "LOG OUT",
+                                                "label": "Log Out",
                                                 "uri": "https://liff.line.me/1654967329-5AMQZKN1"
                                             },
                                             "color": "#D39D2B",

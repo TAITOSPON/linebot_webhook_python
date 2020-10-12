@@ -64,7 +64,7 @@ class ResponsNotLogin:
                                     "type": "button",
                                     "action": {
                                         "type": "uri",
-                                        "label": "LOG IN",
+                                        "label": "Log In",
                                         "uri": "https://liff.line.me/1654967329-5AMQZKN1"
                                     },
                                     "color": "#D39D2B",
