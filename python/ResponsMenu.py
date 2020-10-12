@@ -16,7 +16,7 @@ class ResponsMenu:
         body = {    
             "to": devicetoken,
             "messages": [
-                 {
+                {
                     "type": "flex",
                     "altText": "MENU",
                     "contents": {
@@ -76,90 +76,306 @@ class ResponsMenu:
                             "contents": [
                                 {
                                     "type": "box",
-                                    "layout": "horizontal",
+                                    "layout": "vertical",
                                     "contents": [
                                         {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "uri",
-                                                "label": "News",
-                                                "uri": "https://liff.line.me/1654967329-5AMQZKN1"
-                                            },
-                                            "color": "#D39D2B",
-                                            "style": "primary",
-                                            "gravity": "center"
-                                        },
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "uri",
-                                                "label": "Time & Attendance",
-                                                "uri": "https://liff.line.me/1654967329-5AMQZKN1"
-                                            },
-                                            "color": "#D39D2B",
-                                            "margin": "xs",
-                                            "style": "primary",
-                                            "gravity": "center"
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "contents": [
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": "https://www.thaitobacco.or.th/th/category/pr-ttm"
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                                {
+                                                                    "type": "icon",
+                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "News",
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "margin": "xs",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": "https://linecorp.com"
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                                {
+                                                                    "type": "icon",
+                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Time & Attendance",
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
                                 {
                                     "type": "box",
                                     "margin": "xs",
-                                    "layout": "horizontal",
+                                    "layout": "vertical",
                                     "contents": [
                                         {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "uri",
-                                                "label": "Doctor Table",
-                                                "uri": "https://liff.line.me/1654967329-5AMQZKN1"
-                                            },
-                                            "color": "#D39D2B",
-                                            "style": "primary",
-                                            "gravity": "center"
-                                        },
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "uri",
-                                                "label": "Tobacco Club",
-                                                "uri": "https://liff.line.me/1654967329-5AMQZKN1"
-                                            },
-                                            "color": "#D39D2B",
-                                            "margin": "xs",
-                                            "style": "primary",
-                                            "gravity": "center"
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "contents": [
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": "https://linecorp.com"
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                                {
+                                                                    "type": "icon",
+                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Doctor Table",
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "margin": "xs",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": "https://linecorp.com"
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                                {
+                                                                    "type": "icon",
+                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Tobacco Club",
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
                                 {
                                     "type": "box",
                                     "margin": "xs",
-                                    "layout": "horizontal",
+                                    "layout": "vertical",
                                     "contents": [
                                         {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "uri",
-                                                "label": "Tobacco Cooperative",
-                                                "uri": "https://liff.line.me/1654967329-5AMQZKN1"
-                                            },
-                                            "color": "#D39D2B",
-                                            "style": "primary",
-                                            "gravity": "center"
-                                        },
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "uri",
-                                                "label": "Log Out",
-                                                "uri": "https://liff.line.me/1654967329-5AMQZKN1"
-                                            },
-                                            "color": "#D39D2B",
-                                            "margin": "xs",
-                                            "style": "primary",
-                                            "gravity": "center"
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "contents": [
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": "https://linecorp.com"
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                                {
+                                                                    "type": "icon",
+                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Tobacco Cooperative",
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "margin": "xs",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "message",
+                                                        "label": "Action",
+                                                        "text": "MENU : LOGOUT"
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                                {
+                                                                    "type": "icon",
+                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "Log Out",
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
