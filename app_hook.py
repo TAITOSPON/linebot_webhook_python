@@ -7,6 +7,7 @@ from flask import Flask,request,render_template,url_for
 from python.ResponsListItem import ResponsListItem
 from python.ResponsNotLogin import ResponsNotLogin
 from python.ResponsMenu import ResponsMenu
+from python.PostToDialog import PostToDialog
 from python.ResponsQuickReply import ResponsQuickReply
 from python.RequestGet import RequestGet
 
@@ -37,15 +38,45 @@ app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/webhook')
 def hello():
     return "THIS LINEBOT WEBHOOK SERVER!"
 
-@app.route('/callback', methods=['POST'])
-def callback():
-  new_event = request.json
+@app.route('/webhook', methods=['POST'])
+def webhook():
+  
+    event = request.json
 
-  user = new_event["events"][0]['replyToken']
+    user = event["events"][0]['replyToken']
 
-  headers1 = request.headers
+    message_type = event["events"][0]['message']['type']
 
-  return '',200
+    headers1 = request.headers
+
+    if message_type == "text":    
+        ResponsQuickReply("Uc1e2655638774e42ab8cf38043744cdb")   
+        # texts = ['ประชุม']
+        # a = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",texts,'th')
+        # print('nueng = ',a)
+        # sendText(user,a)
+
+    # sendText(user,str(message_type))
+    
+    return '',200
+
+
+
+
+
+def sendText(user,text):
+  LINE_API = 'https://api.line.me/v2/bot/message/reply'
+  Authorization = 'Bearer 4d7QOg7qteXxTxhGEQ5ROBfc2wiBVyRTAnbA73hrZcsWLM7etaAcqpP/IS+Pv5/Psxa2nxyeSrvww7NrsRnl4n4i2Edzk36Dr5wzQZIItg1paczCVHU+/LnIEz27U68OrJSTiDooQf0xHZRx2FTp5gdB04t89/1O/w1cDnyilFU=' # ใส่ ENTER_ACCESS_TOKEN เข้าไป
+  headers = {
+  'Content-Type': 'application/json; charset=UTF-8',
+  'Authorization':Authorization}
+  data = json.dumps({
+  "replyToken":user,
+  "messages":[{"type":"text","text":text}]})
+
+
+  r = requests.post(LINE_API, headers=headers, data=data) 
+  #print(r.text)
 
 if __name__ == '__main__':
     app.run()

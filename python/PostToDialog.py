@@ -32,6 +32,6 @@ class PostToDialog:
             return str(response.query_result.query_text)
  
 
-texts = ['ประชุม']
-a = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",texts,'th')
-print('nueng = ',a)
+# texts = ['ประชุม']
+# a = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",texts,'th')
+# print('nueng = ',a)
