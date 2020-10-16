@@ -18,7 +18,7 @@ class ResponsNotLogin:
             "messages": [
                   {
                     "type": "flex",
-                    "altText": "You are not logged in.",
+                    "altText": "กรุณาเข้าสู่ระบบก่อน",
                     "contents": {
                         "type": "bubble",
                         "size": "kilo",
@@ -36,7 +36,7 @@ class ResponsNotLogin:
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text": "You are not logged in.",
+                                    "text": "คุณยังไม่ได้เข้าสู่ระบบ",
                                     "weight": "bold",
                                     "align": "center",
                                     "gravity": "bottom",
@@ -44,7 +44,7 @@ class ResponsNotLogin:
                                 },
                                 {
                                     "type": "text",
-                                    "text": "Please login before.",
+                                    "text": "กรุณาเข้าสู่ระบบก่อน",
                                     "size": "xxs",
                                     "color": "#AAAAAA",
                                     "align": "center",
@@ -64,7 +64,7 @@ class ResponsNotLogin:
                                     "type": "button",
                                     "action": {
                                         "type": "uri",
-                                        "label": "Log In",
+                                        "label": "เข้าสู่ระบบ",
                                         "uri": "https://liff.line.me/1654967329-5AMQZKN1"
                                     },
                                     "color": "#D39D2B",

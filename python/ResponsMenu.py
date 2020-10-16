@@ -18,7 +18,7 @@ class ResponsMenu:
             "messages": [
                 {
                     "type": "flex",
-                    "altText": "MENU",
+                    "altText": "เมนู",
                     "contents": {
                         "type": "bubble",
                         "size": "giga",
@@ -51,7 +51,7 @@ class ResponsMenu:
                                                 {
                                                     "type": "text",
                                                     "align": "end",
-                                                    "text": "MENU",
+                                                    "text": "เมนู",
                                                     "weight": "bold",
                                                     "margin": "sm",
                                                     "size": "3xl",
@@ -63,7 +63,7 @@ class ResponsMenu:
                                 },
                                 {
                                     "type": "text",
-                                    "text": "Tobacco Authority of Thailand",
+                                    "text": "การยาสูบแห่งประเทศไทย",
                                     "size": "xxs",
                                     "color": "#AAAAAA",
                                     "contents": []
@@ -110,7 +110,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "News",
+                                                                    "text": "ข่าวประชาสัมพันธ์",
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -155,7 +155,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "Time & Attendance",
+                                                                    "text": "เวลาเข้า-ออกงาน",
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -212,7 +212,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "Doctor Table",
+                                                                    "text": "ตารางหมอ รพ.สวนเบญฯ",
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -257,7 +257,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "Tobacco Club",
+                                                                    "text": "สโมสร พนง.ยาสูบ",
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -314,7 +314,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "Tobacco Cooperative",
+                                                                    "text": "สหกรณ์ฯ ยาสูบ",
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -339,7 +339,7 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "message",
                                                         "label": "Action",
-                                                        "text": "MENU : LOGOUT"
+                                                        "text": "ออกจากระบบ"
                                                     },
                                                     "contents": [
                                                         {
@@ -359,7 +359,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "Log Out",
+                                                                    "text": "ออกจากระบบ",
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -390,5 +390,6 @@ class ResponsMenu:
         print(response.status_code)
 
         print(response.json())
+
 
 # ResponsMenu("Uc1e2655638774e42ab8cf38043744cdb")

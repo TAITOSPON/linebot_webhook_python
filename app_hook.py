@@ -11,8 +11,8 @@ from python.PostToDialog import PostToDialog
 from python.ResponsQuickReply import ResponsQuickReply
 from python.RequestGet import RequestGet
 
+
 app = Flask(__name__)
-#app.debug = True
 
 class PrefixMiddleware(object):
 #class for URL sorting 
@@ -40,43 +40,49 @@ def hello():
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-  
-    event = request.json
+   
+    header = request.headers
+    body = request.json
 
-    user = event["events"][0]['replyToken']
+    user = body["events"][0]['replyToken']
+    user_uid = body["events"][0]['source']['userId']
+    message_type = body["events"][0]['message']['type']
 
-    message_type = event["events"][0]['message']['type']
-
-    headers1 = request.headers
-
-    if message_type == "text":    
-        ResponsQuickReply("Uc1e2655638774e42ab8cf38043744cdb")   
-        # texts = ['ประชุม']
-        # a = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",texts,'th')
-        # print('nueng = ',a)
-        # sendText(user,a)
-
-    # sendText(user,str(message_type))
     
+    if message_type == "text":    
+        result = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",str(body["events"][0]['message']['text']),'th')
+        checktextcase(str(user),str(user_uid),str(result))
+
+    else :
+        print(str(message_type))
+        # sendText(user,str(message_type))
+
     return '',200
 
+
+def checktextcase(user,user_uid,text):
+    if text == "ลางาน":
+        print()
+        ResponsNotLogin(user_uid)
+    elif text == "จองห้องประชุม":
+        print()
+    elif text == "เมนู":
+        ResponsMenu(user_uid)
+    else:
+        sendText(user,text)
 
 
 
 
 def sendText(user,text):
-  LINE_API = 'https://api.line.me/v2/bot/message/reply'
-  Authorization = 'Bearer 4d7QOg7qteXxTxhGEQ5ROBfc2wiBVyRTAnbA73hrZcsWLM7etaAcqpP/IS+Pv5/Psxa2nxyeSrvww7NrsRnl4n4i2Edzk36Dr5wzQZIItg1paczCVHU+/LnIEz27U68OrJSTiDooQf0xHZRx2FTp5gdB04t89/1O/w1cDnyilFU=' # ใส่ ENTER_ACCESS_TOKEN เข้าไป
-  headers = {
-  'Content-Type': 'application/json; charset=UTF-8',
-  'Authorization':Authorization}
-  data = json.dumps({
-  "replyToken":user,
-  "messages":[{"type":"text","text":text}]})
+    LINE_API = 'https://api.line.me/v2/bot/message/reply'
+    Authorization = 'Bearer 4d7QOg7qteXxTxhGEQ5ROBfc2wiBVyRTAnbA73hrZcsWLM7etaAcqpP/IS+Pv5/Psxa2nxyeSrvww7NrsRnl4n4i2Edzk36Dr5wzQZIItg1paczCVHU+/LnIEz27U68OrJSTiDooQf0xHZRx2FTp5gdB04t89/1O/w1cDnyilFU=' # ใส่ ENTER_ACCESS_TOKEN เข้าไป
+    headers = {'Content-Type': 'application/json; charset=UTF-8', 'Authorization':Authorization}
+    data = json.dumps({"replyToken":user, "messages":[{"type":"text","text":text}]})
+
+    result = requests.post(LINE_API, headers=headers, data=data) 
 
 
-  r = requests.post(LINE_API, headers=headers, data=data) 
-  #print(r.text)
 
 if __name__ == '__main__':
     app.run()
