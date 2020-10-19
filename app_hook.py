@@ -50,7 +50,9 @@ def webhook():
 
     
     if message_type == "text":    
-        result = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",str(body["events"][0]['message']['text']),'th')
+        result = PostToDialog("linebot-toat-kyur","linebot-toat-kyur",str(body["events"][0]['message']['text']),'th')
+        # result = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",str(body["events"][0]['message']['text']),'th')
+        
         checktextcase(str(user),str(user_uid),str(result))
 
     else :
@@ -66,6 +68,7 @@ def checktextcase(user,user_uid,text):
         ResponsNotLogin(user_uid)
     elif text == "จองห้องประชุม":
         print()
+        ResponsQuickReply(user_uid)
     elif text == "เมนู":
         ResponsMenu(user_uid)
     else:

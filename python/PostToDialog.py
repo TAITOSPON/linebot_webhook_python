@@ -53,5 +53,6 @@ class PostToDialog:
             return str(response.query_result.intent.display_name)
 
 # texts = "สวัสดีครับ"
-# a = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",texts,'th')
+# # a = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",texts,'th')
+# a = PostToDialog("linebot-toat-kyur","linebot-toat-kyur",texts,'th')
 # print('nueng = ',a)
