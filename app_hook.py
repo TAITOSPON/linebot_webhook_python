@@ -63,14 +63,16 @@ def webhook():
 
 
 def checktextcase(user,user_uid,text):
+    serverToken = "4d7QOg7qteXxTxhGEQ5ROBfc2wiBVyRTAnbA73hrZcsWLM7etaAcqpP/IS+Pv5/Psxa2nxyeSrvww7NrsRnl4n4i2Edzk36Dr5wzQZIItg1paczCVHU+/LnIEz27U68OrJSTiDooQf0xHZRx2FTp5gdB04t89/1O/w1cDnyilFU="
+
     if text == "ลางาน":
         print()
-        ResponsNotLogin(user_uid)
+        ResponsNotLogin(serverToken,user_uid)
     elif text == "จองห้องประชุม":
         print()
         ResponsQuickReply(user_uid)
     elif text == "เมนู":
-        ResponsMenu(user_uid)
+        ResponsMenu(serverToken,user_uid)
     else:
         sendText(user,text)
 
