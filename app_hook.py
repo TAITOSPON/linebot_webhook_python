@@ -11,6 +11,7 @@ from python.PostToDialog import PostToDialog
 from python.ResponsQuickReply import ResponsQuickReply
 from python.RequestGet import RequestGet
 from python.ResponsText import ResponsText
+from python.PostCheckLogin import PostCheckLogin
 from python.PostLogout import PostLogout
 
 
@@ -91,7 +92,12 @@ def Receive_LineAPI(header,body):
 def checktextcase(user,user_uid,text):
 
     if text == "ลางาน":
-        ResponsNotLogin(serverToken,user_uid)
+
+        if checklogin(user,user_uid):
+            sendText(user,"ลางานได้")
+        else:
+            ResponsNotLogin(serverToken,user_uid)
+
         return "true"
     elif text == "จองห้องประชุม":
         ResponsQuickReply(serverToken,user_uid)
@@ -110,6 +116,19 @@ def checktextcase(user,user_uid,text):
         return "true"
 
     return  "false" 
+
+
+def checklogin(user,user_uid):
+
+    statuslogin = PostCheckLogin(user_uid)
+    # sendText(user,str(statuslogin))
+
+    if statuslogin == "notlogin":
+        return False
+    else :
+        return True
+   
+
 
 def sendText(user,text):
     LINE_API = 'https://api.line.me/v2/bot/message/reply'
