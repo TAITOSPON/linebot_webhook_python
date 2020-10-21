@@ -8,11 +8,11 @@ class ResponsMenu:
        
         headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + serverToken,
+                'Authorization': 'Bearer ' +  str(serverToken),
             }
 
         body = {    
-            "to": devicetoken,
+            "to": str(devicetoken),
             "messages": [
                 {
                     "type": "flex",
@@ -133,7 +133,7 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://linecorp.com"
+                                                        "uri": "https://liff.line.me/1655109480-lwv2VwJ8"
                                                     },
                                                     "contents": [
                                                         {

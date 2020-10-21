@@ -10,12 +10,12 @@ class ResponsQuickReply:
 
         headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + serverToken,
+                'Authorization': 'Bearer ' + str(serverToken),
             }
 
         body = {
 
-            "to": devicetoken,
+            "to": str(devicetoken),
             "messages": [
             
                  {

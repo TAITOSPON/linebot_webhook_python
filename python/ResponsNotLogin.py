@@ -8,11 +8,11 @@ class ResponsNotLogin:
      
         headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + serverToken,
+                'Authorization': 'Bearer ' +  str(serverToken),
             }
 
         body = {    
-            "to": devicetoken,
+            "to": str(devicetoken),
             "messages": [
                   {
                     "type": "flex",
@@ -63,7 +63,7 @@ class ResponsNotLogin:
                                     "action": {
                                         "type": "uri",
                                         "label": "เข้าสู่ระบบ",
-                                        "uri": "https://liff.line.me/1654967329-5AMQZKN1"
+                                        "uri": "https://liff.line.me/1655109480-NdbD97GK"
                                     },
                                     "color": "#D39D2B",
                                     "style": "primary"
