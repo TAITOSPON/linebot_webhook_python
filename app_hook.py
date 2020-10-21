@@ -11,6 +11,7 @@ from python.PostToDialog import PostToDialog
 from python.ResponsQuickReply import ResponsQuickReply
 from python.RequestGet import RequestGet
 from python.ResponsText import ResponsText
+from python.PostLogout import PostLogout
 
 
 app = Flask(__name__)
@@ -40,67 +41,75 @@ def hello():
     return "THIS LINEBOT WEBHOOK SERVER!"
 
 
-
-@app.route('/callback', methods=['POST'])
-def callback():
-   
-    header = request.headers
-    body = request.json
-
-    user_uid = body["user_line_uid"]
-    user_name = "สวัสดีคุณ "+body["PERSON_NAME"]
-    # user_uid = body["events"][0]['source']['userId']
-    # message_type = body["events"][0]['message']['type']
-
-
-
-    ResponsText(serverToken,user_uid,header)
-
-    return '',200
-
-
-
 @app.route('/webhook', methods=['POST'])
 def webhook():
    
     header = request.headers
     body = request.json
+    message_type = header["User-Agent"]
 
-    user = body["events"][0]['replyToken']
+    if message_type == "login-true": 
+        Receive_Backend(header,body)
+    else:
+        Receive_LineAPI(header,body)
+
+    return "THIS LINEBOT WEBHOOK SERVER!",200
+
+
+
+def Receive_Backend(header,body):
+
+    user_uid = body["user_line_uid"]
+    user_name = "สวัสดีคุณ "+body["PERSON_NAME"]+" \nRock"
+    ResponsText(serverToken,user_uid,user_name)
+
+def Receive_LineAPI(header,body):
+    
     user_uid = body["events"][0]['source']['userId']
+    user = body["events"][0]['replyToken']
     message_type = body["events"][0]['message']['type']
 
-    # sendText(user,str(user_uid))
     if message_type == "text":    
-        result = PostToDialog("linebot-toat-kyur","linebot-toat-kyur",str(body["events"][0]['message']['text']),'th')
-        # result = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",str(body["events"][0]['message']['text']),'th')
-        
-        checktextcase(str(user),str(user_uid),str(result))
+
+        text = str(body["events"][0]['message']['text'])
+
+        if str(checktextcase(str(user),str(user_uid),text)) == "false":
+         
+            response = PostToDialog("linebot-toat-kyur","linebot-toat-kyur",text,'th')
+            # response = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",text,'th')
+
+            if str(response.query_result.intent.display_name) == "Default Fallback Intent" or str(response.query_result.intent.display_name) == "Default Welcome Intent":
+                 sendText(user,str(response.query_result.fulfillment_text))
+            else :
+                checktextcase(str(user),str(user_uid),str(response.query_result.intent.display_name))
 
     else :
         print(str(message_type))
         # sendText(user,str(message_type))
 
-    return '',200
-
-
-
 
 def checktextcase(user,user_uid,text):
 
     if text == "ลางาน":
-        print()
         ResponsNotLogin(serverToken,user_uid)
+        return "true"
     elif text == "จองห้องประชุม":
-        print()
         ResponsQuickReply(serverToken,user_uid)
+        return "true"
     elif text == "เมนู":
         ResponsMenu(serverToken,user_uid)
-    else:
-        sendText(user,text)
+        return "true"
+    elif text == "ออกจากระบบ":
+        response = PostLogout(user_uid)
 
+        if response["status"] == True:
+            sendText(user,"ออกจากระบบสำเร็จ")
+        else:
+            sendText(user,"ออกจากระบบไม่สำเร็จ")
+      
+        return "true"
 
-
+    return  "false" 
 
 def sendText(user,text):
     LINE_API = 'https://api.line.me/v2/bot/message/reply'
