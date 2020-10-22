@@ -2,13 +2,15 @@
 import requests
 import json
 
+from python.Util import Util
+
 class ResponsNotLogin:
     
-    def __init__(self,serverToken,devicetoken):
+    def __init__(self,devicetoken):
      
         headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' +  str(serverToken),
+                'Authorization':  Util().Bearer + Util().serverToken
             }
 
         body = {    
@@ -76,8 +78,7 @@ class ResponsNotLogin:
             ]
         
         }
-        response = requests.post("https://api.line.me/v2/bot/message/push",headers = headers, data=json.dumps(body))
+        response = requests.post(Util().line_api_push,headers = headers, data=json.dumps(body))
         print(response.status_code)
-
         print(response.json())
 

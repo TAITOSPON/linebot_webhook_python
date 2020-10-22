@@ -2,13 +2,15 @@
 import requests
 import json
 
+from python.Util import Util
+
 class ResponsMenu:
     
-    def __init__(self,serverToken,devicetoken):
+    def __init__(self,devicetoken):
        
         headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' +  str(serverToken),
+                'Authorization':  Util().Bearer + Util().serverToken
             }
 
         body = {    
@@ -104,7 +106,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "icon",
-                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
                                                                 },
                                                                 {
                                                                     "type": "text",
@@ -133,7 +135,7 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://liff.line.me/1655109480-lwv2VwJ8"
+                                                        "uri": "https://linecorp.com"
                                                     },
                                                     "contents": [
                                                         {
@@ -149,7 +151,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "icon",
-                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
                                                                 },
                                                                 {
                                                                     "type": "text",
@@ -206,7 +208,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "icon",
-                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
                                                                 },
                                                                 {
                                                                     "type": "text",
@@ -251,7 +253,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "icon",
-                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
                                                                 },
                                                                 {
                                                                     "type": "text",
@@ -308,7 +310,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "icon",
-                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
                                                                 },
                                                                 {
                                                                     "type": "text",
@@ -353,7 +355,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "icon",
-                                                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
                                                                 },
                                                                 {
                                                                     "type": "text",
@@ -384,9 +386,8 @@ class ResponsMenu:
             ]
         
         }
-        response = requests.post("https://api.line.me/v2/bot/message/push",headers = headers, data=json.dumps(body))
+        response = requests.post(Util().line_api_push,headers = headers, data=json.dumps(body))
         print(response.status_code)
-
         print(response.json())
 
 

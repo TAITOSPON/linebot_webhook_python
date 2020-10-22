@@ -4,15 +4,21 @@ import requests
 from flask import make_response
 from flask import Flask,request,render_template,url_for
 
-from python.ResponsListItem import ResponsListItem
-from python.ResponsNotLogin import ResponsNotLogin
-from python.ResponsMenu import ResponsMenu
-from python.PostToDialog import PostToDialog
-from python.ResponsQuickReply import ResponsQuickReply
-from python.RequestGet import RequestGet
-from python.ResponsText import ResponsText
-from python.PostCheckLogin import PostCheckLogin
-from python.PostLogout import PostLogout
+from python.Util import Util
+
+from python.Respons_user.ResponsReply import ResponsReply
+from python.Respons_user.ResponsText import ResponsText
+from python.Respons_user.ResponsMenu import ResponsMenu
+from python.Respons_user.ResponsListItem import ResponsListItem
+from python.Respons_user.ResponsQuickReply import ResponsQuickReply
+from python.Respons_user.ResponsChecklogout import ResponsChecklogout
+
+from python.Api_backend.PostToDialog import PostToDialog
+from python.Api_backend.PostLogout import PostLogout
+
+from python.Controller.CheckUserLogin import CheckUserLogin
+
+
 
 
 app = Flask(__name__)
@@ -39,7 +45,7 @@ app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/webhook')
 
 @app.route("/")
 def hello():
-    return "THIS LINEBOT WEBHOOK SERVER!"
+    return Util().index
 
 
 @app.route('/webhook', methods=['POST'])
@@ -50,96 +56,89 @@ def webhook():
     message_type = header["User-Agent"]
 
     if message_type == "login-true": 
-        Receive_Backend(header,body)
+        Receive_Backend(body)
     else:
-        Receive_LineAPI(header,body)
+        Receive_LineAPI(body)
 
-    return "THIS LINEBOT WEBHOOK SERVER!",200
+    return Util().index,200
 
 
 
-def Receive_Backend(header,body):
+def Receive_Backend(body):
 
-    user_uid = body["user_line_uid"]
-    user_name = "สวัสดีคุณ "+body["PERSON_NAME"]+" \nRock"
-    ResponsText(serverToken,user_uid,user_name)
+    user_uid = str(body["user_line_uid"])
+    text = "สวัสดีคุณ "+body["PERSON_NAME"]+" \nยินดีต้อนรับเข้าสู่ระบบ linebot system \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
+    ResponsText(user_uid,text)
+    ResponsQuickReply(user_uid,"เลือกเมนูที่คุณต้องการใช้งาน")
 
-def Receive_LineAPI(header,body):
     
-    user_uid = body["events"][0]['source']['userId']
-    user = body["events"][0]['replyToken']
-    message_type = body["events"][0]['message']['type']
+
+def Receive_LineAPI(body):
+    
+    message_type = str(body["events"][0]['message']['type'])
 
     if message_type == "text":    
-
-        text = str(body["events"][0]['message']['text'])
-
-        if str(checktextcase(str(user),str(user_uid),text)) == "false":
-         
-            response = PostToDialog("linebot-toat-kyur","linebot-toat-kyur",text,'th')
-            # response = PostToDialog("nuengdevtoat-ihq9","nuengdevtoat-ihq9",text,'th')
-
-            if str(response.query_result.intent.display_name) == "Default Fallback Intent" or str(response.query_result.intent.display_name) == "Default Welcome Intent":
-                 sendText(user,str(response.query_result.fulfillment_text))
-            else :
-                checktextcase(str(user),str(user_uid),str(response.query_result.intent.display_name))
-
+        checktextintent(body)
     else :
-        print(str(message_type))
-        # sendText(user,str(message_type))
+        print(message_type)
+        ResponsText(str(body["user_line_uid"]),message_type)
 
 
-def checktextcase(user,user_uid,text):
+def checktextintent(body):
+    user_uid = str(body["events"][0]['source']['userId'])
+    user = str(body["events"][0]['replyToken'])
+    text = str(body["events"][0]['message']['text'])
 
-    if text == "ลางาน":
+    if str(checktextcase(body)) == "False":
+    
+        response = PostToDialog(Util().key_dialogflow,Util().key_dialogflow,text,Util().key_dialogflow_langu)
 
-        if checklogin(user,user_uid):
-            sendText(user,"ลางานได้")
-        else:
-            ResponsNotLogin(serverToken,user_uid)
-
-        return "true"
-    elif text == "จองห้องประชุม":
-        ResponsQuickReply(serverToken,user_uid)
-        return "true"
-    elif text == "เมนู":
-        ResponsMenu(serverToken,user_uid)
-        return "true"
-    elif text == "ออกจากระบบ":
-        response = PostLogout(user_uid)
-
-        if response["status"] == True:
-            sendText(user,"ออกจากระบบสำเร็จ")
-        else:
-            sendText(user,"ออกจากระบบไม่สำเร็จ")
-      
-        return "true"
-
-    return  "false" 
+        if str(response.query_result.intent.display_name) == Util().Default_Fallback_Intent or str(response.query_result.intent.display_name) == Util().Default_Welcome_Intent:
+            ResponsText(user_uid,str(response.query_result.fulfillment_text))
+        else :
+            checktextcase(body)
 
 
-def checklogin(user,user_uid):
 
-    statuslogin = PostCheckLogin(user_uid)
-    # sendText(user,str(statuslogin))
+def checktextcase(body):
+    user_uid = str(body["events"][0]['source']['userId'])
+    user = str(body["events"][0]['replyToken'])
+    text = str(body["events"][0]['message']['text'])
 
-    if statuslogin == "notlogin":
-        return False
-    else :
+    if text == Util().intent_leave:
+
+        if CheckUserLogin(user_uid):
+            ResponsText(user_uid,"ลางานได้ แต่ต้องรอ api \nserver api ลา ยัง connect กับ server linebot \nไม่ได้")
         return True
-   
+
+    elif text == Util().intent_meet:
+
+        if CheckUserLogin(user_uid):
+            ResponsText(user_uid,"กำลังพัฒนา (รอ API )")
+       
+        return True
+
+    elif text == Util().intent_menu:
+        
+        ResponsMenu(user_uid)
+        return True
+
+    elif text == Util().intent_logout:
 
 
-def sendText(user,text):
-    LINE_API = 'https://api.line.me/v2/bot/message/reply'
-    Authorization = 'Bearer '+serverToken
-    headers = {'Content-Type': 'application/json; charset=UTF-8', 'Authorization':Authorization}
-    data = json.dumps({"replyToken":user, "messages":[{"type":"text","text":text}]})
+        # ResponsChecklogout(user_uid)
 
-    result = requests.post(LINE_API, headers=headers, data=data) 
+        response = PostLogout(user_uid)
+        
+        if response["status"]:
+            ResponsReply(user,"ออกจากระบบสำเร็จ")
+        else:
+            ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
+        
+        return True
 
-# serverToken = "4d7QOg7qteXxTxhGEQ5ROBfc2wiBVyRTAnbA73hrZcsWLM7etaAcqpP/IS+Pv5/Psxa2nxyeSrvww7NrsRnl4n4i2Edzk36Dr5wzQZIItg1paczCVHU+/LnIEz27U68OrJSTiDooQf0xHZRx2FTp5gdB04t89/1O/w1cDnyilFU="
-serverToken = "1L1a7UVuYGa2A84PEq8AYl5tN6AkrgBO8/1eTch7Y7ttQ2EjrIV8aaAnjNN2wnzBhTOAKvNCIBHraMJjpVW4W92y72z1nRS+HNxxfStKTCUU/AVbl2qYlPIwITdcmMgLNIR0RfnzfiNl7wvv14vnLAdB04t89/1O/w1cDnyilFU="
+    return False
+
 
 if __name__ == '__main__':
     app.run()
