@@ -28,6 +28,7 @@ class Util:
         # path backend
         self.api_check_login = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_check_login"
         self.api_log_out = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_logout"
+        self.api_leave_year = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year"
 
         return self
 

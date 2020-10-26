@@ -16,9 +16,11 @@ from python.Respons_user.ResponsChecklogout import ResponsChecklogout
 from python.Api_backend.PostToDialog import PostToDialog
 from python.Api_backend.PostLogout import PostLogout
 
+from python.Api_backend.PostCheckLogin import PostCheckLogin
+
 from python.Controller.CheckUserLogin import CheckUserLogin
 
-
+from python.Api_backend.PostLeaveyear import PostLeaveyear
 
 
 app = Flask(__name__)
@@ -108,7 +110,12 @@ def checktextcase(body):
     if text == Util().intent_leave:
 
         if CheckUserLogin(user_uid):
-            ResponsText(user_uid,"ลางานได้ แต่ต้องรอ api \nserver api ลา ยัง connect กับ server linebot \nไม่ได้")
+            # ResponsText(user_uid,"ลางานได้ แต่ต้องรอ api \nserver api ลา ยัง connect กับ server linebot \nไม่ได้")
+            
+            ResponsText(user_uid,str(PostLeaveyear(user_uid,"2562")))
+            # PostLeaveyear("003599","2563")
+
+
         return True
 
     elif text == Util().intent_meet:
