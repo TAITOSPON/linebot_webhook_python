@@ -12,6 +12,7 @@ from python.Respons_user.ResponsMenu import ResponsMenu
 from python.Respons_user.ResponsListItem import ResponsListItem
 from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
+from python.Respons_user.ResponsLeave import ResponsLeave
 
 from python.Api_backend.PostToDialog import PostToDialog
 from python.Api_backend.PostLogout import PostLogout
@@ -56,6 +57,8 @@ def webhook():
     header = request.headers
     body = request.json
     message_type = header["User-Agent"]
+    
+
 
     if message_type == "login-true": 
         Receive_Backend(body)
@@ -76,14 +79,21 @@ def Receive_Backend(body):
     
 
 def Receive_LineAPI(body):
-    
-    message_type = str(body["events"][0]['message']['type'])
 
-    if message_type == "text":    
-        checktextintent(body)
-    else :
-        print(message_type)
-        ResponsText(str(body["user_line_uid"]),message_type)
+    event_type = str(body["events"][0]['type'])
+    
+    if event_type == "message":
+    
+        message_type = str(body["events"][0]['message']['type'])
+
+        if message_type == "text":    
+            checktextintent(body)
+        else :
+            ResponsText(str(body["events"][0]['source']['userId']),body)
+
+    elif event_type == "postback":
+        print()
+        # ResponsText(str(body["events"][0]['source']['userId']),str(body["events"]))
 
 
 def checktextintent(body):
@@ -111,8 +121,8 @@ def checktextcase(body):
 
         if CheckUserLogin(user_uid):
             # ResponsText(user_uid,"ลางานได้ แต่ต้องรอ api \nserver api ลา ยัง connect กับ server linebot \nไม่ได้")
-            
-            ResponsText(user_uid,str(PostLeaveyear(user_uid,"2562")))
+            ResponsLeave(user_uid)
+            # ResponsText(user_uid,str(PostLeaveyear(user_uid,"2562")))
             # PostLeaveyear("003599","2563")
 
 
