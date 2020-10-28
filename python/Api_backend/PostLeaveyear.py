@@ -14,7 +14,7 @@ class PostLeaveyear:
             "leave_year": str(leave_year)
         }
 
-        response = requests.post(Util().api_leave_year, data=json.dumps(body))
+        response = requests.post(Util().api_leave_get_by_year, data=json.dumps(body))
         print(response.status_code)
 
         print(response.json())

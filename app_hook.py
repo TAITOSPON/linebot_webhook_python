@@ -12,7 +12,9 @@ from python.Respons_user.ResponsMenu import ResponsMenu
 from python.Respons_user.ResponsListItem import ResponsListItem
 from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
+
 from python.Respons_user.ResponsLeave import ResponsLeave
+from python.Respons_user.ResponsLeaveSelectYear import ResponsLeaveSelectYear
 
 from python.Api_backend.PostToDialog import PostToDialog
 from python.Api_backend.PostLogout import PostLogout
@@ -81,6 +83,7 @@ def Receive_Backend(body):
 def Receive_LineAPI(body):
 
     event_type = str(body["events"][0]['type'])
+    user_uid = str(body["events"][0]['source']['userId'])
     
     if event_type == "message":
     
@@ -89,11 +92,15 @@ def Receive_LineAPI(body):
         if message_type == "text":    
             checktextintent(body)
         else :
-            ResponsText(str(body["events"][0]['source']['userId']),body)
+            ResponsText(user_uid,body)
 
     elif event_type == "postback":
         print()
-        # ResponsText(str(body["events"][0]['source']['userId']),str(body["events"]))
+        # ResponsText(user_uid,str(body["events"]))
+
+        postbackdata = str(body["events"][0]["postback"]["data"])
+        # ResponsText(user_uid,postbackdata)
+        checkmessagepostback(body,postbackdata)
 
 
 def checktextintent(body):
@@ -123,6 +130,7 @@ def checktextcase(body,text):
         if CheckUserLogin(user_uid):
             # ResponsText(user_uid,"ลางานได้ แต่ต้องรอ api \nserver api ลา ยัง connect กับ server linebot \nไม่ได้")
             ResponsLeave(user_uid)
+            
             # ResponsText(user_uid,str(PostLeaveyear(user_uid,"2562")))
             # PostLeaveyear("003599","2563")
 
@@ -157,6 +165,18 @@ def checktextcase(body,text):
 
     return False
 
+
+def checkmessagepostback(body,postbackdata):
+    user_uid = str(body["events"][0]['source']['userId'])
+    # ResponsText(user_uid, str(body["events"][0]["postback"]["data"]))
+
+    if postbackdata == Uitl().Leave_info:     
+        ResponsLeaveSelectYear(user_uid)
+
+   
+
+
+      
 
 if __name__ == '__main__':
     app.run()
