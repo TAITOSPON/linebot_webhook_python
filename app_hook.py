@@ -101,21 +101,22 @@ def checktextintent(body):
     user = str(body["events"][0]['replyToken'])
     text = str(body["events"][0]['message']['text'])
 
-    if str(checktextcase(body)) == "False":
+    if str(checktextcase(body,text)) == "False":
+
     
         response = PostToDialog(Util().key_dialogflow,Util().key_dialogflow,text,Util().key_dialogflow_langu)
 
         if str(response.query_result.intent.display_name) == Util().Default_Fallback_Intent or str(response.query_result.intent.display_name) == Util().Default_Welcome_Intent:
             ResponsText(user_uid,str(response.query_result.fulfillment_text))
         else :
-            checktextcase(body)
+            # ResponsText(user_uid,str(response.query_result.intent.display_name))
+            checktextcase(body,str(response.query_result.intent.display_name))
 
 
 
-def checktextcase(body):
+def checktextcase(body,text):
     user_uid = str(body["events"][0]['source']['userId'])
     user = str(body["events"][0]['replyToken'])
-    text = str(body["events"][0]['message']['text'])
 
     if text == Util().intent_leave:
 
