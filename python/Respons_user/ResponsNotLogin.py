@@ -65,7 +65,7 @@ class ResponsNotLogin:
                                     "action": {
                                         "type": "uri",
                                         "label": "เข้าสู่ระบบ",
-                                        "uri": "https://liff.line.me/1655109480-NdbD97GK"
+                                        "uri": Util().liff_url_login
                                     },
                                     "color": "#D39D2B",
                                     "style": "primary"

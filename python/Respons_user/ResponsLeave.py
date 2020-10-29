@@ -12,7 +12,7 @@ class ResponsLeave:
                 'Authorization':  Util().Bearer + Util().serverToken
         }
 
-
+        data =  '{ "key":"'+str(Util().Leave_info)+'", "year":""}'
 
         body = {    
             "to": str(devicetoken),
@@ -52,7 +52,7 @@ class ResponsLeave:
                                 "action": {
                                     "type": "postback",
                                     "label": "ข้อมูลการขาด - ลา",
-                                    "data": Util().Leave_info
+                                    "data": str(data)
                                 },
                                 "color": "#D39D2B",
                                 "style": "primary"

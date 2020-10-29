@@ -14,7 +14,7 @@ from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
 
 from python.Respons_user.ResponsLeave import ResponsLeave
-from python.Respons_user.ResponsLeaveSelectYear import ResponsLeaveSelectYear
+# from python.Respons_user.ResponsLeaveSelectYear import ResponsLeaveSelectYear
 
 from python.Api_backend.PostToDialog import PostToDialog
 from python.Api_backend.PostLogout import PostLogout
@@ -23,7 +23,10 @@ from python.Api_backend.PostCheckLogin import PostCheckLogin
 
 from python.Controller.CheckUserLogin import CheckUserLogin
 
-from python.Api_backend.PostLeaveyear import PostLeaveyear
+# from python.Api_backend.PostLeaveyear import PostLeaveyear
+
+from python.Controller.Leave import Leave
+
 
 
 app = Flask(__name__)
@@ -81,10 +84,10 @@ def Receive_Backend(body):
     
 
 def Receive_LineAPI(body):
-
+    
     event_type = str(body["events"][0]['type'])
     user_uid = str(body["events"][0]['source']['userId'])
-    
+
     if event_type == "message":
     
         message_type = str(body["events"][0]['message']['type'])
@@ -95,11 +98,8 @@ def Receive_LineAPI(body):
             ResponsText(user_uid,body)
 
     elif event_type == "postback":
-        print()
         # ResponsText(user_uid,str(body["events"]))
-
         postbackdata = str(body["events"][0]["postback"]["data"])
-        # ResponsText(user_uid,postbackdata)
         checkmessagepostback(body,postbackdata)
 
 
@@ -128,13 +128,7 @@ def checktextcase(body,text):
     if text == Util().intent_leave:
 
         if CheckUserLogin(user_uid):
-            # ResponsText(user_uid,"ลางานได้ แต่ต้องรอ api \nserver api ลา ยัง connect กับ server linebot \nไม่ได้")
             ResponsLeave(user_uid)
-            
-            # ResponsText(user_uid,str(PostLeaveyear(user_uid,"2562")))
-            # PostLeaveyear("003599","2563")
-
-
         return True
 
     elif text == Util().intent_meet:
@@ -168,15 +162,65 @@ def checktextcase(body,text):
 
 def checkmessagepostback(body,postbackdata):
     user_uid = str(body["events"][0]['source']['userId'])
-    # ResponsText(user_uid, str(body["events"][0]["postback"]["data"]))
+    # ResponsText(user_uid, str(postbackdata))
 
-    if postbackdata == Uitl().Leave_info:     
-        ResponsLeaveSelectYear(user_uid)
+    postbackdata = json.loads(str(postbackdata))
+    key = str(postbackdata["key"])
+    
+    if CheckUserLogin(user_uid):
+        if key == Util().Leave_info:   
+            Leave(user_uid,postbackdata)
+        else:
+            print()
+            # ResponsText(user_uid,"in else")
 
-   
 
 
-      
+# def leave(user_uid,postbackdata):
+
+#     year = str(postbackdata["year"])
+#     if year != "":
+#         # ResponsText(user_uid,year)
+#         respons = PostLeaveyear(user_uid,year)
+
+#         user_name = str(respons["result"]["user"]["user_ad_name"])
+#         SumLeaveYear = str(respons["result"]["leave_head"]["SumLeaveYear"])
+#         TotalLeave = str(respons["result"]["leave_head"]["TotalLeave"])
+#         TotalLeaveAvailable = str(respons["result"]["leave_head"]["TotalLeaveAvailable"])
+
+#         leave_vacation = respons["result"]["leave_detail"]["leave_vacation"]
+#         leave_leave = respons["result"]["leave_detail"]["leave_leave"]
+
+#         if len(leave_vacation) == 0:
+#             text_leave_vacation = ""
+#         else:
+#             array_leave_vacation = []
+#             for i in range(len(leave_vacation)):
+#                 text = "เดือน"+str(leave_vacation[i]["LeaveMM"])+" ปี "+str(leave_vacation[i]["LeaveYY"])+" ลาจำนวน "+str(leave_vacation[i]["LeaveDate"])+" วัน"
+#                 array_leave_vacation.append(text) 
+            
+
+#             text_leave_vacation = str("\n\nลาพักร้อน\n"+str(array_leave_vacation))
+#             # ResponsText(user_uid,text_leave_vacation)
+
+#         if len(leave_leave) == 0:
+#             text_leave_leave = ""
+#         else:
+#             array_leave_leave = []
+#             for i in range(len(leave_leave)):
+#                 text = "เดือน"+str(leave_leave[i]["LeaveMM"])+" ปี "+str(leave_leave[i]["LeaveYY"])+" ลาจำนวน "+str(leave_leave[i]["LeaveDate"])+" วัน"
+#                 array_leave_leave.append(text) 
+
+#             text_leave_leave = str("\n\nลากิจ\n"+str(array_leave_leave))
+#             # ResponsText(user_uid,text_leave_leave)
+
+#         text_leave = str(user_name+"\nปีงบประมาณ "+year+"\n\nจำนวนวันลาที่โอนมาจากปีที่แล้ว "+SumLeaveYear+" วัน\nจำนวนวันลาพักร้อนในปีนี้ "+TotalLeave+" วัน\nจำนวนวันลาพักร้อนคงเหลือ "+TotalLeaveAvailable+" วัน")
+#         text = str(text_leave+text_leave_vacation+text_leave_leave)
+#         ResponsText(user_uid,text)
+#         ResponsLeaveSelectYear(user_uid)
+#     else:       
+#         ResponsLeaveSelectYear(user_uid)
+
 
 if __name__ == '__main__':
     app.run()

@@ -16,6 +16,19 @@ class ResponsLeaveSelectYear:
 
         result = PostLeaveYearSelect(devicetoken)
         items = []
+        
+        # data =  '{ "key":"Leave_info", "year":"2564"}'
+
+        # in_item = {
+        #     "type": "action",
+        #     "imageUrl": "https://webhook.toat.co.th/linebot/web/src/icon_leave.png",
+        #     "action": {
+        #         "type": "postback",
+        #         "label" : "aaa",
+        #         "data": data
+        #     }
+        # }
+
 
         for i in range(len(result)):
 
@@ -25,12 +38,13 @@ class ResponsLeaveSelectYear:
                 "action": {
                     "type": "postback",
                     "label" : str(result[i]["Value"]),
-                    "data": str(result[i]["Value"])
+                    "data": str('{ "key":"'+str(Util().Leave_info)+'", "year":"'+str(result[i]["Value"])+'"}')
                 }
             }
 
             items.append(in_item) 
-        
+
+        # items.append(in_item) 
         print(items)
 
 
@@ -46,7 +60,7 @@ class ResponsLeaveSelectYear:
             
                {
                     "type": "text",
-                    "text": "ปีงบประมาณ",
+                    "text": "เลือกปีงบประมาณ",
                     "quickReply": {
                         "items": items
                     }
@@ -60,4 +74,4 @@ class ResponsLeaveSelectYear:
         print(response.status_code)
         print(response.json())
 
-ResponsLeaveSelectYear("U4f34652f4e163d5492b3fbe573a50d0a")
+# ResponsLeaveSelectYear("U4f34652f4e163d5492b3fbe573a50d0a")

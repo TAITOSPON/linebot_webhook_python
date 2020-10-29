@@ -4,6 +4,10 @@ import json
 
 from python.Util import Util
 
+# import sys, os
+# sys.path.append("C:\inetpub\wwwroot\linebot\linebot_webhook\python")
+# from Util import Util
+
 class ResponsText:
     
     def __init__(self,devicetoken,text):
@@ -30,4 +34,4 @@ class ResponsText:
 
         print(response.json())
 
-# ResponsQuickReply("Uc1e2655638774e42ab8cf38043744cdb")
+# ResponsText("U4f34652f4e163d5492b3fbe573a50d0a","hi")
