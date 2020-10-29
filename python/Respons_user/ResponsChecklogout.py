@@ -59,9 +59,9 @@ class ResponsChecklogout:
                             {
                                 "type": "button",
                                 "action": {
-                                "type": "uri",
-                                "label": "ตกลง",
-                                "uri": "https://liff.line.me/1654967329-5AMQZKN1"
+                                    "type": "postback",
+                                    "label" : "ตกลง",
+                                    "data": str('{ "key":"'+str(Util().User_logout)+'"}')
                                 },
                                 "color": "#D39D2B",
                                 "style": "primary"
