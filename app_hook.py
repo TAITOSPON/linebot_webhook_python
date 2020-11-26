@@ -121,7 +121,8 @@ def checktextcase(body,text):
     if text == Util().intent_leave:
 
         if CheckUserLogin(user_uid):
-            ResponsLeave(user_uid)
+            # ResponsLeave(user_uid)
+            ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
         return True
 
     elif text == Util().intent_meet:
