@@ -12,7 +12,7 @@ class ResponsChecklogout:
                 'Authorization':  Util().Bearer + Util().serverToken
             }
         body = {    
-            "to": str(devicetoken),
+            "replyToken": str(devicetoken),
             "messages": [
                   {
                     "type": "flex",
@@ -76,7 +76,7 @@ class ResponsChecklogout:
             ]
         
         }
-        response = requests.post(Util().line_api_push,headers = headers, data=json.dumps(body))
+        response = requests.post(Util().line_api_reply,headers = headers, data=json.dumps(body))
         print(response.status_code)
         print(response.json())
 

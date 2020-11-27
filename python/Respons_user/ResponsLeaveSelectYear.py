@@ -12,9 +12,11 @@ from python.Api_backend.PostLeaveYearSelect import PostLeaveYearSelect
 
 class ResponsLeaveSelectYear:
     
-    def __init__(self,devicetoken):
+    def __init__(self,body):
+        user_uid = str(body["events"][0]['source']['userId'])
+        user = str(body["events"][0]['replyToken'])
 
-        result = PostLeaveYearSelect(devicetoken)
+        result = PostLeaveYearSelect(user_uid)
         items = []
         
         # data =  '{ "key":"Leave_info", "year":"2564"}'
@@ -55,7 +57,7 @@ class ResponsLeaveSelectYear:
 
         body = {
 
-            "to": str(devicetoken),
+            "replyToken": str(user),
             "messages": [
             
                {
@@ -70,7 +72,7 @@ class ResponsLeaveSelectYear:
 
 
    
-        response = requests.post(Util().line_api_push,headers = headers, data=json.dumps(body))
+        response = requests.post(Util().line_api_reply,headers = headers, data=json.dumps(body))
         print(response.status_code)
         print(response.json())
 

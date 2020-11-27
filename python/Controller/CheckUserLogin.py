@@ -7,14 +7,17 @@ from python.Respons_user.ResponsNotLogin import ResponsNotLogin
 
 class CheckUserLogin:
     
-    def __new__(self,user_line_uid):
+    def __new__(self,body):
 
-        response = PostCheckLogin(user_line_uid)
+        user_uid = str(body["events"][0]['source']['userId'])
+        user = str(body["events"][0]['replyToken'])
+
+        response = PostCheckLogin(user_uid)
         if response["status"]:
             return True
         else:
             if response["result"]=="check_login_false":
-                ResponsNotLogin(user_line_uid)
+                ResponsNotLogin(user)
             return False
 
 

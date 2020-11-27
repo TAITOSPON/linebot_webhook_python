@@ -9,7 +9,6 @@ from python.Util import Util
 from python.Respons_user.ResponsReply import ResponsReply
 from python.Respons_user.ResponsText import ResponsText
 from python.Respons_user.ResponsMenu import ResponsMenu
-from python.Respons_user.ResponsListItem import ResponsListItem
 from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
 from python.Respons_user.ResponsLeave import ResponsLeave
@@ -89,10 +88,9 @@ def Receive_LineAPI(body):
         if message_type == "text":    
             checktextintent(body)
         else :
-            ResponsText(user_uid,body)
+            ResponsReply(user_uid,body)
 
     elif event_type == "postback":
-        # ResponsText(user_uid,str(body["events"]))
         postbackdata = str(body["events"][0]["postback"]["data"])
         checkmessagepostback(body,postbackdata)
 
@@ -108,9 +106,8 @@ def checktextintent(body):
         response = PostToDialog(Util().key_dialogflow,Util().key_dialogflow,text,Util().key_dialogflow_langu)
 
         if str(response.query_result.intent.display_name) == Util().Default_Fallback_Intent or str(response.query_result.intent.display_name) == Util().Default_Welcome_Intent:
-            ResponsText(user_uid,str(response.query_result.fulfillment_text))
+            ResponsReply(user,str(response.query_result.fulfillment_text))
         else :
-            # ResponsText(user_uid,str(response.query_result.intent.display_name))
             checktextcase(body,str(response.query_result.intent.display_name))
 
 
@@ -120,26 +117,24 @@ def checktextcase(body,text):
 
     if text == Util().intent_leave:
 
-        if CheckUserLogin(user_uid):
-            # ResponsLeave(user_uid)
-            ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
+        if CheckUserLogin(body):
+            ResponsLeave(user)
         return True
 
     elif text == Util().intent_meet:
 
-        if CheckUserLogin(user_uid):
-            ResponsText(user_uid,"กำลังพัฒนา (รอ API )")
-       
+        if CheckUserLogin(body):
+            ResponsReply(user,"กำลังพัฒนา")
         return True
 
     elif text == Util().intent_menu:
         
-        ResponsMenu(user_uid)
+        ResponsMenu(user)
         return True
 
     elif text == Util().intent_logout:
 
-        ResponsChecklogout(user_uid)
+        ResponsChecklogout(user)
         return True
 
     return False
@@ -148,14 +143,13 @@ def checktextcase(body,text):
 def checkmessagepostback(body,postbackdata):
     user_uid = str(body["events"][0]['source']['userId'])
     user = str(body["events"][0]['replyToken'])
-    # ResponsText(user_uid, str(postbackdata))
 
     postbackdata = json.loads(str(postbackdata))
     key = str(postbackdata["key"])
     
-    if CheckUserLogin(user_uid):
+    if CheckUserLogin(body):
         if key == Util().Leave_info:   
-            Leave(user_uid,postbackdata)
+            Leave(body,postbackdata)
        
         elif key == Util().User_logout:
             
@@ -167,7 +161,6 @@ def checkmessagepostback(body,postbackdata):
                 ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
         else:
             print()
-            ResponsText(user_uid,"in else")
     
 
 if __name__ == '__main__':
