@@ -24,6 +24,7 @@ class Util:
         self.Default_Welcome_Intent = "Default Welcome Intent"
 
         # text intent case
+        self.intent_login = "เข้าสู่ระบบ"
         self.intent_leave = "ลางาน"
         self.intent_meet = "จองห้องประชุม"
         self.intent_menu  = "เมนู"
@@ -33,6 +34,7 @@ class Util:
         # path backend
         self.api_check_login = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_check_login"
         self.api_log_out = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_logout"
+        self.api_get_user_with_uid = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_with_uid"
 
 
         self.api_leave_get_year_for_select = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year_select"

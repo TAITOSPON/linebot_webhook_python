@@ -7,14 +7,16 @@ from flask import Flask,request,render_template,url_for
 from python.Util import Util
 
 from python.Respons_user.ResponsReply import ResponsReply
-from python.Respons_user.ResponsText import ResponsText
 from python.Respons_user.ResponsMenu import ResponsMenu
 from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
 from python.Respons_user.ResponsLeave import ResponsLeave
 
+from python.Respons_user.ResponsListItem import ResponsListItem
+
 from python.Api_backend.PostToDialog import PostToDialog
 from python.Api_backend.PostLogout import PostLogout
+from python.Api_backend.PostUserWithUid import PostUserWithUid
 
 
 from python.Controller.CheckUserLogin import CheckUserLogin
@@ -25,7 +27,7 @@ from python.Controller.Leave import Leave
 app = Flask(__name__)
 
 class PrefixMiddleware(object):
-#class for URL sorting 
+
     def __init__(self, app, prefix=''):
         self.app = app
         self.prefix = prefix
@@ -40,13 +42,13 @@ class PrefixMiddleware(object):
             start_response('404', [('Content-Type', 'text/plain')])            
             return ["This url does not belong to the app.".encode()]
 
-
 app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/webhook')
 
 
 @app.route("/")
 def hello():
-    return Util().index
+    return Util().index 
+
 
 
 @app.route('/webhook', methods=['POST'])
@@ -55,24 +57,10 @@ def webhook():
     header = request.headers
     body = request.json
     message_type = header["User-Agent"]
-    
 
-
-    if message_type == "login-true": 
-        Receive_Backend(body)
-    else:
-        Receive_LineAPI(body)
+    Receive_LineAPI(body)
 
     return Util().index,200
-
-
-
-def Receive_Backend(body):
-
-    user_uid = str(body["user_line_uid"])
-    text = "สวัสดีคุณ "+body["PERSON_NAME"]+" \nยินดีต้อนรับเข้าสู่ระบบ linebot system \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
-    ResponsText(user_uid,text)
-    ResponsQuickReply(user_uid,"เลือกเมนูที่คุณต้องการใช้งาน")
 
     
 
@@ -80,6 +68,7 @@ def Receive_LineAPI(body):
     
     event_type = str(body["events"][0]['type'])
     user_uid = str(body["events"][0]['source']['userId'])
+    user = str(body["events"][0]['replyToken'])
 
     if event_type == "message":
     
@@ -88,7 +77,7 @@ def Receive_LineAPI(body):
         if message_type == "text":    
             checktextintent(body)
         else :
-            ResponsReply(user_uid,body)
+            ResponsReply(user,str(body))
 
     elif event_type == "postback":
         postbackdata = str(body["events"][0]["postback"]["data"])
@@ -115,8 +104,16 @@ def checktextcase(body,text):
     user_uid = str(body["events"][0]['source']['userId'])
     user = str(body["events"][0]['replyToken'])
 
-    if text == Util().intent_leave:
+    if text == Util().intent_login:
+        if CheckUserLogin(body):
+            result_user = PostUserWithUid(user_uid)
+            user_ad_name = str(result_user[0]["user_ad_name"])
+            text = "สวัสดีคุณ "+user_ad_name+" \nยินดีต้อนรับเข้าสู่ระบบ linebot system \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
+            ResponsQuickReply(user,text)
+        
+        return True
 
+    if text == Util().intent_leave:
         if CheckUserLogin(body):
             ResponsLeave(user)
         return True
@@ -133,7 +130,6 @@ def checktextcase(body,text):
         return True
 
     elif text == Util().intent_logout:
-
         ResponsChecklogout(user)
         return True
 

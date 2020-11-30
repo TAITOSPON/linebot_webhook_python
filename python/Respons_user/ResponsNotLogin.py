@@ -66,11 +66,17 @@ class ResponsNotLogin:
                                     "action": {
                                         "type": "uri",
                                         "label": "เข้าสู่ระบบ",
-                                        "uri": Util().liff_url_login
+                                        "uri": Util().liff_url_login,
+                                        "altUri": {
+                                            "desktop" : Util().liff_url_login
+                                        }
                                     },
+                                    
                                     "color": "#D39D2B",
                                     "style": "primary"
-                                }
+                                },
+                               
+                                
                             ]
                         }
                     }
