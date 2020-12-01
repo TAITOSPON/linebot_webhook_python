@@ -123,12 +123,12 @@ def checktextcase(body,text):
 
     elif text == Util().intent_meet:
         if CheckUserLogin(body):
-            ResponsReply(user,"กำลังพัฒนาจ้า")
+            ResponsReply(user,"กำลังพัฒนาจ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC84")
         return True
 
     elif text == Util().intent_time_work:
         if CheckUserLogin(body):
-            ResponsReply(user,"กำลังพัฒนาจ้า")
+            ResponsReply(user,"กำลังพัฒนาอยู่จ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC30\uDBC0\uDC3B\uDBC0\uDC37")
         return True
 
     elif text == Util().intent_menu:
