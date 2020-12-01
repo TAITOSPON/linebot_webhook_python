@@ -10,6 +10,7 @@ from python.Respons_user.ResponsReply import ResponsReply
 from python.Respons_user.ResponsMenu import ResponsMenu
 from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
+from python.Respons_user.ResponsLogout import ResponsLogout
 from python.Respons_user.ResponsLeave import ResponsLeave
 
 from python.Respons_user.ResponsListItem import ResponsListItem
@@ -95,7 +96,9 @@ def checktextintent(body):
         response = PostToDialog(Util().key_dialogflow,Util().key_dialogflow,text,Util().key_dialogflow_langu)
 
         if str(response.query_result.intent.display_name) == Util().Default_Fallback_Intent or str(response.query_result.intent.display_name) == Util().Default_Welcome_Intent:
-            ResponsReply(user,str(response.query_result.fulfillment_text))
+            # ResponsReply(user,str(response.query_result.fulfillment_text))
+            text = str(response.query_result.fulfillment_text) +" ให้ฉันช่วยอะไรคะ"
+            ResponsQuickReply(user,text)
         else :
             checktextcase(body,str(response.query_result.intent.display_name))
 
@@ -108,7 +111,7 @@ def checktextcase(body,text):
         if CheckUserLogin(body):
             result_user = PostUserWithUid(user_uid)
             user_ad_name = str(result_user[0]["user_ad_name"])
-            text = "สวัสดีคุณ "+user_ad_name+" \nยินดีต้อนรับเข้าสู่ระบบ linebot system \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
+            text = "สวัสดีคุณ "+user_ad_name+" \nยินดีต้อนรับเข้าสู่ระบบ TOAT linebot \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
             ResponsQuickReply(user,text)
         
         return True
@@ -119,9 +122,13 @@ def checktextcase(body,text):
         return True
 
     elif text == Util().intent_meet:
-
         if CheckUserLogin(body):
-            ResponsReply(user,"กำลังพัฒนา")
+            ResponsReply(user,"กำลังพัฒนาจ้า")
+        return True
+
+    elif text == Util().intent_time_work:
+        if CheckUserLogin(body):
+            ResponsReply(user,"กำลังพัฒนาจ้า")
         return True
 
     elif text == Util().intent_menu:
@@ -152,7 +159,7 @@ def checkmessagepostback(body,postbackdata):
             response = PostLogout(user_uid)
             
             if response["status"]:
-                ResponsReply(user,"ออกจากระบบสำเร็จ")
+                ResponsLogout(user,"ออกจากระบบสำเร็จ")
             else:
                 ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
         else:

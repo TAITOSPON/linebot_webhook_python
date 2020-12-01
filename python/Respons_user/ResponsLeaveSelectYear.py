@@ -12,7 +12,7 @@ from python.Api_backend.PostLeaveYearSelect import PostLeaveYearSelect
 
 class ResponsLeaveSelectYear:
     
-    def __init__(self,body):
+    def __init__(self,body,text):
         user_uid = str(body["events"][0]['source']['userId'])
         user = str(body["events"][0]['replyToken'])
 
@@ -62,7 +62,7 @@ class ResponsLeaveSelectYear:
             
                {
                     "type": "text",
-                    "text": "เลือกปีงบประมาณ",
+                    "text": text,
                     "quickReply": {
                         "items": items
                     }

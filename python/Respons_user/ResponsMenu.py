@@ -131,11 +131,10 @@ class ResponsMenu:
                                                     "layout": "vertical",
                                                     "margin": "xs",
                                                     "backgroundColor": "#D39D2B",
-                                                    "cornerRadius": "5px",
                                                     "action": {
-                                                        "type": "uri",
+                                                        "type": "message",
                                                         "label": "Action",
-                                                        "uri": "https://linecorp.com"
+                                                        "text": Util().intent_meet
                                                     },
                                                     "contents": [
                                                         {
@@ -155,7 +154,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "เวลาเข้า-ออกงาน",
+                                                                    "text":  Util().intent_meet,
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -192,7 +191,7 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://linecorp.com"
+                                                        "uri": "https://www.facebook.com/Benchakitti/"
                                                     },
                                                     "contents": [
                                                         {
@@ -212,7 +211,7 @@ class ResponsMenu:
                                                                 },
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "ตารางหมอ รพ.สวนเบญฯ",
+                                                                    "text": "รพ.สวนเบญฯ",
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -294,7 +293,7 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://linecorp.com"
+                                                        "uri": "https://www.thaitobacco.or.th/th/%e0%b8%82%e0%b9%88%e0%b8%b2%e0%b8%a7%e0%b8%aa%e0%b8%ab%e0%b8%81%e0%b8%a3%e0%b8%93%e0%b9%8c%e0%b8%ad%e0%b8%ad%e0%b8%a1%e0%b8%97%e0%b8%a3%e0%b8%b1%e0%b8%9e%e0%b8%a2%e0%b9%8c%e0%b8%9e%e0%b8%99%e0%b8%b1"
                                                     },
                                                     "contents": [
                                                         {

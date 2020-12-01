@@ -25,7 +25,8 @@ class Util:
 
         # text intent case
         self.intent_login = "เข้าสู่ระบบ"
-        self.intent_leave = "ลางาน"
+        self.intent_leave = "ข้อมูลการขาดลา"
+        self.intent_time_work = "ตรวจสอบเวลาเข้างาน"
         self.intent_meet = "จองห้องประชุม"
         self.intent_menu  = "เมนู"
         self.intent_logout = "ออกจากระบบ"

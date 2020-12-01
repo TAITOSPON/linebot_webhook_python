@@ -38,8 +38,8 @@ class ResponsQuickReply:
                                 "imageUrl": "https://webhook.toat.co.th/linebot/web/src/icon_meet.png",
                                 "action": {
                                     "type": "message",
-                                    "label": Util().intent_meet,
-                                    "text": Util().intent_meet
+                                    "label": Util().intent_time_work,
+                                    "text": Util().intent_time_work
                                 }
                             },
                             {

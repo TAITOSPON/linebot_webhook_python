@@ -44,9 +44,10 @@ class Leave:
 
             text_leave = str(user_name+"\nปีงบประมาณ "+year+"\n\nจำนวนวันลาที่โอนมาจากปีที่แล้ว "+SumLeaveYear+" วัน\nจำนวนวันลาพักร้อนในปีนี้ "+TotalLeave+" วัน\nจำนวนวันลาพักร้อนคงเหลือ "+TotalLeaveAvailable+" วัน")
             text = str(text_leave+text_leave_vacation+text_leave_leave)
-            ResponsReply(user,text)
+            # ResponsReply(user,text)
+            ResponsLeaveSelectYear(body,text)
         else:       
-            ResponsLeaveSelectYear(body)
+            ResponsLeaveSelectYear(body,"เลือกปีงบประมาณ")
 
         
 

@@ -60,7 +60,7 @@ class ResponsChecklogout:
                                 "type": "button",
                                 "action": {
                                     "type": "postback",
-                                    "label" : "ตกลง",
+                                    "label" : "ยืนยัน",
                                     "data": str('{ "key":"'+str(Util().User_logout)+'"}')
                                 },
                                 "color": "#D39D2B",
