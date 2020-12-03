@@ -104,10 +104,7 @@ class ResponsMenu:
                                                                 {
                                                                     "type": "spacer"
                                                                 },
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
-                                                                },
+                                                              
                                                                 {
                                                                     "type": "text",
                                                                     "text": "ข่าวประชาสัมพันธ์",
@@ -131,6 +128,7 @@ class ResponsMenu:
                                                     "layout": "vertical",
                                                     "margin": "xs",
                                                     "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
                                                     "action": {
                                                         "type": "message",
                                                         "label": "Action",
@@ -148,10 +146,7 @@ class ResponsMenu:
                                                                 {
                                                                     "type": "spacer"
                                                                 },
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
-                                                                },
+                                                            
                                                                 {
                                                                     "type": "text",
                                                                     "text":  Util().intent_meet,
@@ -205,10 +200,7 @@ class ResponsMenu:
                                                                 {
                                                                     "type": "spacer"
                                                                 },
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
-                                                                },
+                                                            
                                                                 {
                                                                     "type": "text",
                                                                     "text": "รพ.สวนเบญฯ",
@@ -250,10 +242,7 @@ class ResponsMenu:
                                                                 {
                                                                     "type": "spacer"
                                                                 },
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
-                                                                },
+                                                            
                                                                 {
                                                                     "type": "text",
                                                                     "text": "สโมสร พนง.ยาสูบ",
@@ -307,10 +296,7 @@ class ResponsMenu:
                                                                 {
                                                                     "type": "spacer"
                                                                 },
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
-                                                                },
+                                                              
                                                                 {
                                                                     "type": "text",
                                                                     "text": "สหกรณ์ฯ ยาสูบ",
@@ -352,10 +338,7 @@ class ResponsMenu:
                                                                 {
                                                                     "type": "spacer"
                                                                 },
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/icon_o.png"
-                                                                },
+                                                             
                                                                 {
                                                                     "type": "text",
                                                                     "text": "ออกจากระบบ",
