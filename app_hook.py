@@ -20,8 +20,10 @@ from python.Api_backend.PostLogout import PostLogout
 from python.Api_backend.PostUserWithUid import PostUserWithUid
 
 
+
 from python.Controller.CheckUserLogin import CheckUserLogin
 from python.Controller.Leave import Leave
+from python.Controller.TimeAt import TimeAt
 
 
 
@@ -57,7 +59,6 @@ def webhook():
    
     header = request.headers
     body = request.json
-    message_type = header["User-Agent"]
 
     Receive_LineAPI(body)
 
@@ -72,7 +73,7 @@ def Receive_LineAPI(body):
     user = str(body["events"][0]['replyToken'])
 
     if event_type == "message":
-    
+        
         message_type = str(body["events"][0]['message']['type'])
 
         if message_type == "text":    
@@ -83,6 +84,21 @@ def Receive_LineAPI(body):
     elif event_type == "postback":
         postbackdata = str(body["events"][0]["postback"]["data"])
         checkmessagepostback(body,postbackdata)
+    # if user_uid == "U4f34652f4e163d5492b3fbe573a50d0a":
+    #     if event_type == "message":
+        
+    #         message_type = str(body["events"][0]['message']['type'])
+
+    #         if message_type == "text":    
+    #             checktextintent(body)
+    #         else :
+    #             ResponsReply(user,str(body))
+
+    #     elif event_type == "postback":
+    #         postbackdata = str(body["events"][0]["postback"]["data"])
+    #         checkmessagepostback(body,postbackdata)
+    # else:
+    #     ResponsReply(user,Util().Maintenance)
 
 
 def checktextintent(body):
@@ -92,7 +108,6 @@ def checktextintent(body):
 
     if str(checktextcase(body,text)) == "False":
 
-    
         response = PostToDialog(Util().key_dialogflow,Util().key_dialogflow,text,Util().key_dialogflow_langu)
 
         if str(response.query_result.intent.display_name) == Util().Default_Fallback_Intent or str(response.query_result.intent.display_name) == Util().Default_Welcome_Intent:
@@ -128,7 +143,10 @@ def checktextcase(body,text):
 
     elif text == Util().intent_time_work:
         if CheckUserLogin(body):
-            ResponsReply(user,"กำลังพัฒนาอยู่จ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC30\uDBC0\uDC3B\uDBC0\uDC37")
+    
+            TimeAt(body)
+            # ResponsReply(user,str(PostDataTimeAt(user_uid)))
+            # ResponsReply(user,"กำลังพัฒนาอยู่จ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC30\uDBC0\uDC3B\uDBC0\uDC37")
         return True
 
     elif text == Util().intent_menu:
