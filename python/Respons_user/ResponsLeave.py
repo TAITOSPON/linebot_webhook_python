@@ -61,9 +61,9 @@ class ResponsLeave:
                                 "type": "button",
                                 "margin": "xs",
                                 "action": {
-                                    "type": "postback",
+                                    "type": "uri",
                                     "label": "บันทึกใบลา",
-                                    "data": "Developing"
+                                    "uri": Util().liff_url_create_leave
                                 },
                                 "color": "#D39D2B",
                                 "style": "primary"

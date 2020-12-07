@@ -13,9 +13,12 @@ class Util:
         # self.serverToken = "4d7QOg7qteXxTxhGEQ5ROBfc2wiBVyRTAnbA73hrZcsWLM7etaAcqpP/IS+Pv5/Psxa2nxyeSrvww7NrsRnl4n4i2Edzk36Dr5wzQZIItg1paczCVHU+/LnIEz27U68OrJSTiDooQf0xHZRx2FTp5gdB04t89/1O/w1cDnyilFU="
         # self.liff_url_login ="https://liff.line.me/1654967329-yQRPp5rQ"
 
+        self.liff_url_create_leave = "https://liff.line.me/1655109480-VOMzYnqm"
+
         
         self.line_api_reply = "https://api.line.me/v2/bot/message/reply"
         self.line_api_push = "https://api.line.me/v2/bot/message/push"
+   
 
         # key dialogflow
         self.key_dialogflow = "linebot-toat-kyur"
@@ -47,8 +50,9 @@ class Util:
 
         #text_leave
         self.Leave_info = "Leave_info"
-
+    
         self.User_logout = "User_logout"
+        
 
         return self
 

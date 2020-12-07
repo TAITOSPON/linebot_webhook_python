@@ -180,6 +180,8 @@ def checkmessagepostback(body,postbackdata):
                 ResponsLogout(user,"ออกจากระบบสำเร็จ")
             else:
                 ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
+        elif key == Util().intent_time_work:
+            ResponsReply(user,"กำลังพัฒนาอยู่จ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC30\uDBC0\uDC3B\uDBC0\uDC37")
         else:
             print()
     
