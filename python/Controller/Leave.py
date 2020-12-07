@@ -42,7 +42,7 @@ class Leave:
 
                 text_leave_leave = str("\n\nลากิจ\n"+str(array_leave_leave))
 
-            text_leave = str(user_name+"\nปีงบประมาณ "+year+"\n\nจำนวนวันลาที่โอนมาจากปีที่แล้ว "+SumLeaveYear+" วัน\nจำนวนวันลาพักร้อนในปีนี้ "+TotalLeave+" วัน\nจำนวนวันลาพักร้อนคงเหลือ "+TotalLeaveAvailable+" วัน")
+            text_leave = str(user_name+"\nปีงบประมาณ "+year+"\n\nจำนวนวันลาที่โอนมาจากปีที่แล้ว "+SumLeaveYear+" วัน\nจำนวนวันลาพักผ่อนในปีนี้ "+TotalLeave+" วัน\nจำนวนวันลาพักผ่อนคงเหลือ "+TotalLeaveAvailable+" วัน")
             text = str(text_leave+text_leave_vacation+text_leave_leave)
             # ResponsReply(user,text)
             ResponsLeaveSelectYear(body,text)

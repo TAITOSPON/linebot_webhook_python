@@ -1,3 +1,4 @@
+from python.Respons_user.ResponsReply import ResponsReply
 from python.Respons_user.ResponsTimeAt import ResponsTimeAt
 from python.Api_backend.PostDataTimeAt import PostDataTimeAt
 
@@ -21,14 +22,33 @@ class TimeAt:
             out_place = str(respons["result"]["result_time_at"][0]["out_location"])
             out_type = str(respons["result"]["result_time_at"][0]["out_channel"])
 
-            text = str("คุณ "+name+"\nวันที่ : "+date+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place)
+            try:
+                none = "None"
+                txt_none = "ไม่มีข้อมูล"
+           
+                if in_time == none:
+                    in_time = txt_none
+                if in_place == none:
+                    in_place = txt_none
+                if in_type == none:
+                    in_type = txt_none
+                if out_time == none:
+                    out_time = txt_none
+                if out_place == none:
+                    out_place = txt_none
+                if out_type == none:
+                    out_type = txt_none
+            except:
+                print("except")
 
-            ResponsTimeAt(user,text)
+            # text = str("คุณ "+name+"\nวันที่ : "+date+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n\n____________________\nดูรายละเอียด\nhttps://liff.line.me/1655109480-jrRy7m25")
+            text = str("คุณ "+name+"\nวันที่ : "+date+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n\n____________________")
+            ResponsReply(user,text)
+            # ResponsTimeAt(user,text)
         except:
-            print("An exception occurred")
+            print("except")
         
-        # ResponsReply(user,str(PostDataTimeAt(user_uid)))
-       
+
 
      
 
