@@ -14,6 +14,9 @@ class Util:
         # self.liff_url_login ="https://liff.line.me/1654967329-yQRPp5rQ"
 
         self.liff_url_create_leave = "https://liff.line.me/1655109480-VOMzYnqm"
+        self.liff_url_time_att_detail = "https://liff.line.me/1655109480-jrRy7m25"
+        self.liff_url_profile_detail = "https://liff.line.me/1655109480-wLRoWZpg"
+        self.liff_url_logout = "https://liff.line.me/1655109480-GoLo5myJ"
 
         
         self.line_api_reply = "https://api.line.me/v2/bot/message/reply"
@@ -29,6 +32,7 @@ class Util:
 
         # text intent case
         self.intent_login = "เข้าสู่ระบบ"
+        self.intent_profile_sys = "ระบบสมาชิก"
         self.intent_leave = "ข้อมูลการขาดลา"
         self.intent_time_work = "ตรวจสอบเวลาเข้างาน"
         self.intent_meet = "จองห้องประชุม"

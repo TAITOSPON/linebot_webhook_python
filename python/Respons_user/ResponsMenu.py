@@ -282,7 +282,7 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://www.thaitobacco.or.th/th/%e0%b8%82%e0%b9%88%e0%b8%b2%e0%b8%a7%e0%b8%aa%e0%b8%ab%e0%b8%81%e0%b8%a3%e0%b8%93%e0%b9%8c%e0%b8%ad%e0%b8%ad%e0%b8%a1%e0%b8%97%e0%b8%a3%e0%b8%b1%e0%b8%9e%e0%b8%a2%e0%b9%8c%e0%b8%9e%e0%b8%99%e0%b8%b1"
+                                                        "uri": Util().liff_url_profile_detail
                                                     },
                                                     "contents": [
                                                         {
@@ -299,7 +299,7 @@ class ResponsMenu:
                                                               
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "สหกรณ์ฯ ยาสูบ",
+                                                                    "text": "ระบบสมาชิก",
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -322,9 +322,9 @@ class ResponsMenu:
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
                                                     "action": {
-                                                        "type": "message",
+                                                        "type": "uri",
                                                         "label": "Action",
-                                                        "text": "ออกจากระบบ"
+                                                        "uri": Util().liff_url_logout
                                                     },
                                                     "contents": [
                                                         {

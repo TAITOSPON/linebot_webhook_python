@@ -1,6 +1,7 @@
 from python.Respons_user.ResponsReply import ResponsReply
 from python.Respons_user.ResponsTimeAt import ResponsTimeAt
 from python.Api_backend.PostDataTimeAt import PostDataTimeAt
+from python.Util import Util
 
 class TimeAt:
     
@@ -41,12 +42,13 @@ class TimeAt:
             except:
                 print("except")
 
-            text = str("คุณ "+name+"\nวันที่ : "+date+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n\n____________________\nดูรายละเอียด\n\nhttps://liff.line.me/1655109480-jrRy7m25")
+            text = str("คุณ "+name+"\nวันที่ : "+date+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n\n____________________\nดูรายละเอียดเวลาเข้าออกงาน\n\n"+Util().liff_url_time_att_detail)
             # text = str("คุณ "+name+"\nวันที่ : "+date+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n\n____________________")
             ResponsReply(user,text)
             # ResponsTimeAt(user,text)
         except:
             print("except")
+            # ResponsReply(user,"except")
         
 
 

@@ -59,9 +59,9 @@ class ResponsChecklogout:
                             {
                                 "type": "button",
                                 "action": {
-                                    "type": "postback",
-                                    "label" : "ยืนยัน",
-                                    "data": str('{ "key":"'+str(Util().User_logout)+'"}')
+                                    "type": "uri",
+                                    "label": "ยืนยัน",
+                                    "uri": Util().liff_url_logout
                                 },
                                 "color": "#D39D2B",
                                 "style": "primary"

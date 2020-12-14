@@ -16,6 +16,7 @@ from python.Respons_user.ResponsLeave import ResponsLeave
 from python.Respons_user.ResponsListItem import ResponsListItem
 
 from python.Api_backend.PostToDialog import PostToDialog
+from python.Api_backend.PostCheckLogin import PostCheckLogin
 from python.Api_backend.PostLogout import PostLogout
 from python.Api_backend.PostUserWithUid import PostUserWithUid
 
@@ -151,9 +152,24 @@ def checktextcase(body,text):
         
         ResponsMenu(user)
         return True
+    
+    elif text == Util().intent_profile_sys:
+        if CheckUserLogin(body):
+            ResponsReply(user,Util().intent_profile_sys)
+        return True
 
     elif text == Util().intent_logout:
-        ResponsChecklogout(user)
+   
+        response = PostCheckLogin(user_uid)
+        if response["status"]:
+            ResponsChecklogout(user)
+        else:
+            response = PostLogout(user_uid)
+            if response["status"]:
+                ResponsLogout(user,"ออกจากระบบสำเร็จ")
+            else:
+                ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
+
         return True
 
     return False
@@ -178,6 +194,7 @@ def checkmessagepostback(body,postbackdata):
                 ResponsLogout(user,"ออกจากระบบสำเร็จ")
             else:
                 ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
+
         elif key == Util().intent_time_work:
             ResponsReply(user,"กำลังพัฒนาอยู่จ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC30\uDBC0\uDC3B\uDBC0\uDC37")
         else:
