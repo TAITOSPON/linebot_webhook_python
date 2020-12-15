@@ -20,7 +20,7 @@ class TimeAt:
             in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
 
             out_time = str(respons["result"]["result_time_at"][0]["out_CHK"])
-            out_place = str(respons["result"]["result_time_at"][0]["out_location"])
+            out_place = str(respons["result"]["result_time_at"][0]["out_location_name"])
             out_type = str(respons["result"]["result_time_at"][0]["out_channel"])
 
             try:
