@@ -20,6 +20,7 @@ from python.Api_backend.PostCheckLogin import PostCheckLogin
 from python.Api_backend.PostLogout import PostLogout
 from python.Api_backend.PostUserWithUid import PostUserWithUid
 
+# from python.Respons_user.ResponsLeaveSelectYear import ResponsLeaveSelectYear
 
 
 from python.Controller.CheckUserLogin import CheckUserLogin
@@ -135,7 +136,9 @@ def checktextcase(body,text):
 
     if text == Util().intent_leave:
         if CheckUserLogin(body):
-            ResponsLeave(user)
+            # ResponsLeave(user)
+            Leave(body,"")
+            # ResponsLeaveSelectYear(body,"เลือกปีงบประมาณ")
         return True
 
     elif text == Util().intent_meet:
@@ -184,7 +187,7 @@ def checkmessagepostback(body,postbackdata):
     
     if CheckUserLogin(body):
         if key == Util().Leave_info:   
-            Leave(body,postbackdata)
+            Leave(body,str(postbackdata["year"]))
        
         elif key == Util().User_logout:
             
