@@ -18,6 +18,7 @@ class Util:
         self.liff_url_profile_detail = "https://liff.line.me/1655109480-wLRoWZpg"
         self.liff_url_logout = "https://liff.line.me/1655109480-GoLo5myJ"
 
+
         
         self.line_api_reply = "https://api.line.me/v2/bot/message/reply"
         self.line_api_push = "https://api.line.me/v2/bot/message/push"
@@ -50,7 +51,7 @@ class Util:
         self.api_leave_get_year_for_select = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year_select"
         self.api_leave_get_by_year = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year"
 
-
+        self.url_profile_detail_leave = "https://webhook.toat.co.th/linebot/web/index.php/Member/Leave"   
 
         #text_leave
         self.Leave_info = "Leave_info"

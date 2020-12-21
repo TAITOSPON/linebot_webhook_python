@@ -86,7 +86,7 @@ class ResponsLeaveSelectYear:
             text_leave = str("คุณ "+user_name+"\nปีงบประมาณ "+year+"\n\nจำนวนวันลาที่โอนมาจากปีที่แล้ว "+SumLeaveYear+" วัน\nจำนวนวันลาพักผ่อนในปีนี้ "+TotalLeave+" วัน\nจำนวนวันลาพักผ่อนคงเหลือ "+TotalLeaveAvailable+" วัน")
 
 
-            text_detail_more = str("\n\n\n____________________\nคลิกดูรายละเอียดในระบบสมาชิก\n"+Util().liff_url_profile_detail)
+            text_detail_more = str("\n\n\n____________________\nคลิกดูรายละเอียดในระบบสมาชิก\n"+Util().url_profile_detail_leave)
             text = str(text_leave+text_leave_vacation+text_leave_leave+text_detail_more)
 
 

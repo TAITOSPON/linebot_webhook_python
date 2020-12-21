@@ -57,10 +57,7 @@ class ResponsNotLogin:
                             "type": "box",
                             "layout": "vertical",
                             "contents": [
-                                {
-                                    "type": "spacer",
-                                    "size": "xxl"
-                                },
+                             
                                 {
                                     "type": "button",
                                     "action": {
