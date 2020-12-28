@@ -24,15 +24,7 @@ class ResponsQuickReply:
                     "quickReply": {
                         "items": [
                             
-                            {
-                                "type": "action",
-                                "imageUrl": "https://webhook.toat.co.th/linebot/web/src/icon_leave.png",
-                                "action": {
-                                    "type": "message",
-                                    "label": Util().intent_leave,
-                                    "text": Util().intent_leave
-                                }
-                            },
+                           
                             {
                                 "type": "action",
                                 "imageUrl": "https://webhook.toat.co.th/linebot/web/src/icon_meet.png",

@@ -20,63 +20,52 @@ class ResponsListItem:
             
                 {
                     "type": "template",
-                    "altText": "this is a carousel template",
+                    "altText": Util().intent_covid,
                     "template": {
                         "type": "carousel",
                         "columns": [
                             {
-                                "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+                                "thumbnailImageUrl": "https://webhook.toat.co.th/linebot/Covid_web/src/covid_report_daily.jpg",
                                 "imageBackgroundColor": "#FFFFFF",
-                                "title": "this is menu",
-                                "text": "description",
-                                "defaultAction": {
-                                    "type": "uri",
-                                    "label": "View detail",
-                                    "uri": "http://example.com/page/123"
-                                },
+                                "title": "รายงานสถานการณ์ โควิด-19",
+                                "text": "ภาพรวมของผู้ติดเชื้อ (โควิด-19) ในประเทศไทย",
+                               
                                 "actions": [
-                                    {
-                                        "type": "postback",
-                                        "label": "Buy",
-                                        "data": "action=buy&itemid=111"
-                                    },
-                                    {
-                                        "type": "postback",
-                                        "label": "Add to cart",
-                                        "data": "action=add&itemid=111"
-                                    },
+                                 
                                     {
                                         "type": "uri",
-                                        "label": "View detail",
-                                        "uri": "http://example.com/page/111"
+                                        "label": "ดูภาพรวม",
+                                        "uri": "https://covid19.th-stat.com/th/share/dashboard"
                                     }
                                 ]
                             },
                             {
-                                "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                                "thumbnailImageUrl": "https://www.enterpriseitpro.net/wp-content/uploads/2020/03/google-establishes-covid-19-fund.jpg",
                                 "imageBackgroundColor": "#000000",
-                                "title": "this is menu",
-                                "text": "description",
-                                "defaultAction": {
-                                    "type": "uri",
-                                    "label": "View detail",
-                                    "uri": "http://example.com/page/222"
-                                },
+                                "title": "โรคติดเชื้อไวรัสโคโรนา (COVID-19)",
+                                "text": "ข้อมูลรอบโลกและสถิติ",
+                               
                                 "actions": [
-                                    {
-                                        "type": "postback",
-                                        "label": "Buy",
-                                        "data": "action=buy&itemid=222"
-                                    },
-                                    {
-                                        "type": "postback",
-                                        "label": "Add to cart",
-                                        "data": "action=add&itemid=222"
-                                    },
+                                   
                                     {
                                         "type": "uri",
-                                        "label": "View detail",
-                                        "uri": "http://example.com/page/222"
+                                        "label": "ดูรายละเอียด",
+                                        "uri": "https://news.google.com/covid19/map?hl=th&gl=TH&ceid=TH%3Ath"
+                                    }
+                                ]
+                            },
+                            {
+                                "thumbnailImageUrl": "https://webhook.toat.co.th/linebot/Covid_web/src/Benchakitti_logo.jpg",
+                                "imageBackgroundColor": "#000000",
+                                "title": "โรงพยาบาลสวนเบญจกิติเฉลิมพระเกียรติ84พรรษา",
+                                "text": "https://www.facebook.com/Benchakitti/",
+                               
+                                "actions": [
+                                   
+                                    {
+                                        "type": "uri",
+                                        "label": "facebook",
+                                        "uri": "https://www.facebook.com/Benchakitti/"
                                     }
                                 ]
                             }

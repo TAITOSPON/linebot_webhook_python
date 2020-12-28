@@ -16,6 +16,7 @@ class Util:
         self.liff_url_create_leave = "https://liff.line.me/1655109480-VOMzYnqm"
         self.liff_url_time_att_detail = "https://liff.line.me/1655109480-jrRy7m25"
         self.liff_url_profile_detail = "https://liff.line.me/1655109480-wLRoWZpg"
+        self.liff_url_profile_detail_leave = "https://liff.line.me/1655109480-lKekYNJK"   
         self.liff_url_logout = "https://liff.line.me/1655109480-GoLo5myJ"
 
 
@@ -39,6 +40,7 @@ class Util:
         self.intent_meet = "จองห้องประชุม"
         self.intent_menu  = "เมนู"
         self.intent_logout = "ออกจากระบบ"
+        self.intent_covid ="สถานการณ์โควิด"
 
 
         # path backend
@@ -51,7 +53,7 @@ class Util:
         self.api_leave_get_year_for_select = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year_select"
         self.api_leave_get_by_year = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year"
 
-        self.url_profile_detail_leave = "https://webhook.toat.co.th/linebot/web/index.php/Member/Leave"   
+    
 
         #text_leave
         self.Leave_info = "Leave_info"

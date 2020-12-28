@@ -229,9 +229,9 @@ class ResponsMenu:
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
                                                     "action": {
-                                                        "type": "uri",
+                                                        "type": "message",
                                                         "label": "Action",
-                                                        "uri": "https://linecorp.com"
+                                                        "text": Util().intent_leave
                                                     },
                                                     "contents": [
                                                         {
@@ -248,7 +248,7 @@ class ResponsMenu:
                                                             
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "สโมสร พนง.ยาสูบ",
+                                                                    "text":  Util().intent_leave,
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -277,51 +277,10 @@ class ResponsMenu:
                                             "type": "box",
                                             "layout": "horizontal",
                                             "contents": [
+                                           
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
-                                                    "backgroundColor": "#D39D2B",
-                                                    "cornerRadius": "5px",
-                                                    "action": {
-                                                        "type": "message",
-                                                        "label": "Action",
-                                                        "text": Util().intent_meet
-                                                    },
-                                                    "contents": [
-                                                        {
-                                                            "type": "spacer",
-                                                            "size": "xl"
-                                                        },
-                                                        {
-                                                            "type": "box",
-                                                            "layout": "baseline",
-                                                            "contents": [
-                                                                {
-                                                                    "type": "spacer"
-                                                                },
-                                                            
-                                                                {
-                                                                    "type": "text",
-                                                                    "text":  Util().intent_meet,
-                                                                    "color": "#FFFFFFFF",
-                                                                    "align": "start",
-                                                                    "gravity": "center",
-                                                                    "offsetBottom": "2px",
-                                                                    "offsetStart": "2px",
-                                                                    "contents": []
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "type": "spacer",
-                                                            "size": "xl"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "type": "box",
-                                                    "layout": "vertical",
-                                                    "margin": "xs",
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
                                                     "action": {

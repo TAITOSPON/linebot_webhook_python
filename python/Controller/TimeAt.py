@@ -3,6 +3,7 @@ from python.Respons_user.ResponsTimeAt import ResponsTimeAt
 from python.Api_backend.PostDataTimeAt import PostDataTimeAt
 from python.Util import Util
 
+
 class TimeAt:
     
     def __new__(self,body): 
@@ -12,8 +13,18 @@ class TimeAt:
         respons = PostDataTimeAt(user_uid)
         try:
 
+        
             name = str(respons["result"]["result_time_at"][0]["fullname"])
             date = str(respons["result"]["result_time_at"][0]["Stamp_Date"])
+            
+            try:
+                date = date.split('-')
+                month_name = 'x มกราคม กุมภาพันธ์ มีนาคม เมษายน พฤษภาคม มิถุนายน กรกฎาคม สิงหาคม กันยายน ตุลาคม พฤศจิกายน ธันวาคม'.split()[int(date[1])]
+                thai_year = int(date[0]) + 543
+                day = date[2]
+                date = str(day)+" "+str(month_name)+" "+str(thai_year)
+            except:
+                print("except date")
 
             in_time = str(respons["result"]["result_time_at"][0]["in_CHK"])
             in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
@@ -42,19 +53,19 @@ class TimeAt:
             except:
                 print("except")
 
-            text = str("คุณ "+name+"\nวันที่ : "+date+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_time_att_detail)
+            text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_time_att_detail)
             # text = str("คุณ "+name+"\nวันที่ : "+date+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n\n____________________")
             ResponsReply(user,text)
             # ResponsTimeAt(user,text)
         except:
             
-            result_time_at = str(respons["result"]["result_time_at"])
+            # result_time_at = str(respons["result"]["result_time_at"])
 
-            if result_time_at == "":
+            # if result_time_at == "":
 
-                name = str(respons["result"]["result_user"][0]["user_ad_name"])
-                text = str("คุณ "+name+"\n\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_time_att_detail)
-                ResponsReply(user,text)
+            name = str(respons["result"]["result_user"][0]["user_ad_name"])
+            text = str("คุณ "+name+"\n\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_time_att_detail)
+            ResponsReply(user,text)
 
 
 

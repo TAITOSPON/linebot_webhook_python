@@ -20,9 +20,6 @@ from python.Api_backend.PostCheckLogin import PostCheckLogin
 from python.Api_backend.PostLogout import PostLogout
 from python.Api_backend.PostUserWithUid import PostUserWithUid
 
-# from python.Respons_user.ResponsLeaveSelectYear import ResponsLeaveSelectYear
-
-
 from python.Controller.CheckUserLogin import CheckUserLogin
 from python.Controller.Leave import Leave
 from python.Controller.TimeAt import TimeAt
@@ -74,14 +71,13 @@ def Receive_LineAPI(body):
     user_uid = str(body["events"][0]['source']['userId'])
     user = str(body["events"][0]['replyToken'])
 
-    if event_type == "message":
-        
+    if event_type == "message": 
         message_type = str(body["events"][0]['message']['type'])
 
         if message_type == "text":    
             checktextintent(body)
-        else :
-            ResponsReply(user,str(body))
+        # else :
+        #     ResponsReply(user,str(body))
 
     elif event_type == "postback":
         postbackdata = str(body["events"][0]["postback"]["data"])
@@ -136,9 +132,7 @@ def checktextcase(body,text):
 
     if text == Util().intent_leave:
         if CheckUserLogin(body):
-            # ResponsLeave(user)
             Leave(body,"")
-            # ResponsLeaveSelectYear(body,"เลือกปีงบประมาณ")
         return True
 
     elif text == Util().intent_meet:
@@ -159,6 +153,11 @@ def checktextcase(body,text):
     elif text == Util().intent_profile_sys:
         if CheckUserLogin(body):
             ResponsReply(user,Util().intent_profile_sys)
+        return True
+    
+    elif text == Util().intent_covid:
+        # ResponsReply(user,Util().intent_covid)
+        ResponsListItem(user)
         return True
 
     elif text == Util().intent_logout:
