@@ -28,32 +28,29 @@ class ResponsListItem:
                                 "thumbnailImageUrl": "https://webhook.toat.co.th/linebot/Covid_web/src/covid_report_daily.jpg",
                                 "imageBackgroundColor": "#FFFFFF",
                                 "title": "รายงานสถานการณ์ โควิด-19",
-                                "text": "ภาพรวมของผู้ติดเชื้อ (โควิด-19) ในประเทศไทย",
+                                "text": "ภาพรวมของผู้ติดเชื้อ (โควิด-19) ในประเทศไทย by AwayCovid-19",
                                
                                 "actions": [
-                                 
                                     {
                                         "type": "uri",
-                                        "label": "ดูภาพรวม",
-                                        "uri": "https://covid19.th-stat.com/th/share/dashboard"
+                                        "label": "เตือนภัยพื้นที่เสี่ยง",
+                                        "uri": "https://liff.line.me/1653981898-q0jEx1on"
+                                    },
+                                    {
+                                        "type": "uri",
+                                        "label": "สถิติผู้ติดเชื้อในไทย",
+                                        "uri": "https://liff.line.me/1653981898-EK590Od2"
+                                    },
+                                    {
+                                        "type": "uri",
+                                        "label": "สถานพยาบาล",
+                                        "uri": "https://liff.line.me/1653981898-QwWOp3PN"
                                     }
-                                ]
-                            },
-                            {
-                                "thumbnailImageUrl": "https://www.enterpriseitpro.net/wp-content/uploads/2020/03/google-establishes-covid-19-fund.jpg",
-                                "imageBackgroundColor": "#000000",
-                                "title": "โรคติดเชื้อไวรัสโคโรนา (COVID-19)",
-                                "text": "ข้อมูลรอบโลกและสถิติ",
-                               
-                                "actions": [
                                    
-                                    {
-                                        "type": "uri",
-                                        "label": "ดูรายละเอียด",
-                                        "uri": "https://news.google.com/covid19/map?hl=th&gl=TH&ceid=TH%3Ath"
-                                    }
+                                    
                                 ]
                             },
+                           
                             {
                                 "thumbnailImageUrl": "https://webhook.toat.co.th/linebot/Covid_web/src/Benchakitti_logo.jpg",
                                 "imageBackgroundColor": "#000000",
@@ -64,8 +61,18 @@ class ResponsListItem:
                                    
                                     {
                                         "type": "uri",
-                                        "label": "facebook",
+                                        "label": "Facebook",
                                         "uri": "https://www.facebook.com/Benchakitti/"
+                                    },
+                                    {
+                                        "type": "uri",
+                                        "label": "โทร",
+                                        "uri": "tel:026564500"
+                                    }, 
+                                    {
+                                        "type": "uri",
+                                        "label": "เส้นทาง",
+                                        "uri": "https://g.page/Benchakitti?share"
                                     }
                                 ]
                             }

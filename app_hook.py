@@ -24,6 +24,8 @@ from python.Controller.CheckUserLogin import CheckUserLogin
 from python.Controller.Leave import Leave
 from python.Controller.TimeAt import TimeAt
 
+from python.Respons_user.ResponsPushmessage import ResponsPushmessage
+
 
 
 app = Flask(__name__)
@@ -59,13 +61,24 @@ def webhook():
     header = request.headers
     body = request.json
 
-    Receive_LineAPI(body)
-
+    if str(header["User-Agent"]) == "back_end_Covid":
+        Recrive_BackEnd(body)
+    else:
+        Recrive_LineAPI(body)
+    
     return Util().index,200
 
-    
 
-def Receive_LineAPI(body):
+
+def Recrive_BackEnd(body):
+
+    devicetoken = str(body[0]['devicetoken'])
+    text = str(body[0]['text'])
+    ResponsPushmessage(devicetoken,text)
+
+
+
+def Recrive_LineAPI(body):
     
     event_type = str(body["events"][0]['type'])
     user_uid = str(body["events"][0]['source']['userId'])
@@ -76,14 +89,15 @@ def Receive_LineAPI(body):
 
         if message_type == "text":    
             checktextintent(body)
-        # else :
-        #     ResponsReply(user,str(body))
+        else :
+            ResponsReply(user,str(body))
 
     elif event_type == "postback":
         postbackdata = str(body["events"][0]["postback"]["data"])
         checkmessagepostback(body,postbackdata)
 
     # if user_uid == "U4f34652f4e163d5492b3fbe573a50d0a":
+
     #     if event_type == "message":
         
     #         message_type = str(body["events"][0]['message']['type'])
