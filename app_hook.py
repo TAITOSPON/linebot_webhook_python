@@ -174,6 +174,13 @@ def checktextcase(body,text):
         ResponsListItem(user)
         return True
 
+    elif text == Util().intent_covid_form:
+        CheckUserLogin(body)
+        return True
+    elif text == Util().intent_covid_confrim:
+        CheckUserLogin(body)
+        return True
+
     elif text == Util().intent_logout:
    
         response = PostCheckLogin(user_uid)

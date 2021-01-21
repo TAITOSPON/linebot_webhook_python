@@ -90,7 +90,10 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": Util().liff_url_profile_detail
+                                                        "uri": Util().liff_url_profile_detail,
+                                                        "altUri": {
+                                                            "desktop" : Util().url_profile_detail
+                                                        }
                                                     },
                                                     "contents": [
                                                         {

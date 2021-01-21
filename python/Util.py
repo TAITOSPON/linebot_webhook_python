@@ -19,7 +19,10 @@ class Util:
         self.liff_url_profile_detail_leave = "https://liff.line.me/1655109480-lKekYNJK"   
         self.liff_url_logout = "https://liff.line.me/1655109480-GoLo5myJ"
 
+        self.liff_url_covid_emp_form = " https://liff.line.me/1655109480-VjdKrvBX"
+       
 
+        self.url_profile_detail = "https://memberapp.toat.co.th/memberttm/"
         
         self.line_api_reply = "https://api.line.me/v2/bot/message/reply"
         self.line_api_push = "https://api.line.me/v2/bot/message/push"
@@ -41,6 +44,10 @@ class Util:
         self.intent_menu  = "เมนู"
         self.intent_logout = "ออกจากระบบ"
         self.intent_covid ="สถานการณ์โควิด"
+        self.intent_covid_form ="ประเมินความเสี่ยงโควิด19"
+        self.intent_covid_confrim ="ยืนยันพนักงานประเมินความเสี่ยง"
+        
+        
 
 
         # path backend
