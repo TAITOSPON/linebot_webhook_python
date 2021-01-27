@@ -234,8 +234,10 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "message",
                                                         "label": "Action",
-                                                        "text": Util().intent_leave
+                                                        "text": Util().intent_meet
                                                     },
+
+                                                    
                                                     "contents": [
                                                         {
                                                             "type": "spacer",
@@ -251,7 +253,7 @@ class ResponsMenu:
                                                             
                                                                 {
                                                                     "type": "text",
-                                                                    "text":  Util().intent_leave,
+                                                                    "text":  Util().intent_meet,
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -271,7 +273,7 @@ class ResponsMenu:
                                         }
                                     ]
                                 },
-                                {
+                                 {
                                     "type": "box",
                                     "margin": "xs",
                                     "layout": "vertical",
@@ -280,16 +282,15 @@ class ResponsMenu:
                                             "type": "box",
                                             "layout": "horizontal",
                                             "contents": [
-                                           
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
-                                                    "action": {
-                                                        "type": "uri",
+                                                     "action": {
+                                                        "type": "message",
                                                         "label": "Action",
-                                                        "uri": Util().liff_url_logout
+                                                        "text": Util().intent_covid
                                                     },
                                                     "contents": [
                                                         {
@@ -303,7 +304,51 @@ class ResponsMenu:
                                                                 {
                                                                     "type": "spacer"
                                                                 },
-                                                             
+                                                            
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": Util().intent_covid,
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "margin": "xs",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": Util().liff_url_logout
+                                                    },
+
+                                                    
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                            
                                                                 {
                                                                     "type": "text",
                                                                     "text": "ออกจากระบบ",
@@ -325,7 +370,8 @@ class ResponsMenu:
                                             ]
                                         }
                                     ]
-                                }
+                                },
+                              
                             ]
                         }
                     }

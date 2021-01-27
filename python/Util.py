@@ -40,6 +40,7 @@ class Util:
         self.intent_profile_sys = "ระบบสมาชิก"
         self.intent_leave = "ข้อมูลการขาดลา"
         self.intent_time_work = "ตรวจสอบเวลาเข้างาน"
+        self.intent_time_att = "บันทึกเวลาเข้างาน"
         self.intent_meet = "จองห้องประชุม"
         self.intent_menu  = "เมนู"
         self.intent_logout = "ออกจากระบบ"
