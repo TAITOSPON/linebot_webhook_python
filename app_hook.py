@@ -7,6 +7,7 @@ from flask import Flask,request,render_template,url_for
 from python.Util import Util
 
 from python.Respons_user.ResponsReply import ResponsReply
+from python.Respons_user.ResponsStick import ResponsStick
 from python.Respons_user.ResponsMenu import ResponsMenu
 from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
@@ -89,8 +90,12 @@ def Recrive_LineAPI(body):
 
         if message_type == "text":    
             checktextintent(body)
+        elif message_type == "sticker":
+            ResponsStick(user)
         else :
-            ResponsReply(user,str(body))
+            # ResponsReply(user,str(body))
+            ResponsStick(user)
+            print()
 
     elif event_type == "postback":
         postbackdata = str(body["events"][0]["postback"]["data"])
@@ -151,7 +156,8 @@ def checktextcase(body,text):
 
     elif text == Util().intent_time_att:
         if CheckUserLogin(body):
-            ResponsReply(user,"กำลังพัฒนาจ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC84\n\nคณะวิเคราะห์สารสนเทศ \nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
+            TimeAt(body)
+            # ResponsReply(user,"กำลังพัฒนาจ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC84\n\nคณะวิเคราะห์สารสนเทศ \nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
         return True
 
     elif text == Util().intent_meet:

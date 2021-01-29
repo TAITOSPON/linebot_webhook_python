@@ -40,7 +40,7 @@ class Util:
         self.intent_profile_sys = "ระบบสมาชิก"
         self.intent_leave = "ข้อมูลการขาดลา"
         self.intent_time_work = "ตรวจสอบเวลาเข้างาน"
-        self.intent_time_att = "บันทึกเวลาเข้างาน"
+        self.intent_time_att = "บันทึกเวลา"
         self.intent_meet = "จองห้องประชุม"
         self.intent_menu  = "เมนู"
         self.intent_logout = "ออกจากระบบ"
@@ -49,8 +49,6 @@ class Util:
         self.intent_covid_confrim ="ยืนยันพนักงานประเมินความเสี่ยง"
         
         
-
-
         # path backend
         self.api_check_login = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_check_login"
         self.api_log_out = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_logout"
