@@ -232,11 +232,11 @@ class ResponsMenu:
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
                                                     "action": {
-                                                        "type": "message",
+                                                        "type": "uri",
                                                         "label": "Action",
-                                                        "text": Util().intent_meet
+                                                        "uri": Util().liff_url_time_stamp,
+                                                       
                                                     },
-
                                                     
                                                     "contents": [
                                                         {
@@ -253,7 +253,7 @@ class ResponsMenu:
                                                             
                                                                 {
                                                                     "type": "text",
-                                                                    "text":  Util().intent_meet,
+                                                                    "text":  Util().intent_time_att,
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
