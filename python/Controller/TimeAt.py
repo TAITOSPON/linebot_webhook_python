@@ -27,9 +27,30 @@ class TimeAt:
                 print("except date")
 
             try:
-                in_time = str(respons["result"]["result_time_at"][0]["in_CHK"])
-                in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
-                in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
+                try:
+                    index = len(respons["result"]["result_time_at"])-1
+
+                    h_f, m_f, s_f = [int(i) for i in str(respons["result"]["result_time_at"][0]["in_CHK"]).split(':')]
+
+                    h_l, m_l, s_l = [int(i) for i in str(respons["result"]["result_time_at"][index]["in_CHK"]).split(':')]
+
+                    time_f = int(str(h_f)+str(m_f)+str(s_f))
+                    time_l = int(str(h_l)+str(m_l)+str(s_l))
+                    
+                    if time_f < time_l:
+                        in_time = str(respons["result"]["result_time_at"][0]["in_CHK"])
+                        in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
+                        in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
+                    else:
+                        in_time = str(respons["result"]["result_time_at"][index]["in_CHK"])
+                        in_place = str(respons["result"]["result_time_at"][index]["in_location_name"])
+                        in_type = str(respons["result"]["result_time_at"][index]["in_channel"])
+
+                except:
+
+                    in_time = str(respons["result"]["result_time_at"][0]["in_CHK"])
+                    in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
+                    in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
 
                 index = len(respons["result"]["result_time_at"])-1
 
@@ -50,9 +71,30 @@ class TimeAt:
                     out_type = str(respons["result"]["result_time_at"][index]["out_channel"])
 
             except:
-                in_time = str(respons["result"]["result_time_at"][0]["in_CHK"])
-                in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
-                in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
+                try:
+                    index = len(respons["result"]["result_time_at"])-1
+
+                    h_f, m_f, s_f = [int(i) for i in str(respons["result"]["result_time_at"][0]["in_CHK"]).split(':')]
+
+                    h_l, m_l, s_l = [int(i) for i in str(respons["result"]["result_time_at"][index]["in_CHK"]).split(':')]
+
+                    time_f = int(str(h_f)+str(m_f)+str(s_f))
+                    time_l = int(str(h_l)+str(m_l)+str(s_l))
+                    
+                    if time_f < time_l:
+                        in_time = str(respons["result"]["result_time_at"][0]["in_CHK"])
+                        in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
+                        in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
+                    else:
+                        in_time = str(respons["result"]["result_time_at"][index]["in_CHK"])
+                        in_place = str(respons["result"]["result_time_at"][index]["in_location_name"])
+                        in_type = str(respons["result"]["result_time_at"][index]["in_channel"])
+
+                except:
+
+                    in_time = str(respons["result"]["result_time_at"][0]["in_CHK"])
+                    in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
+                    in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
 
                 out_time = "None"
                 out_place = "None"

@@ -192,7 +192,11 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://www.facebook.com/Benchakitti/"
+                                                        "uri": "https://www.facebook.com/Benchakitti/",
+                                                        "altUri": {
+                                                            "desktop" : "https://www.facebook.com/Benchakitti/"
+                                                        }
+                                                       
                                                     },
                                                     "contents": [
                                                         {
