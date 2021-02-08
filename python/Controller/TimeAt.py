@@ -3,6 +3,7 @@ from python.Respons_user.ResponsTimeAt import ResponsTimeAt
 from python.Api_backend.PostDataTimeAt import PostDataTimeAt
 from python.Util import Util
 
+from datetime import datetime
 
 class TimeAt:
     
@@ -30,14 +31,7 @@ class TimeAt:
                 try:
                     index = len(respons["result"]["result_time_at"])-1
 
-                    h_f, m_f, s_f = [int(i) for i in str(respons["result"]["result_time_at"][0]["in_CHK"]).split(':')]
-
-                    h_l, m_l, s_l = [int(i) for i in str(respons["result"]["result_time_at"][index]["in_CHK"]).split(':')]
-
-                    time_f = int(str(h_f)+str(m_f)+str(s_f))
-                    time_l = int(str(h_l)+str(m_l)+str(s_l))
-                    
-                    if time_f < time_l:
+                    if str(respons["result"]["result_time_at"][0]["in_CHK"]) < str(respons["result"]["result_time_at"][index]["in_CHK"]):
                         in_time = str(respons["result"]["result_time_at"][0]["in_CHK"])
                         in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
                         in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
@@ -52,36 +46,30 @@ class TimeAt:
                     in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
                     in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
 
-                index = len(respons["result"]["result_time_at"])-1
 
-                h_f, m_f, s_f = [int(i) for i in str(respons["result"]["result_time_at"][0]["out_CHK"]).split(':')]
+                o_index = len(respons["result"]["result_time_at"])-1
 
-                h_l, m_l, s_l = [int(i) for i in str(respons["result"]["result_time_at"][index]["out_CHK"]).split(':')]
 
-                time_f = int(str(h_f)+str(m_f)+str(s_f))
-                time_l = int(str(h_l)+str(m_l)+str(s_l))
-                
-                if time_f > time_l:
+                if str(respons["result"]["result_time_at"][0]["out_CHK"]) > str(respons["result"]["result_time_at"][o_index]["out_CHK"]):
+
                     out_time = str(respons["result"]["result_time_at"][0]["out_CHK"])
                     out_place = str(respons["result"]["result_time_at"][0]["out_location_name"])
                     out_type = str(respons["result"]["result_time_at"][0]["out_channel"])
+
                 else:
-                    out_time = str(respons["result"]["result_time_at"][index]["out_CHK"])
-                    out_place = str(respons["result"]["result_time_at"][index]["out_location_name"])
-                    out_type = str(respons["result"]["result_time_at"][index]["out_channel"])
+
+                    out_time = str(respons["result"]["result_time_at"][o_index]["out_CHK"])
+                    out_place = str(respons["result"]["result_time_at"][o_index]["out_location_name"])
+                    out_type = str(respons["result"]["result_time_at"][o_index]["out_channel"])
+
+
 
             except:
+                
                 try:
                     index = len(respons["result"]["result_time_at"])-1
-
-                    h_f, m_f, s_f = [int(i) for i in str(respons["result"]["result_time_at"][0]["in_CHK"]).split(':')]
-
-                    h_l, m_l, s_l = [int(i) for i in str(respons["result"]["result_time_at"][index]["in_CHK"]).split(':')]
-
-                    time_f = int(str(h_f)+str(m_f)+str(s_f))
-                    time_l = int(str(h_l)+str(m_l)+str(s_l))
                     
-                    if time_f < time_l:
+                    if str(respons["result"]["result_time_at"][0]["in_CHK"]) < str(respons["result"]["result_time_at"][index]["in_CHK"]):
                         in_time = str(respons["result"]["result_time_at"][0]["in_CHK"])
                         in_place = str(respons["result"]["result_time_at"][0]["in_location_name"])
                         in_type = str(respons["result"]["result_time_at"][0]["in_channel"])
@@ -100,7 +88,6 @@ class TimeAt:
                 out_place = "None"
                 out_type = "None"
 
-                
 
             try:
                 none = "None"
