@@ -154,20 +154,15 @@ def checktextcase(body,text):
             Leave(body,"")
         return True
 
-    elif text == Util().intent_time_att:
+    elif text == Util().intent_time_work:
         if CheckUserLogin(body):
             TimeAt(body)
-            # ResponsReply(user,"กำลังพัฒนาจ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC84\n\nคณะวิเคราะห์สารสนเทศ \nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
         return True
+
 
     elif text == Util().intent_meet:
         if CheckUserLogin(body):
             ResponsReply(user,"กำลังพัฒนาจ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC84\n\nคณะวิเคราะห์สารสนเทศ \nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
-        return True
-
-    elif text == Util().intent_time_work:
-        if CheckUserLogin(body):
-            TimeAt(body)
         return True
 
     elif text == Util().intent_menu:
