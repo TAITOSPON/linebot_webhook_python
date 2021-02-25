@@ -3,7 +3,7 @@ class Util:
     def __new__(self):
 
         self.index = "THIS LINEBOT WEBHOOK SERVER!"
-        self.Maintenance = "ขออภัยในความไม่สะดวก กำลังแก้ไขระบบ \nSorry! Server Maintenance time \udbc0\udc8e \udbc0\udcaa \udbc0\udc3a"
+        self.Maintenance = "ขออภัยในความไม่สะดวก กำลังแก้ไขระบบ \nSorry! Server maintenance time \udbc0\udc8e \udbc0\udcaa \udbc0\udc3a"
      
         self.Bearer = "Bearer "
 

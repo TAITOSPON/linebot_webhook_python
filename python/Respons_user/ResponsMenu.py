@@ -51,7 +51,7 @@ class ResponsMenu:
                                                 {
                                                     "type": "text",
                                                     "align": "end",
-                                                    "text": "เมนู",
+                                                    "text": " ",
                                                     "weight": "bold",
                                                     "margin": "sm",
                                                     "size": "3xl",
@@ -235,62 +235,6 @@ class ResponsMenu:
                                                     "margin": "xs",
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
-                                                    "action": {
-                                                        "type": "uri",
-                                                        "label": "Action",
-                                                        "uri": Util().liff_url_time_stamp,
-                                                       
-                                                    },
-                                                    
-                                                    "contents": [
-                                                        {
-                                                            "type": "spacer",
-                                                            "size": "xl"
-                                                        },
-                                                        {
-                                                            "type": "box",
-                                                            "layout": "baseline",
-                                                            "contents": [
-                                                                {
-                                                                    "type": "spacer"
-                                                                },
-                                                            
-                                                                {
-                                                                    "type": "text",
-                                                                    "text":  Util().intent_time_att,
-                                                                    "color": "#FFFFFFFF",
-                                                                    "align": "start",
-                                                                    "gravity": "center",
-                                                                    "offsetBottom": "2px",
-                                                                    "offsetStart": "2px",
-                                                                    "contents": []
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "type": "spacer",
-                                                            "size": "xl"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                 {
-                                    "type": "box",
-                                    "margin": "xs",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                            "type": "box",
-                                            "layout": "horizontal",
-                                            "contents": [
-                                                {
-                                                    "type": "box",
-                                                    "layout": "vertical",
-                                                    "backgroundColor": "#D39D2B",
-                                                    "cornerRadius": "5px",
                                                      "action": {
                                                         "type": "message",
                                                         "label": "Action",
@@ -327,10 +271,24 @@ class ResponsMenu:
                                                         }
                                                     ]
                                                 },
+                                            ]
+                                        }
+                                    ]
+                                },
+                                 {
+                                    "type": "box",
+                                    "margin": "xs",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "contents": [
+                                            
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
-                                                    "margin": "xs",
+                                       
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
                                                     "action": {
@@ -383,7 +341,6 @@ class ResponsMenu:
             ]
         
         }
-
 
         # body = {    
         #     "replyToken": str(devicetoken),
@@ -462,6 +419,53 @@ class ResponsMenu:
         #                                             "action": {
         #                                                 "type": "uri",
         #                                                 "label": "Action",
+        #                                                 "uri": Util().liff_url_profile_detail,
+        #                                                 "altUri": {
+        #                                                     "desktop" : Util().url_profile_detail
+        #                                                 }
+        #                                             },
+        #                                             "contents": [
+        #                                                 {
+        #                                                     "type": "spacer",
+        #                                                     "size": "xl"
+        #                                                 },
+        #                                                 {
+        #                                                     "type": "box",
+        #                                                     "layout": "baseline",
+        #                                                     "contents": [
+        #                                                         {
+        #                                                             "type": "spacer"
+        #                                                         },
+                                                              
+        #                                                         {
+        #                                                             "type": "text",
+        #                                                             "text": "ระบบสมาชิก",
+        #                                                             "color": "#FFFFFFFF",
+        #                                                             "align": "start",
+        #                                                             "gravity": "center",
+        #                                                             "offsetBottom": "2px",
+        #                                                             "offsetStart": "2px",
+        #                                                             "contents": []
+        #                                                         }
+        #                                                     ]
+        #                                                 },
+        #                                                 {
+        #                                                     "type": "spacer",
+        #                                                     "size": "xl"
+        #                                                 }
+        #                                             ]
+
+        #                                         },
+        #                                         {
+        #                                             "type": "box",
+        #                                             "layout": "vertical",
+        #                                             "margin": "xs",
+        #                                             "backgroundColor": "#D39D2B",
+        #                                             "cornerRadius": "5px",
+
+        #                                              "action": {
+        #                                                 "type": "uri",
+        #                                                 "label": "Action",
         #                                                 "uri": "https://www.thaitobacco.or.th/th/category/pr-ttm"
         #                                             },
         #                                             "contents": [
@@ -494,53 +498,13 @@ class ResponsMenu:
         #                                                     "size": "xl"
         #                                                 }
         #                                             ]
-        #                                         },
-        #                                         {
-        #                                             "type": "box",
-        #                                             "layout": "vertical",
-        #                                             "margin": "xs",
-        #                                             "backgroundColor": "#D39D2B",
-        #                                             "cornerRadius": "5px",
-        #                                             "action": {
-        #                                                 "type": "message",
-        #                                                 "label": "Action",
-        #                                                 "text": Util().intent_meet
-        #                                             },
-        #                                             "contents": [
-        #                                                 {
-        #                                                     "type": "spacer",
-        #                                                     "size": "xl"
-        #                                                 },
-        #                                                 {
-        #                                                     "type": "box",
-        #                                                     "layout": "baseline",
-        #                                                     "contents": [
-        #                                                         {
-        #                                                             "type": "spacer"
-        #                                                         },
-                                                            
-        #                                                         {
-        #                                                             "type": "text",
-        #                                                             "text":  Util().intent_meet,
-        #                                                             "color": "#FFFFFFFF",
-        #                                                             "align": "start",
-        #                                                             "gravity": "center",
-        #                                                             "offsetBottom": "2px",
-        #                                                             "offsetStart": "2px",
-        #                                                             "contents": []
-        #                                                         }
-        #                                                     ]
-        #                                                 },
-        #                                                 {
-        #                                                     "type": "spacer",
-        #                                                     "size": "xl"
-        #                                                 }
-        #                                             ]
+                                                   
         #                                         }
         #                                     ]
         #                                 }
         #                             ]
         #                         },
+                             
         #                         {
         #                             "type": "box",
         #                             "margin": "xs",
@@ -558,7 +522,11 @@ class ResponsMenu:
         #                                             "action": {
         #                                                 "type": "uri",
         #                                                 "label": "Action",
-        #                                                 "uri": "https://www.facebook.com/Benchakitti/"
+        #                                                 "uri": "https://www.facebook.com/Benchakitti/",
+        #                                                 "altUri": {
+        #                                                     "desktop" : "https://www.facebook.com/Benchakitti/"
+        #                                                 }
+                                                       
         #                                             },
         #                                             "contents": [
         #                                                 {
@@ -597,10 +565,11 @@ class ResponsMenu:
         #                                             "margin": "xs",
         #                                             "backgroundColor": "#D39D2B",
         #                                             "cornerRadius": "5px",
-        #                                             "action": {
+
+        #                                              "action": {
         #                                                 "type": "uri",
         #                                                 "label": "Action",
-        #                                                 "uri": "https://linecorp.com"
+        #                                                 "uri": "https://www.thaitobacco.or.th/th/category/pr-ttm"
         #                                             },
         #                                             "contents": [
         #                                                 {
@@ -614,10 +583,10 @@ class ResponsMenu:
         #                                                         {
         #                                                             "type": "spacer"
         #                                                         },
-                                                            
+                                                              
         #                                                         {
         #                                                             "type": "text",
-        #                                                             "text": "สโมสร พนง.ยาสูบ",
+        #                                                             "text": "ข่าวประชาสัมพันธ์",
         #                                                             "color": "#FFFFFFFF",
         #                                                             "align": "start",
         #                                                             "gravity": "center",
@@ -632,6 +601,7 @@ class ResponsMenu:
         #                                                     "size": "xl"
         #                                                 }
         #                                             ]
+                                                   
         #                                         }
         #                                     ]
         #                                 }
@@ -651,10 +621,10 @@ class ResponsMenu:
         #                                             "layout": "vertical",
         #                                             "backgroundColor": "#D39D2B",
         #                                             "cornerRadius": "5px",
-        #                                             "action": {
-        #                                                 "type": "uri",
+        #                                              "action": {
+        #                                                 "type": "message",
         #                                                 "label": "Action",
-        #                                                 "uri": Util().liff_url_profile_detail
+        #                                                 "text": Util().intent_covid
         #                                             },
         #                                             "contents": [
         #                                                 {
@@ -668,10 +638,10 @@ class ResponsMenu:
         #                                                         {
         #                                                             "type": "spacer"
         #                                                         },
-                                                              
+                                                            
         #                                                         {
         #                                                             "type": "text",
-        #                                                             "text": "ระบบสมาชิก",
+        #                                                             "text": Util().intent_covid,
         #                                                             "color": "#FFFFFFFF",
         #                                                             "align": "start",
         #                                                             "gravity": "center",
@@ -698,6 +668,8 @@ class ResponsMenu:
         #                                                 "label": "Action",
         #                                                 "uri": Util().liff_url_logout
         #                                             },
+
+                                                    
         #                                             "contents": [
         #                                                 {
         #                                                     "type": "spacer",
@@ -710,7 +682,7 @@ class ResponsMenu:
         #                                                         {
         #                                                             "type": "spacer"
         #                                                         },
-                                                             
+                                                            
         #                                                         {
         #                                                             "type": "text",
         #                                                             "text": "ออกจากระบบ",
@@ -732,7 +704,8 @@ class ResponsMenu:
         #                                     ]
         #                                 }
         #                             ]
-        #                         }
+        #                         },
+                              
         #                     ]
         #                 }
         #             }
@@ -740,6 +713,7 @@ class ResponsMenu:
         #     ]
         
         # }
+
         response = requests.post(Util().line_api_reply,headers = headers, data=json.dumps(body))
         print(response.status_code)
         print(response.json())
