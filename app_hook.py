@@ -13,7 +13,6 @@ from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
 from python.Respons_user.ResponsLogout import ResponsLogout
 from python.Respons_user.ResponsLeave import ResponsLeave
-
 from python.Respons_user.ResponsListItem import ResponsListItem
 
 from python.Api_backend.PostToDialog import PostToDialog
@@ -24,8 +23,10 @@ from python.Api_backend.PostUserWithUid import PostUserWithUid
 from python.Controller.CheckUserLogin import CheckUserLogin
 from python.Controller.Leave import Leave
 from python.Controller.TimeAt import TimeAt
+from python.Controller.TimeThai import TimeThai
 
 from python.Respons_user.ResponsPushmessage import ResponsPushmessage
+
 
 
 
@@ -54,6 +55,9 @@ app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/webhook')
 def hello():
     return Util().index 
 
+@app.route("/datenow")
+def datenow():
+    return TimeThai()
 
 
 @app.route('/webhook', methods=['POST'])
