@@ -137,7 +137,7 @@ class ResponsMenu:
                                                      "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://www.thaitobacco.or.th/th/category/pr-ttm"
+                                                        "uri": "https://www.thaitobacco.or.th/th/category/pr-ttm?openExternalBrowser=1"
                                                     },
                                                     "contents": [
                                                         {
@@ -192,7 +192,7 @@ class ResponsMenu:
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://www.facebook.com/Benchakitti/",
+                                                        "uri": "https://www.facebook.com/Benchakitti/?openExternalBrowser=1",
                                                         "altUri": {
                                                             "desktop" : "https://www.facebook.com/Benchakitti/"
                                                         }

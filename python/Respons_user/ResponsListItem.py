@@ -62,7 +62,7 @@ class ResponsListItem:
                                     {
                                         "type": "uri",
                                         "label": "Facebook",
-                                        "uri": "https://www.facebook.com/Benchakitti/"
+                                        "uri": "https://www.facebook.com/Benchakitti/?openExternalBrowser=1"
                                     },
                                     {
                                         "type": "uri",
@@ -72,7 +72,7 @@ class ResponsListItem:
                                     {
                                         "type": "uri",
                                         "label": "เส้นทาง",
-                                        "uri": "https://g.page/Benchakitti?share"
+                                        "uri": "https://maps.app.goo.gl/A2yvY3SERGqQQ1Um9"
                                     }
                                 ]
                             }

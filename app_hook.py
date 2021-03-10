@@ -68,6 +68,8 @@ def webhook():
 
     if str(header["User-Agent"]) == "back_end_Covid":
         Recrive_BackEnd(body)
+    elif str(header["User-Agent"]) == "back_end_Member":
+        Recrive_BackEnd(body)
     else:
         Recrive_LineAPI(body)
     
@@ -95,10 +97,11 @@ def Recrive_LineAPI(body):
         if message_type == "text":    
             checktextintent(body)
         elif message_type == "sticker":
-            ResponsStick(user)
+            # ResponsStick(user)
+            print()
         else :
             # ResponsReply(user,str(body))
-            ResponsStick(user)
+            # ResponsStick(user)
             print()
 
     elif event_type == "postback":
