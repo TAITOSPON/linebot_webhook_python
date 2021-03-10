@@ -9,6 +9,7 @@ from python.Util import Util
 from python.Respons_user.ResponsReply import ResponsReply
 from python.Respons_user.ResponsStick import ResponsStick
 from python.Respons_user.ResponsMenu import ResponsMenu
+
 from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
 from python.Respons_user.ResponsLogout import ResponsLogout
@@ -25,8 +26,11 @@ from python.Controller.Leave import Leave
 from python.Controller.TimeAt import TimeAt
 from python.Controller.TimeThai import TimeThai
 
+
 from python.Respons_user.ResponsPushmessage import ResponsPushmessage
 
+
+from python.Respons_user.ResponsTimeAtFlex import ResponsTimeAtFlex
 
 
 
@@ -156,14 +160,14 @@ def checktextcase(body,text):
         
         return True
 
-    if text == Util().intent_leave:
+    elif text == Util().intent_leave:
         if CheckUserLogin(body):
             Leave(body,"")
         return True
 
     elif text == Util().intent_time_work:
         if CheckUserLogin(body):
-            TimeAt(body)
+            ResponsTimeAtFlex(user,body)
         return True
 
 
