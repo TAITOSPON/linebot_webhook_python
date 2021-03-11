@@ -168,7 +168,7 @@ class ResponsTimeAtFlex:
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "เวลาเข้างาน",
+                                            "text": "เวลาเข้างาน :",
                                             "size": "sm",
                                             "contents": []
                                         },
@@ -186,7 +186,8 @@ class ResponsTimeAtFlex:
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "ด้วย",
+                                            "text": "ด้วย  :",
+                                       
                                             "size": "sm",
                                             "contents": []
                                         },
@@ -205,7 +206,7 @@ class ResponsTimeAtFlex:
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "สถานที่ ",
+                                            "text": "สถานที่  :",
                                             "size": "sm",
                                             "contents": []
                                         },
@@ -238,7 +239,7 @@ class ResponsTimeAtFlex:
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "เวลาออกงาน",
+                                            "text": "เวลาออกงาน  :",
                                             "size": "sm",
                                             "contents": []
                                         },
@@ -257,7 +258,7 @@ class ResponsTimeAtFlex:
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "ด้วย",
+                                            "text": "ด้วย  :",
                                             "size": "sm",
                                             "contents": []
                                         },
@@ -276,7 +277,7 @@ class ResponsTimeAtFlex:
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "สถานที่",
+                                            "text": "สถานที่  :",
                                             "size": "sm",
                                             "contents": []
                                         },
@@ -307,10 +308,14 @@ class ResponsTimeAtFlex:
                             {
                                 "type": "button",
                                 "action": {
-                                "type": "uri",
-                                "label": "รายละเอียด",
-                                "uri": Util().liff_url_time_att_detail
+                                    "type": "uri",
+                                    "label": "รายละเอียด",
+                                    "uri": Util().liff_url_time_att_detail,
+                                    "altUri": {
+                                        "desktop" : Util().url_timeat
+                                    }
                                 },
+                                
                                 "color": "#D39D2B",
                                 "style": "primary"
                             }

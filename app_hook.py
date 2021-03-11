@@ -15,6 +15,8 @@ from python.Respons_user.ResponsChecklogout import ResponsChecklogout
 from python.Respons_user.ResponsLogout import ResponsLogout
 from python.Respons_user.ResponsLeave import ResponsLeave
 from python.Respons_user.ResponsListItem import ResponsListItem
+from python.Respons_user.ResponsTimeAtFlex import ResponsTimeAtFlex
+from python.Respons_user.ResponsPushmessage import ResponsPushmessage
 
 from python.Api_backend.PostToDialog import PostToDialog
 from python.Api_backend.PostCheckLogin import PostCheckLogin
@@ -27,11 +29,10 @@ from python.Controller.TimeAt import TimeAt
 from python.Controller.TimeThai import TimeThai
 
 
-from python.Respons_user.ResponsPushmessage import ResponsPushmessage
 
 
-from python.Respons_user.ResponsTimeAtFlex import ResponsTimeAtFlex
 
+from python.Respons_user.ResponsHelpCenter import ResponsHelpCenter
 
 
 app = Flask(__name__)
@@ -159,11 +160,18 @@ def checktextcase(body,text):
             ResponsQuickReply(user,text)
         
         return True
+        
+    elif text == Util().help_center:
+        if CheckUserLogin(body):
+            ResponsHelpCenter(user)
+        return True
+
 
     elif text == Util().intent_leave:
         if CheckUserLogin(body):
             Leave(body,"")
         return True
+
 
     elif text == Util().intent_time_work:
         if CheckUserLogin(body):
