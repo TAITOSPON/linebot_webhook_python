@@ -102,11 +102,12 @@ def Recrive_LineAPI(body):
         if message_type == "text":    
             checktextintent(body)
         elif message_type == "sticker":
-            # ResponsStick(user)
+            text = "ให้ฉันช่วยอะไรคะ"
+            ResponsQuickReply(user,text)
             print()
         else :
-            # ResponsReply(user,str(body))
-            # ResponsStick(user)
+            text = "ให้ฉันช่วยอะไรคะ"
+            ResponsQuickReply(user,text)
             print()
 
     elif event_type == "postback":
@@ -159,6 +160,12 @@ def checktextcase(body,text):
             text = "สวัสดีคุณ "+user_ad_name+" \nยินดีต้อนรับเข้าสู่ระบบ TOAT linebot \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
             ResponsQuickReply(user,text)
         
+        return True
+
+    elif text == Util().intent_time_att:
+        if CheckUserLogin(body):
+            text = "ให้ฉันช่วยอะไรคะ"
+            ResponsQuickReply(user,text)
         return True
         
     elif text == Util().help_center:

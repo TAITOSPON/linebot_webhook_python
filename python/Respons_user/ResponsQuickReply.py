@@ -23,8 +23,30 @@ class ResponsQuickReply:
                     "text": text,
                     "quickReply": {
                         "items": [
-                            
+
+                
+                            {
+                                "type": "action",
+                                "imageUrl": "https://webhook.toat.co.th/linebot/web/src/icon_member.JPG",
+                                "action": {
+                                    "type": "uri",
+                                    "label": Util().intent_profile_sys,
+                                    "uri": Util().liff_url_profile_detail
+                                },
+                            },
                            
+                            {
+                                "type": "action",
+                                "imageUrl": "https://webhook.toat.co.th/linebot/web/src/icon_meet.png",
+                                "action": {
+                                    "type": "uri",
+                                    "label": Util().intent_time_att,
+                                    "uri": Util().liff_url_time_stamp
+                                },
+                            },
+                          
+                            
+
                             {
                                 "type": "action",
                                 "imageUrl": "https://webhook.toat.co.th/linebot/web/src/icon_meet.png",
