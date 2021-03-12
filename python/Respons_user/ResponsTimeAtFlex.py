@@ -18,7 +18,7 @@ class ResponsTimeAtFlex:
 
         try:
 
-        
+            
             name = str(respons["result"]["result_time_at"][0]["fullname"])
             date = str(respons["result"]["result_time_at"][0]["Stamp_Date"])
             
@@ -369,7 +369,7 @@ class ResponsTimeAtFlex:
                                 },
                                 {
                                     "type": "text",
-                                    "text": "วันที่ : "+str(date),
+                                    "text": " ",
                                     "size": "sm",
                                     "color": "#D39D2B",
                                     "contents": []
