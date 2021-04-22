@@ -4,7 +4,7 @@ import json
 
 from python.Util import Util
 
-class ResponsListItem:
+class ResponsItemHos:
     
     def __init__(self,devicetoken):
 
@@ -24,33 +24,7 @@ class ResponsListItem:
                     "template": {
                         "type": "carousel",
                         "columns": [
-                            {
-                                "thumbnailImageUrl": "https://webhook.toat.co.th/linebot/Covid_web/src/covid_report_daily.jpg",
-                                "imageBackgroundColor": "#FFFFFF",
-                                "title": "รายงานสถานการณ์ โควิด-19",
-                                "text": "ภาพรวมของผู้ติดเชื้อ (โควิด-19) ในประเทศไทย by AwayCovid-19",
-                               
-                                "actions": [
-                                    {
-                                        "type": "uri",
-                                        "label": "สถานการณ์โควิด 19 วันนี้",
-                                        "uri": "https://morprom1.moph.go.th/news/?page_id=1031"
-                                    },
-                                    {
-                                        "type": "uri",
-                                        "label": "เตือนภัยพื้นที่เสี่ยง",
-                                        "uri": "https://liff.line.me/1653981898-q0jEx1on"
-                                    },
                             
-                                    {
-                                        "type": "uri",
-                                        "label": "สถานพยาบาล",
-                                        "uri": "https://liff.line.me/1653981898-QwWOp3PN"
-                                    }
-                                   
-                                    
-                                ]
-                            },
                            
                             {
                                 "thumbnailImageUrl": "https://scontent.fbkk13-2.fna.fbcdn.net/v/t1.6435-9/165024853_836871947043277_9019435235398477533_n.png?_nc_cat=106&ccb=1-3&_nc_sid=973b4a&_nc_ohc=_v7NcXuPc4cAX_sxfzm&_nc_ht=scontent.fbkk13-2.fna&oh=f4197d0f0ed2162608a9d89f15097488&oe=60A87B7C",
@@ -77,6 +51,7 @@ class ResponsListItem:
                                     }
                                 ]
                             }
+
                         ],
                         "imageAspectRatio": "rectangle",
                         "imageSize": "cover"

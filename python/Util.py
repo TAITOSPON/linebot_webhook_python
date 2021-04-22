@@ -47,6 +47,7 @@ class Util:
         self.intent_menu  = "เมนู"
         self.intent_logout = "ออกจากระบบ"
         self.intent_covid ="สถานการณ์โควิด"
+        self.intent_hos_ben = "รพ.สวนเบญฯ"
         self.intent_covid_form ="ประเมินความเสี่ยงโควิด19"
         self.intent_covid_confrim ="ยืนยันพนักงานประเมินความเสี่ยง"
         self.help_center ="ศูนย์ช่วยเหลือ"

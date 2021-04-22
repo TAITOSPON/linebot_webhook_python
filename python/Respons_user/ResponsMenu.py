@@ -190,14 +190,12 @@ class ResponsMenu:
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
                                                     "action": {
-                                                        "type": "uri",
+                                                        "type": "message",
                                                         "label": "Action",
-                                                        "uri": "https://www.facebook.com/Benchakitti/?openExternalBrowser=1",
-                                                        "altUri": {
-                                                            "desktop" : "https://www.facebook.com/Benchakitti/"
-                                                        }
-                                                       
+                                                        "text": Util().intent_hos_ben
                                                     },
+                                                       
+                                            
                                                     "contents": [
                                                         {
                                                             "type": "spacer",
@@ -213,7 +211,7 @@ class ResponsMenu:
                                                             
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "รพ.สวนเบญฯ",
+                                                                    "text":  Util().intent_hos_ben,
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",

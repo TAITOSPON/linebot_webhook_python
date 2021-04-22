@@ -17,6 +17,8 @@ from python.Respons_user.ResponsLeave import ResponsLeave
 from python.Respons_user.ResponsListItem import ResponsListItem
 from python.Respons_user.ResponsTimeAtFlex import ResponsTimeAtFlex
 from python.Respons_user.ResponsPushmessage import ResponsPushmessage
+from python.Respons_user.ResponsItemHos import ResponsItemHos
+
 
 from python.Api_backend.PostToDialog import PostToDialog
 from python.Api_backend.PostCheckLogin import PostCheckLogin
@@ -200,6 +202,10 @@ def checktextcase(body,text):
     elif text == Util().intent_profile_sys:
         if CheckUserLogin(body):
             ResponsReply(user,Util().intent_profile_sys)
+        return True
+        
+    elif text == Util().intent_hos_ben:
+        ResponsItemHos(user)
         return True
     
     elif text == Util().intent_covid:
