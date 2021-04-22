@@ -16,6 +16,7 @@ from python.Respons_user.ResponsLogout import ResponsLogout
 from python.Respons_user.ResponsLeave import ResponsLeave
 from python.Respons_user.ResponsListItem import ResponsListItem
 from python.Respons_user.ResponsTimeAtFlex import ResponsTimeAtFlex
+from python.Respons_user.ResponsMemberFlex import ResponsMemberFlex
 from python.Respons_user.ResponsPushmessage import ResponsPushmessage
 from python.Respons_user.ResponsItemHos import ResponsItemHos
 
@@ -164,23 +165,29 @@ def checktextcase(body,text):
         
         return True
 
-    elif text == Util().intent_time_att:
+    elif text == Util().intent_profile_sys:
         if CheckUserLogin(body):
-            text = "ให้ฉันช่วยอะไรคะ"
-            ResponsQuickReply(user,text)
+            ResponsMemberFlex(user,body,Util().intent_profile_sys,Util().liff_url_profile_detail)
+            # ResponsReply(user,Util().intent_profile_sys)
         return True
-        
-    elif text == Util().help_center:
-        if CheckUserLogin(body):
-            ResponsHelpCenter(user)
-        return True
-
 
     elif text == Util().intent_leave:
         if CheckUserLogin(body):
-            Leave(body,"")
+            ResponsMemberFlex(user,body,Util().intent_leave,Util().liff_url_profile_detail_leave)
+            # Leave(body,"")
         return True
 
+    elif text == Util().intent_financial:
+        if CheckUserLogin(body):
+            ResponsMemberFlex(user,body,Util().intent_financial,Util().liff_url_profile_detail_financial)
+            # Leave(body,"")
+        return True
+
+    elif text == Util().intent_cooperativesaving:
+        if CheckUserLogin(body):
+            ResponsMemberFlex(user,body,Util().intent_cooperativesaving,Util().liff_url_profile_detail_cooperativesaving)
+            # Leave(body,"")
+        return True
 
     elif text == Util().intent_time_work:
         if CheckUserLogin(body):
@@ -188,6 +195,12 @@ def checktextcase(body,text):
             # TimeAt(body)
         return True
 
+    elif text == Util().intent_time_att:
+        if CheckUserLogin(body):
+            ResponsMemberFlex(user,body,Util().intent_time_att,Util().liff_url_time_stamp)
+            # text = "ให้ฉันช่วยอะไรคะ"
+            # ResponsQuickReply(user,text)
+        return True 
 
     elif text == Util().intent_meet:
         if CheckUserLogin(body):
@@ -195,14 +208,10 @@ def checktextcase(body,text):
         return True
 
     elif text == Util().intent_menu:
-        
         ResponsMenu(user)
         return True
     
-    elif text == Util().intent_profile_sys:
-        if CheckUserLogin(body):
-            ResponsReply(user,Util().intent_profile_sys)
-        return True
+ 
         
     elif text == Util().intent_hos_ben:
         ResponsItemHos(user)
@@ -218,6 +227,11 @@ def checktextcase(body,text):
         return True
     elif text == Util().intent_covid_confrim:
         CheckUserLogin(body)
+        return True
+
+    elif text == Util().help_center:
+        if CheckUserLogin(body):
+            ResponsHelpCenter(user)
         return True
 
     elif text == Util().intent_logout:

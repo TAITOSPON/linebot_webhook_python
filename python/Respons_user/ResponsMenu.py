@@ -92,7 +92,7 @@ class ResponsMenu:
                                                         "label": "Action",
                                                         "uri": Util().liff_url_profile_detail,
                                                         "altUri": {
-                                                            "desktop" : Util().url_profile_detail
+                                                            "desktop" : Util().url_profile_detail+"detailprofile"
                                                         }
                                                     },
                                                     "contents": [
@@ -190,9 +190,12 @@ class ResponsMenu:
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
                                                     "action": {
-                                                        "type": "message",
+                                                        "type": "uri",
                                                         "label": "Action",
-                                                        "text": Util().intent_hos_ben
+                                                        "uri": Util().liff_url_profile_detail_financial,
+                                                        "altUri": {
+                                                            "desktop" : Util().url_profile_detail+"financial"
+                                                        }
                                                     },
                                                        
                                             
@@ -211,7 +214,7 @@ class ResponsMenu:
                                                             
                                                                 {
                                                                     "type": "text",
-                                                                    "text":  Util().intent_hos_ben,
+                                                                    "text":  Util().intent_financial,
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -234,10 +237,117 @@ class ResponsMenu:
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
                                                     "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": Util().liff_url_profile_detail_cooperativesaving,
+                                                        "altUri": {
+                                                            "desktop" : Util().url_profile_detail+"cooperativesaving"
+                                                        }
+                                                    },
+                                                       
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                            
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": Util().intent_cooperativesaving,
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                },
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "margin": "xs",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "contents": [
+                                            
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                       
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "message",
+                                                        "label": "Action",
+                                                        "text": Util().intent_hos_ben
+                                                    },
+
+
+                                                    
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                            
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": Util().intent_hos_ben,
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                },
+
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "margin": "xs",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
                                                         "type": "message",
                                                         "label": "Action",
                                                         "text": Util().intent_covid
                                                     },
+
                                                     "contents": [
                                                         {
                                                             "type": "spacer",
@@ -273,7 +383,8 @@ class ResponsMenu:
                                         }
                                     ]
                                 },
-                                 {
+
+                                {
                                     "type": "box",
                                     "margin": "xs",
                                     "layout": "vertical",
@@ -375,6 +486,9 @@ class ResponsMenu:
                                         }
                                     ]
                                 },
+
+
+                                
                               
                             ]
                         }

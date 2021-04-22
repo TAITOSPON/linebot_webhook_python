@@ -18,9 +18,12 @@ class Util:
         self.liff_url_time_stamp = "https://liff.line.me/1655109480-MXKb06wG"
         self.liff_url_profile_detail = "https://liff.line.me/1655109480-wLRoWZpg"
         self.liff_url_profile_detail_leave = "https://liff.line.me/1655109480-lKekYNJK"   
+        self.liff_url_profile_detail_financial = "https://liff.line.me/1655109480-VOMzYnqm"   
+        self.liff_url_profile_detail_cooperativesaving = "https://liff.line.me/1655109480-dmpv7DXK"   
         self.liff_url_logout = "https://liff.line.me/1655109480-GoLo5myJ"
         self.liff_url_help_center = "https://liff.line.me/1655109480-jXW76xR8"
         self.liff_url_covid_emp_form = " https://liff.line.me/1655109480-VjdKrvBX"
+        
        
 
         self.url_profile_detail = "https://memberapp.toat.co.th/memberttm/"
@@ -41,6 +44,8 @@ class Util:
         self.intent_login = "เข้าสู่ระบบ"
         self.intent_profile_sys = "ระบบสมาชิก"
         self.intent_leave = "ข้อมูลการขาดลา"
+        self.intent_financial = "สลิปเงินเดือน"
+        self.intent_cooperativesaving = "สหกรณ์ฯยาสูบ"
         self.intent_time_work = "ตรวจสอบเวลาเข้างาน"
         self.intent_time_att = "บันทึกเวลา"
         self.intent_meet = "จองห้องประชุม"
