@@ -189,6 +189,11 @@ def checktextcase(body,text):
             # Leave(body,"")
         return True
 
+    elif text == Util().intent_searchtelephonenumber:
+        if CheckUserLogin(body):
+            ResponsMemberFlex(user,body,Util().intent_searchtelephonenumber,Util().liff_url_profile_detail_searchtelephonenumber)
+        return True
+
     elif text == Util().intent_time_work:
         if CheckUserLogin(body):
             ResponsTimeAtFlex(user,body)

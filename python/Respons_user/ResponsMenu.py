@@ -31,6 +31,7 @@ class ResponsMenu:
                                 {
                                     "type": "box",
                                     "layout": "horizontal",
+                                      "alignItems": "flex-end",
                                     "spacing": "sm",
                                     "contents": [
                                         {
@@ -42,8 +43,30 @@ class ResponsMenu:
                                                     "url": "https://www.thaitobacco.or.th/th/wp-content/uploads/2015/09/logo-ttm-admin.png",
                                                     "size": "5xl"
                                                 }
+
+                                                # {
+                                                #     "type": "icon",
+                                                #     "url": "https://webhook.toat.co.th/linebot/web/src/LOGO_82.png",
+                                                #     "size": "5xl"
+                                                # }
+
+                                               
                                             ]
                                         },
+                                         
+                                        # {
+                                        #     "type": "box",
+                                        #     "layout": "baseline",
+                                        #     "contents": [
+                                        #         {
+                                        #             "type": "icon",
+                                        #             "url": "https://webhook.toat.co.th/linebot/web/src/LOGO_82.png",
+                                        #             "size": "5xl"
+                                        #         }
+                                        #     ]
+                                        # },
+
+                                      
                                         {
                                             "type": "box",
                                             "layout": "vertical",
@@ -57,6 +80,7 @@ class ResponsMenu:
                                                     "size": "3xl",
                                                     "contents": []
                                                 }
+                                                
                                             ]
                                         }
                                     ]
@@ -74,6 +98,7 @@ class ResponsMenu:
                             "type": "box",
                             "layout": "vertical",
                             "contents": [
+
                                 {
                                     "type": "box",
                                     "layout": "vertical",
@@ -111,6 +136,66 @@ class ResponsMenu:
                                                                 {
                                                                     "type": "text",
                                                                     "text": "ระบบสมาชิก",
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+
+                                                },
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                             
+                                {
+                                    "type": "box",
+                                    "margin": "xs",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "contents": [
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": Util().liff_url_profile_detail_searchtelephonenumber,
+                                                        "altUri": {
+                                                            "desktop" : Util().url_profile_detail+"searchtelephonenumber"
+                                                        }
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                              
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": Util().intent_searchtelephonenumber,
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
@@ -175,6 +260,7 @@ class ResponsMenu:
                                         }
                                     ]
                                 },
+                                
                                 {
                                     "type": "box",
                                     "margin": "xs",
@@ -280,6 +366,7 @@ class ResponsMenu:
                                         }
                                     ]
                                 },
+
                                 {
                                     "type": "box",
                                     "margin": "xs",
