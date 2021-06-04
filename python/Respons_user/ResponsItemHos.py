@@ -27,7 +27,7 @@ class ResponsItemHos:
                             
                            
                             {
-                                "thumbnailImageUrl": "https://scontent.fbkk13-2.fna.fbcdn.net/v/t1.6435-9/165024853_836871947043277_9019435235398477533_n.png?_nc_cat=106&ccb=1-3&_nc_sid=973b4a&_nc_ohc=_v7NcXuPc4cAX_sxfzm&_nc_ht=scontent.fbkk13-2.fna&oh=f4197d0f0ed2162608a9d89f15097488&oe=60A87B7C",
+                                "thumbnailImageUrl": "https://scontent.fbkk7-3.fna.fbcdn.net/v/t1.6435-9/166678487_836975460366259_2695072535945220808_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=973b4a&_nc_ohc=rmSXETc6fRoAX9YXvkF&_nc_ht=scontent.fbkk7-3.fna&oh=f20321ab6738566e5e25ccd76c81acff&oe=60DBFDD0",
                                 "imageBackgroundColor": "#000000",
                                 "title": "โรงพยาบาลสวนเบญจกิติเฉลิมพระเกียรติ84พรรษา",
                                 "text": "https://www.facebook.com/Benchakitti/",

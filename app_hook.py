@@ -32,9 +32,6 @@ from python.Controller.TimeAt import TimeAt
 from python.Controller.TimeThai import TimeThai
 
 
-
-
-
 from python.Respons_user.ResponsHelpCenter import ResponsHelpCenter
 
 
@@ -68,9 +65,11 @@ def datenow():
     return TimeThai()
 
 
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
-   
+
+    
     header = request.headers
     body = request.json
 
@@ -102,8 +101,9 @@ def Recrive_LineAPI(body):
     if event_type == "message": 
         message_type = str(body["events"][0]['message']['type'])
 
-        if message_type == "text":    
+        if message_type == "text":  
             checktextintent(body)
+
         elif message_type == "sticker":
             text = "ให้ฉันช่วยอะไรคะ"
             ResponsQuickReply(user,text)
@@ -180,13 +180,11 @@ def checktextcase(body,text):
     elif text == Util().intent_financial:
         if CheckUserLogin(body):
             ResponsMemberFlex(user,body,Util().intent_financial,Util().liff_url_profile_detail_financial)
-            # Leave(body,"")
         return True
 
     elif text == Util().intent_cooperativesaving:
         if CheckUserLogin(body):
             ResponsMemberFlex(user,body,Util().intent_cooperativesaving,Util().liff_url_profile_detail_cooperativesaving)
-            # Leave(body,"")
         return True
 
     elif text == Util().intent_searchtelephonenumber:
@@ -197,14 +195,11 @@ def checktextcase(body,text):
     elif text == Util().intent_time_work:
         if CheckUserLogin(body):
             ResponsTimeAtFlex(user,body)
-            # TimeAt(body)
         return True
 
     elif text == Util().intent_time_att:
         if CheckUserLogin(body):
             ResponsMemberFlex(user,body,Util().intent_time_att,Util().liff_url_time_stamp)
-            # text = "ให้ฉันช่วยอะไรคะ"
-            # ResponsQuickReply(user,text)
         return True 
 
     elif text == Util().intent_meet:
@@ -223,7 +218,6 @@ def checktextcase(body,text):
         return True
     
     elif text == Util().intent_covid:
-        # ResponsReply(user,Util().intent_covid)
         ResponsListItem(user)
         return True
 
@@ -253,6 +247,19 @@ def checktextcase(body,text):
 
         return True
 
+
+
+    elif text == "Nuengdev":
+   
+        # ResponsReply(user,str(body["events"][0]['source']['userId']))
+        user_uid = str(body["events"][0]['source']['userId'])
+        user_call_fun = user_uid
+
+        ResponsReply(user,str(user_call_fun))
+
+        return True
+
+    
     return False
 
 
@@ -280,7 +287,7 @@ def checkmessagepostback(body,postbackdata):
             ResponsReply(user,"กำลังพัฒนาอยู่จ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC30\uDBC0\uDC3B\uDBC0\uDC37")
         else:
             print()
-    
+
 
 if __name__ == '__main__':
     app.run()
