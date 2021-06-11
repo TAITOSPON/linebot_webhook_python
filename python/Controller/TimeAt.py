@@ -109,7 +109,7 @@ class TimeAt:
 
             text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_time_att_detail)
             # text = str("คุณ "+name+"\nวันที่ : "+date+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n\n____________________")
-            ResponsReply(user,text)
+            ResponsReply(Util().serverToken,user,text)
             # ResponsTimeAt(user,text)
         except:
             
@@ -119,7 +119,7 @@ class TimeAt:
 
             name = str(respons["result"]["result_user"][0]["user_ad_name"])
             text = str("คุณ "+name+"\n\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_time_att_detail)
-            ResponsReply(user,text)
+            ResponsReply(Util().serverToken,user,text)
 
 
 

@@ -9,10 +9,13 @@ class Util:
 
         
         self.serverToken = "1L1a7UVuYGa2A84PEq8AYl5tN6AkrgBO8/1eTch7Y7ttQ2EjrIV8aaAnjNN2wnzBhTOAKvNCIBHraMJjpVW4W92y72z1nRS+HNxxfStKTCUU/AVbl2qYlPIwITdcmMgLNIR0RfnzfiNl7wvv14vnLAdB04t89/1O/w1cDnyilFU=" 
-        self.liff_url_login ="https://liff.line.me/1655109480-NdbD97GK"
-        # self.serverToken = "4d7QOg7qteXxTxhGEQ5ROBfc2wiBVyRTAnbA73hrZcsWLM7etaAcqpP/IS+Pv5/Psxa2nxyeSrvww7NrsRnl4n4i2Edzk36Dr5wzQZIItg1paczCVHU+/LnIEz27U68OrJSTiDooQf0xHZRx2FTp5gdB04t89/1O/w1cDnyilFU="
-        # self.liff_url_login ="https://liff.line.me/1654967329-yQRPp5rQ"
+        self.destination = "U6adcb805527f4b1077a6e1ce34d5ab2e"
+        
+        self.serverToken_dev = "4d7QOg7qteXxTxhGEQ5ROBfc2wiBVyRTAnbA73hrZcsWLM7etaAcqpP/IS+Pv5/Psxa2nxyeSrvww7NrsRnl4n4i2Edzk36Dr5wzQZIItg1paczCVHU+/LnIEz27U68OrJSTiDooQf0xHZRx2FTp5gdB04t89/1O/w1cDnyilFU="
+        self.destination_dev = "U28e8cf44dbfdfb4cf4c1e027641a5306"
+        
 
+        self.liff_url_login ="https://liff.line.me/1655109480-NdbD97GK"
         self.liff_url_create_leave = "https://liff.line.me/1655109480-VOMzYnqm"
         self.liff_url_time_att_detail = "https://liff.line.me/1655109480-jrRy7m25"
         self.liff_url_time_stamp = "https://liff.line.me/1655109480-MXKb06wG"

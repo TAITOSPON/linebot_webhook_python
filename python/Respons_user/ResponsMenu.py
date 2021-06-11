@@ -6,11 +6,11 @@ from python.Util import Util
 
 class ResponsMenu:
     
-    def __init__(self,devicetoken):
+    def __init__(self,serverToken,devicetoken):
        
         headers = {
                 'Content-Type': 'application/json',
-                'Authorization':  Util().Bearer + Util().serverToken
+                'Authorization':  Util().Bearer + serverToken
             }
 
         body = {    

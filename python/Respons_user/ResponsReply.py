@@ -6,10 +6,10 @@ from python.Util import Util
 
 class ResponsReply:
     
-    def __init__(self,devicetoken,text):
+    def __init__(self,serverToken,devicetoken,text):
 
         LINE_API = Util().line_api_reply
-        Authorization = Util().Bearer + Util().serverToken
+        Authorization = Util().Bearer + serverToken
         headers = {
             'Content-Type': 'application/json; charset=UTF-8',
             'Authorization':Authorization

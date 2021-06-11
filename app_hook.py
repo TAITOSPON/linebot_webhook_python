@@ -126,13 +126,13 @@ def Recrive_LineAPI(body):
     #         if message_type == "text":    
     #             checktextintent(body)
     #         else :
-    #             ResponsReply(user,str(body))
+    #             ResponsReply(Util().serverToken,user,str(body))
 
     #     elif event_type == "postback":
     #         postbackdata = str(body["events"][0]["postback"]["data"])
     #         checkmessagepostback(body,postbackdata)
     # else:
-    #     ResponsReply(user,Util().Maintenance)
+    #     ResponsReply(Util().serverToken,user,Util().Maintenance)
 
 
 def checktextintent(body):
@@ -145,7 +145,7 @@ def checktextintent(body):
         response = PostToDialog(Util().key_dialogflow,Util().key_dialogflow,text,Util().key_dialogflow_langu)
 
         if str(response.query_result.intent.display_name) == Util().Default_Fallback_Intent or str(response.query_result.intent.display_name) == Util().Default_Welcome_Intent:
-            # ResponsReply(user,str(response.query_result.fulfillment_text))
+            # ResponsReply(Util().serverToken,user,str(response.query_result.fulfillment_text))
             text = str(response.query_result.fulfillment_text) +" ให้ฉันช่วยอะไรคะ"
             ResponsQuickReply(user,text)
         else :
@@ -155,113 +155,126 @@ def checktextintent(body):
 def checktextcase(body,text):
     user_uid = str(body["events"][0]['source']['userId'])
     user = str(body["events"][0]['replyToken'])
+    destination = str(body["destination"])
 
-    if text == Util().intent_login:
-        if CheckUserLogin(body):
-            result_user = PostUserWithUid(user_uid)
-            user_ad_name = str(result_user[0]["user_ad_name"])
-            text = "สวัสดีคุณ "+user_ad_name+" \nยินดีต้อนรับเข้าสู่ระบบ TOAT linebot \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
-            ResponsQuickReply(user,text)
+    if destination == Util().destination:
+
+        if text == Util().intent_login:
+            if CheckUserLogin(body):
+                result_user = PostUserWithUid(user_uid)
+                user_ad_name = str(result_user[0]["user_ad_name"])
+                text = "สวัสดีคุณ "+user_ad_name+" \nยินดีต้อนรับเข้าสู่ระบบ TOAT linebot \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
+                ResponsQuickReply(user,text)
+            
+            return True
+
+        elif text == Util().intent_profile_sys:
+            if CheckUserLogin(body):
+                ResponsMemberFlex(user,body,Util().intent_profile_sys,Util().liff_url_profile_detail)
+                # ResponsReply(Util().serverToken,user,Util().intent_profile_sys)
+            return True
+
+        elif text == Util().intent_leave:
+            if CheckUserLogin(body):
+                ResponsMemberFlex(user,body,Util().intent_leave,Util().liff_url_profile_detail_leave)
+                # Leave(body,"")
+            return True
+
+        elif text == Util().intent_financial:
+            if CheckUserLogin(body):
+                ResponsMemberFlex(user,body,Util().intent_financial,Util().liff_url_profile_detail_financial)
+            return True
+
+        elif text == Util().intent_cooperativesaving:
+            if CheckUserLogin(body):
+                ResponsMemberFlex(user,body,Util().intent_cooperativesaving,Util().liff_url_profile_detail_cooperativesaving)
+            return True
+
+        elif text == Util().intent_searchtelephonenumber:
+            if CheckUserLogin(body):
+                ResponsMemberFlex(user,body,Util().intent_searchtelephonenumber,Util().liff_url_profile_detail_searchtelephonenumber)
+            return True
+
+        elif text == Util().intent_time_work:
+            if CheckUserLogin(body):
+                ResponsTimeAtFlex(user,body)
+            return True
+
+        elif text == Util().intent_time_att:
+            if CheckUserLogin(body):
+                ResponsMemberFlex(user,body,Util().intent_time_att,Util().liff_url_time_stamp)
+            return True 
+
+        elif text == Util().intent_meet:
+            if CheckUserLogin(body):
+                ResponsReply(Util().serverToken,user,"กำลังพัฒนาจ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC84\n\nคณะวิเคราะห์สารสนเทศ \nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
+            return True
+
+        elif text == Util().intent_menu:
+            ResponsMenu(Util().serverToken,user)
+            return True
         
-        return True
-
-    elif text == Util().intent_profile_sys:
-        if CheckUserLogin(body):
-            ResponsMemberFlex(user,body,Util().intent_profile_sys,Util().liff_url_profile_detail)
-            # ResponsReply(user,Util().intent_profile_sys)
-        return True
-
-    elif text == Util().intent_leave:
-        if CheckUserLogin(body):
-            ResponsMemberFlex(user,body,Util().intent_leave,Util().liff_url_profile_detail_leave)
-            # Leave(body,"")
-        return True
-
-    elif text == Util().intent_financial:
-        if CheckUserLogin(body):
-            ResponsMemberFlex(user,body,Util().intent_financial,Util().liff_url_profile_detail_financial)
-        return True
-
-    elif text == Util().intent_cooperativesaving:
-        if CheckUserLogin(body):
-            ResponsMemberFlex(user,body,Util().intent_cooperativesaving,Util().liff_url_profile_detail_cooperativesaving)
-        return True
-
-    elif text == Util().intent_searchtelephonenumber:
-        if CheckUserLogin(body):
-            ResponsMemberFlex(user,body,Util().intent_searchtelephonenumber,Util().liff_url_profile_detail_searchtelephonenumber)
-        return True
-
-    elif text == Util().intent_time_work:
-        if CheckUserLogin(body):
-            ResponsTimeAtFlex(user,body)
-        return True
-
-    elif text == Util().intent_time_att:
-        if CheckUserLogin(body):
-            ResponsMemberFlex(user,body,Util().intent_time_att,Util().liff_url_time_stamp)
-        return True 
-
-    elif text == Util().intent_meet:
-        if CheckUserLogin(body):
-            ResponsReply(user,"กำลังพัฒนาจ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC84\n\nคณะวิเคราะห์สารสนเทศ \nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
-        return True
-
-    elif text == Util().intent_menu:
-        ResponsMenu(user)
-        return True
-    
- 
+        elif text == Util().intent_hos_ben:
+            ResponsItemHos(user)
+            return True
         
-    elif text == Util().intent_hos_ben:
-        ResponsItemHos(user)
-        return True
+        elif text == Util().intent_covid:
+            ResponsListItem(user)
+            return True
+
+        elif text == Util().intent_covid_form:
+            CheckUserLogin(body)
+            return True
+        elif text == Util().intent_covid_confrim:
+            CheckUserLogin(body)
+            return True
+
+        elif text == Util().help_center:
+            if CheckUserLogin(body):
+                ResponsHelpCenter(user)
+            return True
+
+        elif text == Util().intent_logout:
     
-    elif text == Util().intent_covid:
-        ResponsListItem(user)
-        return True
-
-    elif text == Util().intent_covid_form:
-        CheckUserLogin(body)
-        return True
-    elif text == Util().intent_covid_confrim:
-        CheckUserLogin(body)
-        return True
-
-    elif text == Util().help_center:
-        if CheckUserLogin(body):
-            ResponsHelpCenter(user)
-        return True
-
-    elif text == Util().intent_logout:
-   
-        response = PostCheckLogin(user_uid)
-        if response["status"]:
-            ResponsChecklogout(user)
-        else:
-            response = PostLogout(user_uid)
+            response = PostCheckLogin(user_uid)
             if response["status"]:
-                ResponsLogout(user,"ออกจากระบบสำเร็จ")
+                ResponsChecklogout(user)
             else:
-                ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
+                response = PostLogout(user_uid)
+                if response["status"]:
+                    ResponsLogout(user,"ออกจากระบบสำเร็จ")
+                else:
+                    ResponsReply(Util().serverToken,user,"ออกจากระบบไม่สำเร็จ")
 
-        return True
+            return True
 
 
 
-    elif text == "Nuengdev":
-   
-        # ResponsReply(user,str(body["events"][0]['source']['userId']))
-        user_uid = str(body["events"][0]['source']['userId'])
-        user_call_fun = user_uid
-
-        ResponsReply(user,str(user_call_fun))
-
-        return True
-
+        elif text == "Nuengdev":
     
-    return False
+            ResponsReply(Util().serverToken,user,str(body))
+            return True
 
+        return False
+        
+
+
+
+    elif destination == Util().destination_dev:
+       
+        if text == "Nuengdev":
+            ResponsReply(Util().serverToken_dev,user,str(body))
+            return True
+        elif text == Util().intent_menu:
+            ResponsMenu(Util().serverToken_dev,user)
+            return True
+        else:
+            ResponsReply(Util().serverToken_dev,user,str(body))
+            return True
+
+        return False
+
+    return False
 
 def checkmessagepostback(body,postbackdata):
     user_uid = str(body["events"][0]['source']['userId'])
@@ -281,10 +294,10 @@ def checkmessagepostback(body,postbackdata):
             if response["status"]:
                 ResponsLogout(user,"ออกจากระบบสำเร็จ")
             else:
-                ResponsReply(user,"ออกจากระบบไม่สำเร็จ")
+                ResponsReply(Util().serverToken,user,"ออกจากระบบไม่สำเร็จ")
 
         elif key == Util().intent_time_work:
-            ResponsReply(user,"กำลังพัฒนาอยู่จ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC30\uDBC0\uDC3B\uDBC0\uDC37")
+            ResponsReply(Util().serverToken,user,"กำลังพัฒนาอยู่จ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC30\uDBC0\uDC3B\uDBC0\uDC37")
         else:
             print()
 
