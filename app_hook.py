@@ -163,7 +163,7 @@ def checktextcase(body,text):
             if CheckUserLogin(body):
                 result_user = PostUserWithUid(user_uid)
                 user_ad_name = str(result_user[0]["user_ad_name"])
-                text = "สวัสดีคุณ "+user_ad_name+" \nยินดีต้อนรับเข้าสู่ระบบ TOAT linebot \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
+                text = "สวัสดีคุณ "+user_ad_name+" \nขอต้อนรับเข้าสู่ระบบ TOAT CHATBOT \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
                 ResponsQuickReply(user,text)
             
             return True
