@@ -24,6 +24,7 @@ class Util:
         self.liff_url_profile_detail_financial = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Financial"   
         self.liff_url_profile_detail_cooperativesaving = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Cooperativesaving"   
         self.liff_url_profile_detail_searchtelephonenumber = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_SearchTelephoneNumber"  
+        self.liff_url_profile_detail_askinout = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Askinout"  
         self.liff_url_logout = "https://liff.line.me/1655109480-GoLo5myJ"
         self.liff_url_help_center = "https://liff.line.me/1655109480-jXW76xR8"
         self.liff_url_covid_emp_form = " https://liff.line.me/1655109480-VjdKrvBX"
