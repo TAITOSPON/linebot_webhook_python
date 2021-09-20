@@ -20,7 +20,7 @@ class ResponsItemHos:
             
                 {
                     "type": "template",
-                    "altText": Util().intent_covid,
+                    "altText": Util().intent_hos_ben,
                     "template": {
                         "type": "carousel",
                         "columns": [

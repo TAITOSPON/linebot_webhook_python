@@ -3,6 +3,13 @@ import requests
 import json
 
 from python.Api_backend.PostDataTimeAt import PostDataTimeAt
+from python.Api_backend.GetDataUserVaccine import GetDataUserVaccine
+
+from python.Api_backend.PostLeaveYearSelect import PostLeaveYearSelect
+from python.Api_backend.PostLeaveyear import PostLeaveyear
+
+
+# from python.Respons_user.ResponsLeave import ResponsLeave
 
 from python.Util import Util
 
@@ -15,6 +22,11 @@ class ResponsTimeAtFlexAndVaccine:
         user = str(body["events"][0]['replyToken'])
        
         respons = PostDataTimeAt(user_uid)
+
+        LeaveYearSelect = PostLeaveYearSelect(user_uid)
+        Leaveyear = PostLeaveyear(user_uid,LeaveYearSelect[0]["Value"])
+
+        
 
         try:
 
@@ -115,444 +127,2902 @@ class ResponsTimeAtFlexAndVaccine:
 
             try:
                 if user_ad_code == "003599":
-                    url_vaccine = str('https://webhook.toat.co.th/linebot/web/index.php/Covid19/Get_Covid19_User_vaccine/'+"002858")
+
+                    data_vaccine = GetDataUserVaccine("003599")
+          
                 else:
-                    url_vaccine = str('https://webhook.toat.co.th/linebot/web/index.php/Covid19/Get_Covid19_User_vaccine/'+user_ad_code)
+                    data_vaccine = GetDataUserVaccine(user_ad_code)
+      
+               
 
-                response_vaccine = requests.get(url_vaccine)
-                data_vaccine = response_vaccine.json()
+                if  data_vaccine != "null": 
+                    if data_vaccine["Appointment"] != "":   #มีนัด
 
-                if  str(data_vaccine["result"]) != "null":
-
-                    text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_profile_detail_askinout)
-                    
-                    body = {    
-                        "replyToken": str(devicetoken),
-                        "messages": [
-                            {
-                                "type":"flex",
-                                "altText":Util().intent_time_work,
-                                "contents":{
-                                    "type":"carousel",
-                                    "contents":[
-                                        
-                                        {
-                                            "type": "bubble",
-                                            # "size": "giga",
-                                            "direction": "ltr",
-                                            "body": {
-                                                "type": "box",
-                                                "layout": "vertical",
-                                                "contents": [
-                                                    {
+                        if data_vaccine["VaccineDate2"] == "":  #นัดเข็ม 2
+                            text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_profile_detail_askinout)
+                            
+                            body = {    
+                                "replyToken": str(devicetoken),
+                                "messages": [
+                                    {
+                                        "type":"flex",
+                                        "altText":Util().intent_time_work,
+                                        "contents":{
+                                            "type":"carousel",
+                                            "contents":[
+                                                
+                                                {
+                                                    "type": "bubble",
+                                                    # "size": "giga",
+                                                    "direction": "ltr",
+                                                    "body": {
                                                         "type": "box",
                                                         "layout": "vertical",
                                                         "contents": [
-                                        
-                                                            {
-                                                                "type": "text",
-                                                                "text": name,
-                                                                "weight": "bold",
-                                                                "size": "lg",
-                                                                "margin": "none",
-                                                                "contents": []
-                                                            },
-                                                            {
-                                                                "type": "text",
-                                                                "text": "วันที่ : "+str(date),
-                                                                "size": "sm",
-                                                                "color": "#D39D2B",
-                                                                "contents": []
-                                                            },
-                                                            {
-                                                                "type": "separator",
-                                                                "margin": "md"
-                                                            },
                                                             {
                                                                 "type": "box",
                                                                 "layout": "vertical",
-                                                                "spacing": "sm",
-                                                                "margin": "xs",
                                                                 "contents": [
-                                                                {
-                                                                    "type": "box",
-                                                                    "layout": "horizontal",
-                                                                    "margin": "md",
-                                                                    "contents": [
+                                                
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "เวลาเข้างาน :",
-                                                                        "size": "sm",
+                                                                        "text": name,
+                                                                        "weight": "bold",
+                                                                        "size": "lg",
+                                                                        "margin": "none",
                                                                         "contents": []
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": in_time,
+                                                                        "text": "วันที่ : "+str(date),
                                                                         "size": "sm",
+                                                                        "color": "#D39D2B",
                                                                         "contents": []
-                                                                    }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "type": "box",
-                                                                    "layout": "horizontal",
-                                                                    "contents": [
+                                                                    },
                                                                     {
-                                                                        "type": "text",
-                                                                        "text": "ด้วย  :",
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    {
+                                                                        "type": "box",
+                                                                        "layout": "vertical",
+                                                                        "spacing": "sm",
+                                                                        "margin": "xs",
+                                                                        "contents": [
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "margin": "md",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "เวลาเข้างาน :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": in_time,
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "ด้วย  :",
+                                                                        
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": in_type,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "สถานที่  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": in_place,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "wrap": True,
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    {
+                                                                        "type": "box",
+                                                                        "spacing": "sm",
+                                                                        "layout": "vertical",
+                                                                        "margin": "xs",
+                                                                        "contents": [
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "margin": "md",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "เวลาออกงาน  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": out_time,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "ด้วย  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": out_type,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "สถานที่  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": out_place,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "wrap": True,
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "footer": {
+                                                        "type": "box",
+                                                        "layout": "horizontal",
+                                                        "contents": [
+                                                            {
+                                                                "type": "button",
+                                                                "action": {
+                                                                    "type": "uri",
+                                                                    "label": "รายละเอียด",
+                                                                    "uri": Util().liff_url_profile_detail_askinout,
+                                                                    "altUri": {
+                                                                        "desktop" : Util().url_timeat
+                                                                    }
+                                                                },
                                                                 
-                                                                        "size": "sm",
-                                                                        "contents": []
-                                                                    },
-                                                                    {
-                                                                        "type": "text",
-                                                                        "text": in_type,
-                                                                        "size": "sm",
-                                                                        "align": "start",
-                                                                        "contents": []
-                                                                    }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "type": "box",
-                                                                    "layout": "horizontal",
-                                                                    "contents": [
-                                                                    {
-                                                                        "type": "text",
-                                                                        "text": "สถานที่  :",
-                                                                        "size": "sm",
-                                                                        "contents": []
-                                                                    },
-                                                                    {
-                                                                        "type": "text",
-                                                                        "text": in_place,
-                                                                        "size": "sm",
-                                                                        "align": "start",
-                                                                        "wrap": True,
-                                                                        "contents": []
-                                                                    }
-                                                                    ]
-                                                                }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "type": "separator",
-                                                                "margin": "md"
-                                                            },
-                                                            {
-                                                                "type": "box",
-                                                                "spacing": "sm",
-                                                                "layout": "vertical",
-                                                                "margin": "xs",
-                                                                "contents": [
-                                                                {
-                                                                    "type": "box",
-                                                                    "layout": "horizontal",
-                                                                    "margin": "md",
-                                                                    "contents": [
-                                                                    {
-                                                                        "type": "text",
-                                                                        "text": "เวลาออกงาน  :",
-                                                                        "size": "sm",
-                                                                        "contents": []
-                                                                    },
-                                                                    {
-                                                                        "type": "text",
-                                                                        "text": out_time,
-                                                                        "size": "sm",
-                                                                        "align": "start",
-                                                                        "contents": []
-                                                                    }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "type": "box",
-                                                                    "layout": "horizontal",
-                                                                    "contents": [
-                                                                    {
-                                                                        "type": "text",
-                                                                        "text": "ด้วย  :",
-                                                                        "size": "sm",
-                                                                        "contents": []
-                                                                    },
-                                                                    {
-                                                                        "type": "text",
-                                                                        "text": out_type,
-                                                                        "size": "sm",
-                                                                        "align": "start",
-                                                                        "contents": []
-                                                                    }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "type": "box",
-                                                                    "layout": "horizontal",
-                                                                    "contents": [
-                                                                    {
-                                                                        "type": "text",
-                                                                        "text": "สถานที่  :",
-                                                                        "size": "sm",
-                                                                        "contents": []
-                                                                    },
-                                                                    {
-                                                                        "type": "text",
-                                                                        "text": out_place,
-                                                                        "size": "sm",
-                                                                        "align": "start",
-                                                                        "wrap": True,
-                                                                        "contents": []
-                                                                    }
-                                                                    ]
-                                                                }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "type": "separator",
-                                                                "margin": "md"
+                                                                "color": "#D39D2B",
+                                                                "style": "primary"
                                                             }
                                                         ]
                                                     }
-                                                ]
-                                            },
-                                            "footer": {
-                                                "type": "box",
-                                                "layout": "horizontal",
-                                                "contents": [
-                                                    {
-                                                        "type": "button",
-                                                        "action": {
-                                                            "type": "uri",
-                                                            "label": "รายละเอียด",
-                                                            "uri": Util().liff_url_profile_detail_askinout,
-                                                            "altUri": {
-                                                                "desktop" : Util().url_timeat
+                                                } , 
+
+                                                {
+                                                    "type": "bubble",
+                                                    "direction": "ltr",
+                                                    "body": {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "contents": [
+                                                            {
+                                                                "type": "box",
+                                                                "layout": "vertical",
+                                                                "contents": [
+                                                
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": Util().intent_leave,
+                                                                        "weight": "bold",
+                                                                        "size": "lg",
+                                                                        "margin": "none",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
+                                                                        "size": "sm",
+                                                                        "color": "#D39D2B",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    {
+                                                                        "type": "box",
+                                                                        "layout": "vertical",
+                                                                        "spacing": "sm",
+                                                                        "margin": "xs",
+                                                                        "contents": [
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "vertical",
+                                                                            "margin": "md",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "วันลาพักผ่อนรวมที่โอนมาจากปีที่แล้ว : "+str(Leaveyear['result']['leave_head']['TotalLeaveAvailable']),
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "วันลาพักผ่อนที่ใช้ไปแล้ว  : "+str(Leaveyear['result']['leave_head']['TotalLeave']),
+                                                                        
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "วันลาพักผ่อนคงเหลือ  : "+str(Leaveyear['result']['leave_head']['SumLeaveYear']),
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            
+                                                                            ]
+                                                                        }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    
+                                                                ]
                                                             }
-                                                        },
-                                                        
-                                                        "color": "#D39D2B",
-                                                        "style": "primary"
+                                                        ]
+                                                    },
+                                                    "footer": {
+                                                        "type": "box",
+                                                        "layout": "horizontal",
+                                                        "contents": [
+                                                            {
+                                                                "type": "button",
+                                                                "action": {
+                                                                    "type": "uri",
+                                                                    "label": "รายละเอียด",
+                                                                    "uri": Util().liff_url_profile_detail_leave,
+                                                                    "altUri": {
+                                                                        "desktop" : Util().profile_detail_leaveyear
+                                                                    }
+                                                                },
+                                                                
+                                                                "color": "#D39D2B",
+                                                                "style": "primary"
+                                                            }
+                                                        ]
                                                     }
-                                                ]
-                                            }
-                                        } , 
+                                                } , 
 
-                                        {
-                                            "type":"bubble",
-                                            "hero":{
-                                                "type":"image",
-                                                "url":"https://scontent.fbkk7-2.fna.fbcdn.net/v/t1.6435-9/167258776_837023323694806_5324680110308309427_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=973b4a&_nc_ohc=avJfTmaIGwAAX9RCiJ-&_nc_ht=scontent.fbkk7-2.fna&oh=92cc72e1eda55b114032f55e3df6918f&oe=614C8A7E",
-                                                "size":"full",
-                                                "aspectRatio":"10:3",
-                                                "aspectMode":"fit"
-                                            },
-                                            "body":{
-                                                "type":"box",
-                                                "layout":"vertical",
-                                                "backgroundColor":"#d9ebce",
-                                                "contents":[
-                                                    {
-                                                        "type":"text",
-                                                        "text":"นัดฉีดวัคซีน (เข็มที่ 2)",
-                                                        "weight":"bold",
-                                                        "color":"#1DB446",
-                                                        "size":"xl"
+                                                {
+                                                    "type":"bubble",
+                                                    "hero":{
+                                                        "type":"image",
+                                                        "url":"https://scontent.fbkk7-2.fna.fbcdn.net/v/t1.6435-9/167258776_837023323694806_5324680110308309427_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=973b4a&_nc_ohc=avJfTmaIGwAAX9RCiJ-&_nc_ht=scontent.fbkk7-2.fna&oh=92cc72e1eda55b114032f55e3df6918f&oe=614C8A7E",
+                                                        "size":"full",
+                                                        "aspectRatio":"10:3",
+                                                        "aspectMode":"fit"
                                                     },
-                                                    {
-                                                        "type":"text",
-                                                        "text":"วันที่ : "+str(data_vaccine["result"]["data"]["second"]),
-                                                        "weight":"bold",
-                                                        "size":"md",
-                                                        "margin":"md"
-                                                    },
-                                                    {
-                                                        "type":"text",
-                                                        "text":str(data_vaccine["result"]["data"]["user_name"]),
-                                                        "size":"md",
-                                                        "color":"#000000",
-                                                        "margin":"sm",
-                                                        "wrap":True
-                                                    },
-
-                                                    {
-                                                        "type":"separator",
-                                                        "color":"#ffffff",
-                                                        "margin":"md"
-                                                    },
-                                                    {
+                                                    "body":{
                                                         "type":"box",
                                                         "layout":"vertical",
-                                                        "margin":"sm",
-                                                        "spacing":"sm",
+                                                        "backgroundColor":"#d9ebce",
                                                         "contents":[
-
-                                                            
                                                             {
-                                                                "type":"box",
-                                                                "layout":"horizontal",
-                                                                "contents":[
-                                                                
-                                                                    {
-                                                                        "type":"text",
-                                                                        "text":"วันที่รับวัคซีน (เข็มที่ 1) :",
-                                                                        "size":"sm",
-                                                                        "color":"#555555",
-                                                                        "flex":0
-                                                                    },
-                                                                    {
-                                                                        "type":"text",
-                                                                        "text": str(data_vaccine["result"]["data"]["frist"]),
-                                                                        "size":"sm",
-                                                                        "color":"#111111",
-                                                                        "align":"end",
-                                                                        "wrap": True,
-                                                                    },
-                                                                    
-                                                                ]
+                                                                "type":"text",
+                                                                "text":"นัดฉีดวัคซีน (เข็มที่ 2)",
+                                                                "weight":"bold",
+                                                                "color":"#1DB446",
+                                                                "size":"xl"
+                                                            },
+                                                            {
+                                                                "type":"text",
+                                                                "text":"วันที่ : "+str(data_vaccine["Appointment"]),
+                                                                "weight":"bold",
+                                                                "size":"md",
+                                                                "margin":"md"
+                                                            },
+                                                            {
+                                                                "type":"text",
+                                                                "text":str(data_vaccine["Name"]),
+                                                                "size":"md",
+                                                                "color":"#000000",
+                                                                "margin":"sm",
+                                                                "wrap":True
                                                             },
 
-                                                            {
-                                                                "type":"box",
-                                                                "layout":"horizontal",
-                                                                "contents":[
-                                                                    {
-                                                                        "type":"text",
-                                                                        "text":"ชื่อวัคซีน :",
-                                                                        "size":"sm",
-                                                                        "color":"#555555",
-                                                                        "flex":0
-                                                                    },
-                                                                    {
-                                                                        "type":"text",
-                                                                        "text":str(data_vaccine["result"]["data"]["vac_name"]),
-                                                                        "size":"sm",
-                                                                        "color":"#111111",
-                                                                        "align":"end",
-                                                                        "wrap": True,
-                                                                    },
-                                                                    
-                                                                    
-                                                                ]
-                                                            },
-
-                                                            {
-                                                                "type":"box",
-                                                                "layout":"horizontal",
-                                                                "contents":[
-                                                                    {
-                                                                    "type":"text",
-                                                                    "text":"รุ่นการผลิต :",
-                                                                    "size":"sm",
-                                                                    "color":"#555555"
-                                                                    },
-                                                                    {
-                                                                    "type":"text",
-                                                                    "text":str(data_vaccine["result"]["data"]["vac_lot"])+ " "+str(data_vaccine["result"]["data"]["vac_lot_detail"]),
-                                                                    "size":"sm",
-                                                                    "color":"#111111",
-                                                                    "align":"end",
-                                                                    "wrap": True,
-                                                                    }
-                                                                ]
-                                                            },
-                                                            
-                                                            
-                                        
                                                             {
                                                                 "type":"separator",
                                                                 "color":"#ffffff",
                                                                 "margin":"md"
                                                             },
-
                                                             {
                                                                 "type":"box",
-                                                                "layout":"horizontal",
+                                                                "layout":"vertical",
+                                                                "margin":"sm",
+                                                                "spacing":"sm",
                                                                 "contents":[
+
+                                                                    
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                        
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"วันที่รับวัคซีน (เข็มที่ 1) :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text": str(data_vaccine["VaccineDate1"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                            },
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"ชื่อวัคซีน :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":str(data_vaccine["VaccineName1"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                            },
+                                                                            
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"รุ่นการผลิต :",
+                                                                            "size":"sm",
+                                                                            "color":"#555555"
+                                                                            },
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":str(data_vaccine["VaccineLot1"]),
+                                                                            "size":"sm",
+                                                                            "color":"#111111",
+                                                                            "align":"end",
+                                                                            "wrap": True,
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    
+                                                                    
+                                                
+                                                                    {
+                                                                        "type":"separator",
+                                                                        "color":"#ffffff",
+                                                                        "margin":"md"
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                        
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"วันที่รับวัคซีน (เข็มที่ 2) :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text": str(data_vaccine["Appointment"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"ชื่อวัคซีน :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"-",
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"รุ่นการผลิต :",
+                                                                            "size":"sm",
+                                                                            "color":"#555555"
+                                                                            },
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"-",
+                                                                            "size":"sm",
+                                                                            "color":"#111111",
+                                                                            "align":"end",
+                                                                            "wrap": True,
+                                                                            }
+                                                                        ]
+                                                                    },
                                                                 
-                                                                    {
-                                                                        "type":"text",
-                                                                        "text":"วันที่รับวัคซีน (เข็มที่ 2) :",
-                                                                        "size":"sm",
-                                                                        "color":"#555555",
-                                                                        "flex":0
-                                                                    },
-                                                                    {
-                                                                        "type":"text",
-                                                                        "text": str(data_vaccine["result"]["data"]["second"]),
-                                                                        "size":"sm",
-                                                                        "color":"#111111",
-                                                                        "align":"end"
-                                                                    },
-                                                                    
                                                                 ]
                                                             },
-
                                                             {
-                                                                "type":"box",
-                                                                "layout":"horizontal",
-                                                                "contents":[
-                                                                    {
-                                                                        "type":"text",
-                                                                        "text":"ชื่อวัคซีน :",
-                                                                        "size":"sm",
-                                                                        "color":"#555555",
-                                                                        "flex":0
-                                                                    },
-                                                                    {
-                                                                        "type":"text",
-                                                                        "text":"-",
-                                                                        "size":"sm",
-                                                                        "color":"#111111",
-                                                                        "align":"end"
-                                                                    },
-                                                                    
-                                                                    
-                                                                ]
-                                                            },
-
-                                                            {
-                                                                "type":"box",
-                                                                "layout":"horizontal",
-                                                                "contents":[
-                                                                    {
-                                                                    "type":"text",
-                                                                    "text":"รุ่นการผลิต :",
-                                                                    "size":"sm",
-                                                                    "color":"#555555"
-                                                                    },
-                                                                    {
-                                                                    "type":"text",
-                                                                    "text":"-",
-                                                                    "size":"sm",
-                                                                    "color":"#111111",
-                                                                    "align":"end",
-                                                                    "wrap": True,
-                                                                    }
-                                                                ]
+                                                                "type":"separator",
+                                                                "color":"#ffffff",
+                                                                "margin":"md"
                                                             },
                                                         
                                                         ]
                                                     },
-                                                    {
-                                                        "type":"separator",
-                                                        "color":"#ffffff",
-                                                        "margin":"md"
-                                                    },
-                                                
-                                                ]
-                                            },
-                                            "styles":{
-                                                "footer":{
-                                                    "separator":True
-                                                }
-                                            }
-                                        },
+                                                    "styles":{
+                                                        "footer":{
+                                                            "separator":True
+                                                        }
+                                                    }
+                                                },
 
-                                    ]
-                                }
+
+                                            ]
+                                        }
+                                    }
+                                ]
+                        
                             }
-                        ]
-                
-                    }
+
+                        else :   #นัดเข็ม 3
+                            text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_profile_detail_askinout)
+                            
+                            body = {    
+                                "replyToken": str(devicetoken),
+                                "messages": [
+                                    {
+                                        "type":"flex",
+                                        "altText":Util().intent_time_work,
+                                        "contents":{
+                                            "type":"carousel",
+                                            "contents":[
+                                                
+                                                {
+                                                    "type": "bubble",
+                                                    # "size": "giga",
+                                                    "direction": "ltr",
+                                                    "body": {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "contents": [
+                                                            {
+                                                                "type": "box",
+                                                                "layout": "vertical",
+                                                                "contents": [
+                                                
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": name,
+                                                                        "weight": "bold",
+                                                                        "size": "lg",
+                                                                        "margin": "none",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": "วันที่ : "+str(date),
+                                                                        "size": "sm",
+                                                                        "color": "#D39D2B",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    {
+                                                                        "type": "box",
+                                                                        "layout": "vertical",
+                                                                        "spacing": "sm",
+                                                                        "margin": "xs",
+                                                                        "contents": [
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "margin": "md",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "เวลาเข้างาน :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": in_time,
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "ด้วย  :",
+                                                                        
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": in_type,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "สถานที่  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": in_place,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "wrap": True,
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    {
+                                                                        "type": "box",
+                                                                        "spacing": "sm",
+                                                                        "layout": "vertical",
+                                                                        "margin": "xs",
+                                                                        "contents": [
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "margin": "md",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "เวลาออกงาน  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": out_time,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "ด้วย  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": out_type,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "สถานที่  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": out_place,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "wrap": True,
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "footer": {
+                                                        "type": "box",
+                                                        "layout": "horizontal",
+                                                        "contents": [
+                                                            {
+                                                                "type": "button",
+                                                                "action": {
+                                                                    "type": "uri",
+                                                                    "label": "รายละเอียด",
+                                                                    "uri": Util().liff_url_profile_detail_askinout,
+                                                                    "altUri": {
+                                                                        "desktop" : Util().url_timeat
+                                                                    }
+                                                                },
+                                                                
+                                                                "color": "#D39D2B",
+                                                                "style": "primary"
+                                                            }
+                                                        ]
+                                                    }
+                                                } , 
+
+                                                {
+                                                    "type": "bubble",
+                                                    "direction": "ltr",
+                                                    "body": {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "contents": [
+                                                            {
+                                                                "type": "box",
+                                                                "layout": "vertical",
+                                                                "contents": [
+                                                
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": Util().intent_leave,
+                                                                        "weight": "bold",
+                                                                        "size": "lg",
+                                                                        "margin": "none",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
+                                                                        "size": "sm",
+                                                                        "color": "#D39D2B",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    {
+                                                                        "type": "box",
+                                                                        "layout": "vertical",
+                                                                        "spacing": "sm",
+                                                                        "margin": "xs",
+                                                                        "contents": [
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "vertical",
+                                                                            "margin": "md",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "วันลาพักผ่อนรวมที่โอนมาจากปีที่แล้ว : "+str(Leaveyear['result']['leave_head']['TotalLeaveAvailable']),
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "วันลาพักผ่อนที่ใช้ไปแล้ว  : "+str(Leaveyear['result']['leave_head']['TotalLeave']),
+                                                                        
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "วันลาพักผ่อนคงเหลือ  : "+str(Leaveyear['result']['leave_head']['SumLeaveYear']),
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            
+                                                                            ]
+                                                                        }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "footer": {
+                                                        "type": "box",
+                                                        "layout": "horizontal",
+                                                        "contents": [
+                                                            {
+                                                                "type": "button",
+                                                                "action": {
+                                                                    "type": "uri",
+                                                                    "label": "รายละเอียด",
+                                                                    "uri": Util().liff_url_profile_detail_leave,
+                                                                    "altUri": {
+                                                                        "desktop" : Util().profile_detail_leaveyear
+                                                                    }
+                                                                },
+                                                                
+                                                                "color": "#D39D2B",
+                                                                "style": "primary"
+                                                            }
+                                                        ]
+                                                    }
+                                                } , 
+ 
+
+                                                {
+                                                    "type":"bubble",
+                                                    "hero":{
+                                                        "type":"image",
+                                                        "url":"https://scontent.fbkk7-2.fna.fbcdn.net/v/t1.6435-9/167258776_837023323694806_5324680110308309427_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=973b4a&_nc_ohc=avJfTmaIGwAAX9RCiJ-&_nc_ht=scontent.fbkk7-2.fna&oh=92cc72e1eda55b114032f55e3df6918f&oe=614C8A7E",
+                                                        "size":"full",
+                                                        "aspectRatio":"10:3",
+                                                        "aspectMode":"fit"
+                                                    },
+                                                    "body":{
+                                                        "type":"box",
+                                                        "layout":"vertical",
+                                                        "backgroundColor":"#d9ebce",
+                                                        "contents":[
+                                                            {
+                                                                "type":"text",
+                                                                "text":"นัดฉีดวัคซีน (เข็มที่ 3)",
+                                                                "weight":"bold",
+                                                                "color":"#1DB446",
+                                                                "size":"xl"
+                                                            },
+                                                            {
+                                                                "type":"text",
+                                                                "text":"วันที่ : "+str(data_vaccine["Appointment"]),
+                                                                "weight":"bold",
+                                                                "size":"md",
+                                                                "margin":"md"
+                                                            },
+                                                            {
+                                                                "type":"text",
+                                                                "text":str(data_vaccine["Name"]),
+                                                                "size":"md",
+                                                                "color":"#000000",
+                                                                "margin":"sm",
+                                                                "wrap":True
+                                                            },
+
+                                                            {
+                                                                "type":"separator",
+                                                                "color":"#ffffff",
+                                                                "margin":"md"
+                                                            },
+                                                            {
+                                                                "type":"box",
+                                                                "layout":"vertical",
+                                                                "margin":"sm",
+                                                                "spacing":"sm",
+                                                                "contents":[
+
+                                                                    
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                        
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"วันที่รับวัคซีน (เข็มที่ 1) :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text": str(data_vaccine["VaccineDate1"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                            },
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"ชื่อวัคซีน :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":str(data_vaccine["VaccineName1"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                            },
+                                                                            
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"รุ่นการผลิต :",
+                                                                            "size":"sm",
+                                                                            "color":"#555555"
+                                                                            },
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":str(data_vaccine["VaccineLot1"]),
+                                                                            "size":"sm",
+                                                                            "color":"#111111",
+                                                                            "align":"end",
+                                                                            "wrap": True,
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    
+                                                                    
+                                                
+                                                                    {
+                                                                        "type":"separator",
+                                                                        "color":"#ffffff",
+                                                                        "margin":"md"
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                        
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"วันที่รับวัคซีน (เข็มที่ 2) :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text": str(data_vaccine["VaccineDate2"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"ชื่อวัคซีน :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":str(data_vaccine["VaccineName2"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"รุ่นการผลิต :",
+                                                                            "size":"sm",
+                                                                            "color":"#555555"
+                                                                            },
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":str(data_vaccine["VaccineLot2"]),
+                                                                            "size":"sm",
+                                                                            "color":"#111111",
+                                                                            "align":"end",
+                                                                            "wrap": True,
+                                                                            }
+                                                                        ]
+                                                                    },
+
+
+                                                                     {
+                                                                        "type":"separator",
+                                                                        "color":"#ffffff",
+                                                                        "margin":"md"
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                        
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"วันที่รับวัคซีน (เข็มที่ 3) :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text": str(data_vaccine["Appointment"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"ชื่อวัคซีน :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"-",
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"รุ่นการผลิต :",
+                                                                            "size":"sm",
+                                                                            "color":"#555555"
+                                                                            },
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"-",
+                                                                            "size":"sm",
+                                                                            "color":"#111111",
+                                                                            "align":"end",
+                                                                            "wrap": True,
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type":"separator",
+                                                                "color":"#ffffff",
+                                                                "margin":"md"
+                                                            },
+                                                        
+                                                        ]
+                                                    },
+                                                    "styles":{
+                                                        "footer":{
+                                                            "separator":True
+                                                        }
+                                                    }
+                                                },
+
+                                            ]
+                                        }
+                                    }
+                                ]
+                        
+                            }
+
+                    else : #ไม่มีนัด
+                        
+                        if data_vaccine["VaccineDate3"] != "": #ครบ 3 เข็ม
+                            text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_profile_detail_askinout)
+                            
+                            body = {    
+                                "replyToken": str(devicetoken),
+                                "messages": [
+                                    {
+                                        "type":"flex",
+                                        "altText":Util().intent_time_work,
+                                        "contents":{
+                                            "type":"carousel",
+                                            "contents":[
+                                                
+                                                {
+                                                    "type": "bubble",
+                                                    # "size": "giga",
+                                                    "direction": "ltr",
+                                                    "body": {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "contents": [
+                                                            {
+                                                                "type": "box",
+                                                                "layout": "vertical",
+                                                                "contents": [
+                                                
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": name,
+                                                                        "weight": "bold",
+                                                                        "size": "lg",
+                                                                        "margin": "none",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": "วันที่ : "+str(date),
+                                                                        "size": "sm",
+                                                                        "color": "#D39D2B",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    {
+                                                                        "type": "box",
+                                                                        "layout": "vertical",
+                                                                        "spacing": "sm",
+                                                                        "margin": "xs",
+                                                                        "contents": [
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "margin": "md",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "เวลาเข้างาน :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": in_time,
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "ด้วย  :",
+                                                                        
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": in_type,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "สถานที่  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": in_place,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "wrap": True,
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    {
+                                                                        "type": "box",
+                                                                        "spacing": "sm",
+                                                                        "layout": "vertical",
+                                                                        "margin": "xs",
+                                                                        "contents": [
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "margin": "md",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "เวลาออกงาน  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": out_time,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "ด้วย  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": out_type,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "สถานที่  :",
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": out_place,
+                                                                                "size": "sm",
+                                                                                "align": "start",
+                                                                                "wrap": True,
+                                                                                "contents": []
+                                                                            }
+                                                                            ]
+                                                                        }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "footer": {
+                                                        "type": "box",
+                                                        "layout": "horizontal",
+                                                        "contents": [
+                                                            {
+                                                                "type": "button",
+                                                                "action": {
+                                                                    "type": "uri",
+                                                                    "label": "รายละเอียด",
+                                                                    "uri": Util().liff_url_profile_detail_askinout,
+                                                                    "altUri": {
+                                                                        "desktop" : Util().url_timeat
+                                                                    }
+                                                                },
+                                                                
+                                                                "color": "#D39D2B",
+                                                                "style": "primary"
+                                                            }
+                                                        ]
+                                                    }
+                                                } , 
+
+                                                {
+                                                    "type": "bubble",
+                                                    "direction": "ltr",
+                                                    "body": {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "contents": [
+                                                            {
+                                                                "type": "box",
+                                                                "layout": "vertical",
+                                                                "contents": [
+                                                
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": Util().intent_leave,
+                                                                        "weight": "bold",
+                                                                        "size": "lg",
+                                                                        "margin": "none",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
+                                                                        "size": "sm",
+                                                                        "color": "#D39D2B",
+                                                                        "contents": []
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    {
+                                                                        "type": "box",
+                                                                        "layout": "vertical",
+                                                                        "spacing": "sm",
+                                                                        "margin": "xs",
+                                                                        "contents": [
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "vertical",
+                                                                            "margin": "md",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "วันลาพักผ่อนรวมที่โอนมาจากปีที่แล้ว : "+str(Leaveyear['result']['leave_head']['TotalLeaveAvailable']),
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "วันลาพักผ่อนที่ใช้ไปแล้ว  : "+str(Leaveyear['result']['leave_head']['TotalLeave']),
+                                                                        
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "horizontal",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "text": "วันลาพักผ่อนคงเหลือ  : "+str(Leaveyear['result']['leave_head']['SumLeaveYear']),
+                                                                                "size": "sm",
+                                                                                "contents": []
+                                                                            },
+                                                                            
+                                                                            ]
+                                                                        }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "separator",
+                                                                        "margin": "md"
+                                                                    },
+                                                                    
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "footer": {
+                                                        "type": "box",
+                                                        "layout": "horizontal",
+                                                        "contents": [
+                                                            {
+                                                                "type": "button",
+                                                                "action": {
+                                                                    "type": "uri",
+                                                                    "label": "รายละเอียด",
+                                                                    "uri": Util().liff_url_profile_detail_leave,
+                                                                    "altUri": {
+                                                                        "desktop" : Util().profile_detail_leaveyear
+                                                                    }
+                                                                },
+                                                                
+                                                                "color": "#D39D2B",
+                                                                "style": "primary"
+                                                            }
+                                                        ]
+                                                    }
+                                                } , 
+
+
+                                                {
+                                                    "type":"bubble",
+                                                    "hero":{
+                                                        "type":"image",
+                                                        "url":"https://scontent.fbkk7-2.fna.fbcdn.net/v/t1.6435-9/167258776_837023323694806_5324680110308309427_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=973b4a&_nc_ohc=avJfTmaIGwAAX9RCiJ-&_nc_ht=scontent.fbkk7-2.fna&oh=92cc72e1eda55b114032f55e3df6918f&oe=614C8A7E",
+                                                        "size":"full",
+                                                        "aspectRatio":"10:3",
+                                                        "aspectMode":"fit"
+                                                    },
+                                                    "body":{
+                                                        "type":"box",
+                                                        "layout":"vertical",
+                                                        "backgroundColor":"#d9ebce",
+                                                        "contents":[
+                                                            
+                                                            {
+                                                                "type":"text",
+                                                                "text":str(data_vaccine["Name"]),
+                                                                "size":"md",
+                                                                "color":"#000000",
+                                                                "margin":"sm",
+                                                                "wrap":True
+                                                            },
+
+                                                            {
+                                                                "type":"separator",
+                                                                "color":"#ffffff",
+                                                                "margin":"md"
+                                                            },
+                                                            {
+                                                                "type":"box",
+                                                                "layout":"vertical",
+                                                                "margin":"sm",
+                                                                "spacing":"sm",
+                                                                "contents":[
+
+                                                                    
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                        
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"วันที่รับวัคซีน (เข็มที่ 1) :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text": str(data_vaccine["VaccineDate1"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                            },
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"ชื่อวัคซีน :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":str(data_vaccine["VaccineName1"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                            },
+                                                                            
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"รุ่นการผลิต :",
+                                                                            "size":"sm",
+                                                                            "color":"#555555"
+                                                                            },
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":str(data_vaccine["VaccineLot1"]),
+                                                                            "size":"sm",
+                                                                            "color":"#111111",
+                                                                            "align":"end",
+                                                                            "wrap": True,
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    
+                                                                    
+                                                
+                                                                    {
+                                                                        "type":"separator",
+                                                                        "color":"#ffffff",
+                                                                        "margin":"md"
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                        
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"วันที่รับวัคซีน (เข็มที่ 2) :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text": str(data_vaccine["VaccineDate2"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"ชื่อวัคซีน :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":str(data_vaccine["VaccineName2"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"รุ่นการผลิต :",
+                                                                            "size":"sm",
+                                                                            "color":"#555555"
+                                                                            },
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":str(data_vaccine["VaccineLot2"]),
+                                                                            "size":"sm",
+                                                                            "color":"#111111",
+                                                                            "align":"end",
+                                                                            "wrap": True,
+                                                                            }
+                                                                        ]
+                                                                    },
+
+                                                                     {
+                                                                        "type":"separator",
+                                                                        "color":"#ffffff",
+                                                                        "margin":"md"
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                        
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"วันที่รับวัคซีน (เข็มที่ 3) :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text": str(data_vaccine["VaccineDate3"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":"ชื่อวัคซีน :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555",
+                                                                                "flex":0
+                                                                            },
+                                                                            {
+                                                                                "type":"text",
+                                                                                "text":str(data_vaccine["VaccineName3"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end"
+                                                                            },
+                                                                            
+                                                                            
+                                                                        ]
+                                                                    },
+
+                                                                    {
+                                                                        "type":"box",
+                                                                        "layout":"horizontal",
+                                                                        "contents":[
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":"รุ่นการผลิต :",
+                                                                            "size":"sm",
+                                                                            "color":"#555555"
+                                                                            },
+                                                                            {
+                                                                            "type":"text",
+                                                                            "text":str(data_vaccine["VaccineLot3"]),
+                                                                            "size":"sm",
+                                                                            "color":"#111111",
+                                                                            "align":"end",
+                                                                            "wrap": True,
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type":"separator",
+                                                                "color":"#ffffff",
+                                                                "margin":"md"
+                                                            },
+                                                        
+                                                        ]
+                                                    },
+                                                    "styles":{
+                                                        "footer":{
+                                                            "separator":True
+                                                        }
+                                                    }
+                                                },
+
+                                            ]
+                                        }
+                                    }
+                                ]
+                        
+                            }
+                              
+                        else :  #ครบ 2 เข็ม
+                            if data_vaccine["VaccineDate2"] == "": #ครบ 2 เข็ม (no data)
+                                text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_profile_detail_askinout)
+                                
+                                body = {    
+                                    "replyToken": str(devicetoken),
+                                    "messages": [
+                                        {
+                                            "type":"flex",
+                                            "altText":Util().intent_time_work,
+                                            "contents":{
+                                                "type":"carousel",
+                                                "contents":[
+                                                    
+                                                    {
+                                                        "type": "bubble",
+                                                        # "size": "giga",
+                                                        "direction": "ltr",
+                                                        "body": {
+                                                            "type": "box",
+                                                            "layout": "vertical",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "box",
+                                                                    "layout": "vertical",
+                                                                    "contents": [
+                                                    
+                                                                        {
+                                                                            "type": "text",
+                                                                            "text": name,
+                                                                            "weight": "bold",
+                                                                            "size": "lg",
+                                                                            "margin": "none",
+                                                                            "contents": []
+                                                                        },
+                                                                        {
+                                                                            "type": "text",
+                                                                            "text": "วันที่ : "+str(date),
+                                                                            "size": "sm",
+                                                                            "color": "#D39D2B",
+                                                                            "contents": []
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "vertical",
+                                                                            "spacing": "sm",
+                                                                            "margin": "xs",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "margin": "md",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "เวลาเข้างาน :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": in_time,
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "ด้วย  :",
+                                                                            
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": in_type,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "สถานที่  :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": in_place,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "wrap": True,
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "spacing": "sm",
+                                                                            "layout": "vertical",
+                                                                            "margin": "xs",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "margin": "md",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "เวลาออกงาน  :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": out_time,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "ด้วย  :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": out_type,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "สถานที่  :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": out_place,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "wrap": True,
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "footer": {
+                                                            "type": "box",
+                                                            "layout": "horizontal",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "action": {
+                                                                        "type": "uri",
+                                                                        "label": "รายละเอียด",
+                                                                        "uri": Util().liff_url_profile_detail_askinout,
+                                                                        "altUri": {
+                                                                            "desktop" : Util().url_timeat
+                                                                        }
+                                                                    },
+                                                                    
+                                                                    "color": "#D39D2B",
+                                                                    "style": "primary"
+                                                                }
+                                                            ]
+                                                        }
+                                                    } , 
+
+                                                    {
+                                                        "type": "bubble",
+                                                        "direction": "ltr",
+                                                        "body": {
+                                                            "type": "box",
+                                                            "layout": "vertical",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "box",
+                                                                    "layout": "vertical",
+                                                                    "contents": [
+                                                    
+                                                                        {
+                                                                            "type": "text",
+                                                                            "text": Util().intent_leave,
+                                                                            "weight": "bold",
+                                                                            "size": "lg",
+                                                                            "margin": "none",
+                                                                            "contents": []
+                                                                        },
+                                                                        {
+                                                                            "type": "text",
+                                                                            "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
+                                                                            "size": "sm",
+                                                                            "color": "#D39D2B",
+                                                                            "contents": []
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "vertical",
+                                                                            "spacing": "sm",
+                                                                            "margin": "xs",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "vertical",
+                                                                                "margin": "md",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "วันลาพักผ่อนรวมที่โอนมาจากปีที่แล้ว : "+str(Leaveyear['result']['leave_head']['TotalLeaveAvailable']),
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                
+                                                                                ]
+                                                                            },
+
+                                                                            {
+                                                                                "type": "separator",
+                                                                                "margin": "md"
+                                                                            },
+
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "วันลาพักผ่อนที่ใช้ไปแล้ว  : "+str(Leaveyear['result']['leave_head']['TotalLeave']),
+                                                                            
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                
+                                                                                ]
+                                                                            },
+
+                                                                            {
+                                                                                "type": "separator",
+                                                                                "margin": "md"
+                                                                            },
+
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "วันลาพักผ่อนคงเหลือ  : "+str(Leaveyear['result']['leave_head']['SumLeaveYear']),
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                
+                                                                                ]
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "footer": {
+                                                            "type": "box",
+                                                            "layout": "horizontal",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "action": {
+                                                                        "type": "uri",
+                                                                        "label": "รายละเอียด",
+                                                                        "uri": Util().liff_url_profile_detail_leave,
+                                                                        "altUri": {
+                                                                            "desktop" : Util().profile_detail_leaveyear
+                                                                        }
+                                                                    },
+                                                                    
+                                                                    "color": "#D39D2B",
+                                                                    "style": "primary"
+                                                                }
+                                                            ]
+                                                        }
+                                                    } , 
+
+
+                                                    {
+                                                        "type":"bubble",
+                                                        "hero":{
+                                                            "type":"image",
+                                                            "url":"https://scontent.fbkk7-2.fna.fbcdn.net/v/t1.6435-9/167258776_837023323694806_5324680110308309427_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=973b4a&_nc_ohc=avJfTmaIGwAAX9RCiJ-&_nc_ht=scontent.fbkk7-2.fna&oh=92cc72e1eda55b114032f55e3df6918f&oe=614C8A7E",
+                                                            "size":"full",
+                                                            "aspectRatio":"10:3",
+                                                            "aspectMode":"fit"
+                                                        },
+                                                        "body":{
+                                                            "type":"box",
+                                                            "layout":"vertical",
+                                                            "backgroundColor":"#d9ebce",
+                                                            "contents":[
+                                                                
+                                                                {
+                                                                    "type":"text",
+                                                                    "text":str(data_vaccine["Name"]),
+                                                                    "size":"md",
+                                                                    "color":"#000000",
+                                                                    "margin":"sm",
+                                                                    "wrap":True
+                                                                },
+
+                                                                {
+                                                                    "type":"separator",
+                                                                    "color":"#ffffff",
+                                                                    "margin":"md"
+                                                                },
+                                                                {
+                                                                    "type":"box",
+                                                                    "layout":"vertical",
+                                                                    "margin":"sm",
+                                                                    "spacing":"sm",
+                                                                    "contents":[
+
+                                                                        
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                            
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":"วันที่รับวัคซีน (เข็มที่ 1) :",
+                                                                                    "size":"sm",
+                                                                                    "color":"#555555",
+                                                                                    "flex":0
+                                                                                },
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text": str(data_vaccine["VaccineDate1"]),
+                                                                                    "size":"sm",
+                                                                                    "color":"#111111",
+                                                                                    "align":"end",
+                                                                                    "wrap": True,
+                                                                                },
+                                                                                
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":"ชื่อวัคซีน :",
+                                                                                    "size":"sm",
+                                                                                    "color":"#555555",
+                                                                                    "flex":0
+                                                                                },
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":str(data_vaccine["VaccineName1"]),
+                                                                                    "size":"sm",
+                                                                                    "color":"#111111",
+                                                                                    "align":"end",
+                                                                                    "wrap": True,
+                                                                                },
+                                                                                
+                                                                                
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                                {
+                                                                                "type":"text",
+                                                                                "text":"รุ่นการผลิต :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555"
+                                                                                },
+                                                                                {
+                                                                                "type":"text",
+                                                                                "text":str(data_vaccine["VaccineLot1"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        
+                                                                        
+                                                    
+                                                                        {
+                                                                            "type":"separator",
+                                                                            "color":"#ffffff",
+                                                                            "margin":"md"
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                            
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":"วันที่รับวัคซีน (เข็มที่ 2) :",
+                                                                                    "size":"sm",
+                                                                                    "color":"#555555",
+                                                                                    "flex":0
+                                                                                },
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text": "-",
+                                                                                    "size":"sm",
+                                                                                    "color":"#111111",
+                                                                                    "align":"end"
+                                                                                },
+                                                                                
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":"ชื่อวัคซีน :",
+                                                                                    "size":"sm",
+                                                                                    "color":"#555555",
+                                                                                    "flex":0
+                                                                                },
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":"-",
+                                                                                    "size":"sm",
+                                                                                    "color":"#111111",
+                                                                                    "align":"end"
+                                                                                },
+                                                                                
+                                                                                
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                                {
+                                                                                "type":"text",
+                                                                                "text":"รุ่นการผลิต :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555"
+                                                                                },
+                                                                                {
+                                                                                "type":"text",
+                                                                                "text":"-",
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                    
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type":"separator",
+                                                                    "color":"#ffffff",
+                                                                    "margin":"md"
+                                                                },
+                                                            
+                                                            ]
+                                                        },
+                                                        "styles":{
+                                                            "footer":{
+                                                                "separator":True
+                                                            }
+                                                        }
+                                                    },
+
+                                                ]
+                                            }
+                                        }
+                                    ]
+                            
+                                }
+                            else :
+                                text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_profile_detail_askinout)
+                                
+                                body = {    
+                                    "replyToken": str(devicetoken),
+                                    "messages": [
+                                        {
+                                            "type":"flex",
+                                            "altText":Util().intent_time_work,
+                                            "contents":{
+                                                "type":"carousel",
+                                                "contents":[
+                                                    
+                                                    {
+                                                        "type": "bubble",
+                                                        # "size": "giga",
+                                                        "direction": "ltr",
+                                                        "body": {
+                                                            "type": "box",
+                                                            "layout": "vertical",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "box",
+                                                                    "layout": "vertical",
+                                                                    "contents": [
+                                                    
+                                                                        {
+                                                                            "type": "text",
+                                                                            "text": name,
+                                                                            "weight": "bold",
+                                                                            "size": "lg",
+                                                                            "margin": "none",
+                                                                            "contents": []
+                                                                        },
+                                                                        {
+                                                                            "type": "text",
+                                                                            "text": "วันที่ : "+str(date),
+                                                                            "size": "sm",
+                                                                            "color": "#D39D2B",
+                                                                            "contents": []
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "vertical",
+                                                                            "spacing": "sm",
+                                                                            "margin": "xs",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "margin": "md",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "เวลาเข้างาน :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": in_time,
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "ด้วย  :",
+                                                                            
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": in_type,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "สถานที่  :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": in_place,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "wrap": True,
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "spacing": "sm",
+                                                                            "layout": "vertical",
+                                                                            "margin": "xs",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "margin": "md",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "เวลาออกงาน  :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": out_time,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "ด้วย  :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": out_type,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "สถานที่  :",
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": out_place,
+                                                                                    "size": "sm",
+                                                                                    "align": "start",
+                                                                                    "wrap": True,
+                                                                                    "contents": []
+                                                                                }
+                                                                                ]
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "footer": {
+                                                            "type": "box",
+                                                            "layout": "horizontal",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "action": {
+                                                                        "type": "uri",
+                                                                        "label": "รายละเอียด",
+                                                                        "uri": Util().liff_url_profile_detail_askinout,
+                                                                        "altUri": {
+                                                                            "desktop" : Util().url_timeat
+                                                                        }
+                                                                    },
+                                                                    
+                                                                    "color": "#D39D2B",
+                                                                    "style": "primary"
+                                                                }
+                                                            ]
+                                                        }
+                                                    } , 
+
+                                                    {
+                                                        "type": "bubble",
+                                                        "direction": "ltr",
+                                                        "body": {
+                                                            "type": "box",
+                                                            "layout": "vertical",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "box",
+                                                                    "layout": "vertical",
+                                                                    "contents": [
+                                                    
+                                                                        {
+                                                                            "type": "text",
+                                                                            "text": Util().intent_leave,
+                                                                            "weight": "bold",
+                                                                            "size": "lg",
+                                                                            "margin": "none",
+                                                                            "contents": []
+                                                                        },
+                                                                        {
+                                                                            "type": "text",
+                                                                            "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
+                                                                            "size": "sm",
+                                                                            "color": "#D39D2B",
+                                                                            "contents": []
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+                                                                        {
+                                                                            "type": "box",
+                                                                            "layout": "vertical",
+                                                                            "spacing": "sm",
+                                                                            "margin": "xs",
+                                                                            "contents": [
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "vertical",
+                                                                                "margin": "md",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "วันลาพักผ่อนรวมที่โอนมาจากปีที่แล้ว : "+str(Leaveyear['result']['leave_head']['TotalLeaveAvailable']),
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                
+                                                                                ]
+                                                                            },
+
+                                                                            {
+                                                                                "type": "separator",
+                                                                                "margin": "md"
+                                                                            },
+
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "วันลาพักผ่อนที่ใช้ไปแล้ว  : "+str(Leaveyear['result']['leave_head']['TotalLeave']),
+                                                                            
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                
+                                                                                ]
+                                                                            },
+
+                                                                            {
+                                                                                "type": "separator",
+                                                                                "margin": "md"
+                                                                            },
+
+                                                                            {
+                                                                                "type": "box",
+                                                                                "layout": "horizontal",
+                                                                                "contents": [
+                                                                                {
+                                                                                    "type": "text",
+                                                                                    "text": "วันลาพักผ่อนคงเหลือ  : "+str(Leaveyear['result']['leave_head']['SumLeaveYear']),
+                                                                                    "size": "sm",
+                                                                                    "contents": []
+                                                                                },
+                                                                                
+                                                                                ]
+                                                                            }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "separator",
+                                                                            "margin": "md"
+                                                                        },
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "footer": {
+                                                            "type": "box",
+                                                            "layout": "horizontal",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "action": {
+                                                                        "type": "uri",
+                                                                        "label": "รายละเอียด",
+                                                                        "uri": Util().liff_url_profile_detail_leave,
+                                                                        "altUri": {
+                                                                            "desktop" : Util().profile_detail_leaveyear
+                                                                        }
+                                                                    },
+                                                                    
+                                                                    "color": "#D39D2B",
+                                                                    "style": "primary"
+                                                                }
+                                                            ]
+                                                        }
+                                                    } , 
+
+                                                  
+
+                                                    {
+                                                        "type":"bubble",
+                                                        "hero":{
+                                                            "type":"image",
+                                                            "url":"https://scontent.fbkk7-2.fna.fbcdn.net/v/t1.6435-9/167258776_837023323694806_5324680110308309427_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=973b4a&_nc_ohc=avJfTmaIGwAAX9RCiJ-&_nc_ht=scontent.fbkk7-2.fna&oh=92cc72e1eda55b114032f55e3df6918f&oe=614C8A7E",
+                                                            "size":"full",
+                                                            "aspectRatio":"10:3",
+                                                            "aspectMode":"fit"
+                                                        },
+                                                        "body":{
+                                                            "type":"box",
+                                                            "layout":"vertical",
+                                                            "backgroundColor":"#d9ebce",
+                                                            "contents":[
+                                                                
+                                                                {
+                                                                    "type":"text",
+                                                                    "text":str(data_vaccine["Name"]),
+                                                                    "size":"md",
+                                                                    "color":"#000000",
+                                                                    "margin":"sm",
+                                                                    "wrap":True
+                                                                },
+
+                                                                {
+                                                                    "type":"separator",
+                                                                    "color":"#ffffff",
+                                                                    "margin":"md"
+                                                                },
+                                                                {
+                                                                    "type":"box",
+                                                                    "layout":"vertical",
+                                                                    "margin":"sm",
+                                                                    "spacing":"sm",
+                                                                    "contents":[
+
+                                                                        
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                            
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":"วันที่รับวัคซีน (เข็มที่ 1) :",
+                                                                                    "size":"sm",
+                                                                                    "color":"#555555",
+                                                                                    "flex":0
+                                                                                },
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text": str(data_vaccine["VaccineDate1"]),
+                                                                                    "size":"sm",
+                                                                                    "color":"#111111",
+                                                                                    "align":"end",
+                                                                                    "wrap": True,
+                                                                                },
+                                                                                
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":"ชื่อวัคซีน :",
+                                                                                    "size":"sm",
+                                                                                    "color":"#555555",
+                                                                                    "flex":0
+                                                                                },
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":str(data_vaccine["VaccineName1"]),
+                                                                                    "size":"sm",
+                                                                                    "color":"#111111",
+                                                                                    "align":"end",
+                                                                                    "wrap": True,
+                                                                                },
+                                                                                
+                                                                                
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                                {
+                                                                                "type":"text",
+                                                                                "text":"รุ่นการผลิต :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555"
+                                                                                },
+                                                                                {
+                                                                                "type":"text",
+                                                                                "text":str(data_vaccine["VaccineLot1"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        
+                                                                        
+                                                    
+                                                                        {
+                                                                            "type":"separator",
+                                                                            "color":"#ffffff",
+                                                                            "margin":"md"
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                            
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":"วันที่รับวัคซีน (เข็มที่ 2) :",
+                                                                                    "size":"sm",
+                                                                                    "color":"#555555",
+                                                                                    "flex":0
+                                                                                },
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text": str(data_vaccine["VaccineDate2"]),
+                                                                                    "size":"sm",
+                                                                                    "color":"#111111",
+                                                                                    "align":"end"
+                                                                                },
+                                                                                
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":"ชื่อวัคซีน :",
+                                                                                    "size":"sm",
+                                                                                    "color":"#555555",
+                                                                                    "flex":0
+                                                                                },
+                                                                                {
+                                                                                    "type":"text",
+                                                                                    "text":str(data_vaccine["VaccineName2"]),
+                                                                                    "size":"sm",
+                                                                                    "color":"#111111",
+                                                                                    "align":"end"
+                                                                                },
+                                                                                
+                                                                                
+                                                                            ]
+                                                                        },
+
+                                                                        {
+                                                                            "type":"box",
+                                                                            "layout":"horizontal",
+                                                                            "contents":[
+                                                                                {
+                                                                                "type":"text",
+                                                                                "text":"รุ่นการผลิต :",
+                                                                                "size":"sm",
+                                                                                "color":"#555555"
+                                                                                },
+                                                                                {
+                                                                                "type":"text",
+                                                                                "text":str(data_vaccine["VaccineLot2"]),
+                                                                                "size":"sm",
+                                                                                "color":"#111111",
+                                                                                "align":"end",
+                                                                                "wrap": True,
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                    
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type":"separator",
+                                                                    "color":"#ffffff",
+                                                                    "margin":"md"
+                                                                },
+                                                            
+                                                            ]
+                                                        },
+                                                        "styles":{
+                                                            "footer":{
+                                                                "separator":True
+                                                            }
+                                                        }
+                                                    },
+
+                                                ]
+                                            }
+                                        }
+                                    ]
+                            
+                                }
                 else:
                     text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_profile_detail_askinout)
                 

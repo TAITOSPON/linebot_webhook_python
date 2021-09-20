@@ -112,7 +112,7 @@ class ResponsTimeAtFlex:
             except:
                 print("except")
 
-            text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_time_att_detail)
+            text = str("คุณ "+name+"\nวันที่ : "+str(date)+"\n\nเวลาเข้างาน : "+in_time+"\nด้วย : "+in_type+"\nสถานที่ : "+in_place+"\n____________________\nเวลาออกงาน : "+out_time+" \nด้วย : "+out_type+"\nสถานที่ : "+out_place+"\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_profile_detail_askinout)
             
             body = {    
                 "replyToken": str(devicetoken),
@@ -123,207 +123,205 @@ class ResponsTimeAtFlex:
                         "contents": 
 
 
-                    {
-                        "type": "bubble",
-                        # "size": "giga",
-                        "direction": "ltr",
-                        "body": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                            {
+                        {
+                            "type": "bubble",
+                            # "size": "giga",
+                            "direction": "ltr",
+                            "body": {
                                 "type": "box",
                                 "layout": "vertical",
                                 "contents": [
-               
-                                {
-                                    "type": "text",
-                                    "text": name,
-                                    "weight": "bold",
-                                    "size": "lg",
-                                    "margin": "none",
-                                    "contents": []
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "วันที่ : "+str(date),
-                                    "size": "sm",
-                                    "color": "#D39D2B",
-                                    "contents": []
-                                },
-                                {
-                                    "type": "separator",
-                                    "margin": "md"
-                                },
-                                {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "spacing": "sm",
-                                    "margin": "xs",
-                                    "contents": [
                                     {
                                         "type": "box",
-                                        "layout": "horizontal",
-                                        "margin": "md",
+                                        "layout": "vertical",
                                         "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "เวลาเข้างาน :",
-                                            "size": "sm",
-                                            "contents": []
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": in_time,
-                                            "size": "sm",
-                                            "contents": []
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "ด้วย  :",
-                                       
-                                            "size": "sm",
-                                            "contents": []
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": in_type,
-                                            "size": "sm",
-                                            "align": "start",
-                                            "contents": []
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "สถานที่  :",
-                                            "size": "sm",
-                                            "contents": []
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": in_place,
-                                            "size": "sm",
-                                            "align": "start",
-                                            "wrap": True,
-                                            "contents": []
-                                        }
+                        
+                                            {
+                                                "type": "text",
+                                                "text": name,
+                                                "weight": "bold",
+                                                "size": "lg",
+                                                "margin": "none",
+                                                "contents": []
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "วันที่ : "+str(date),
+                                                "size": "sm",
+                                                "color": "#D39D2B",
+                                                "contents": []
+                                            },
+                                            {
+                                                "type": "separator",
+                                                "margin": "md"
+                                            },
+                                            {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "spacing": "sm",
+                                                "margin": "xs",
+                                                "contents": [
+                                                {
+                                                    "type": "box",
+                                                    "layout": "horizontal",
+                                                    "margin": "md",
+                                                    "contents": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "เวลาเข้างาน :",
+                                                        "size": "sm",
+                                                        "contents": []
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": in_time,
+                                                        "size": "sm",
+                                                        "contents": []
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "box",
+                                                    "layout": "horizontal",
+                                                    "contents": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "ด้วย  :",
+                                                
+                                                        "size": "sm",
+                                                        "contents": []
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": in_type,
+                                                        "size": "sm",
+                                                        "align": "start",
+                                                        "contents": []
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "box",
+                                                    "layout": "horizontal",
+                                                    "contents": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "สถานที่  :",
+                                                        "size": "sm",
+                                                        "contents": []
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": in_place,
+                                                        "size": "sm",
+                                                        "align": "start",
+                                                        "wrap": True,
+                                                        "contents": []
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                "type": "separator",
+                                                "margin": "md"
+                                            },
+                                            {
+                                                "type": "box",
+                                                "spacing": "sm",
+                                                "layout": "vertical",
+                                                "margin": "xs",
+                                                "contents": [
+                                                {
+                                                    "type": "box",
+                                                    "layout": "horizontal",
+                                                    "margin": "md",
+                                                    "contents": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "เวลาออกงาน  :",
+                                                        "size": "sm",
+                                                        "contents": []
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": out_time,
+                                                        "size": "sm",
+                                                        "align": "start",
+                                                        "contents": []
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "box",
+                                                    "layout": "horizontal",
+                                                    "contents": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "ด้วย  :",
+                                                        "size": "sm",
+                                                        "contents": []
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": out_type,
+                                                        "size": "sm",
+                                                        "align": "start",
+                                                        "contents": []
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "box",
+                                                    "layout": "horizontal",
+                                                    "contents": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "สถานที่  :",
+                                                        "size": "sm",
+                                                        "contents": []
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": out_place,
+                                                        "size": "sm",
+                                                        "align": "start",
+                                                        "wrap": True,
+                                                        "contents": []
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                "type": "separator",
+                                                "margin": "md"
+                                            }
                                         ]
                                     }
-                                    ]
-                                },
-                                {
-                                    "type": "separator",
-                                    "margin": "md"
-                                },
-                                {
-                                    "type": "box",
-                                    "spacing": "sm",
-                                    "layout": "vertical",
-                                    "margin": "xs",
-                                    "contents": [
+                                ]
+                            },
+                            "footer": {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
                                     {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "margin": "md",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "เวลาออกงาน  :",
-                                            "size": "sm",
-                                            "contents": []
+                                        "type": "button",
+                                        "action": {
+                                            "type": "uri",
+                                            "label": "รายละเอียด",
+                                            "uri": Util().liff_url_profile_detail_askinout,
+                                            "altUri": {
+                                                "desktop" : Util().url_timeat
+                                            }
                                         },
-                                        {
-                                            "type": "text",
-                                            "text": out_time,
-                                            "size": "sm",
-                                            "align": "start",
-                                            "contents": []
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "ด้วย  :",
-                                            "size": "sm",
-                                            "contents": []
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": out_type,
-                                            "size": "sm",
-                                            "align": "start",
-                                            "contents": []
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "สถานที่  :",
-                                            "size": "sm",
-                                            "contents": []
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": out_place,
-                                            "size": "sm",
-                                            "align": "start",
-                                            "wrap": True,
-                                            "contents": []
-                                        }
-                                        ]
+                                        
+                                        "color": "#D39D2B",
+                                        "style": "primary"
                                     }
-                                    ]
-                                },
-                                {
-                                    "type": "separator",
-                                    "margin": "md"
-                                }
                                 ]
                             }
-                            ]
-                        },
-                        "footer": {
-                            "type": "box",
-                            "layout": "horizontal",
-                            "contents": [
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "uri",
-                                    "label": "รายละเอียด",
-                                    "uri": Util().liff_url_time_att_detail,
-                                    "altUri": {
-                                        "desktop" : Util().url_timeat
-                                    }
-                                },
-                                
-                                "color": "#D39D2B",
-                                "style": "primary"
-                            }
-                            ]
-                        }
                         }  
-
-
 
 
                     }     
@@ -335,7 +333,7 @@ class ResponsTimeAtFlex:
             
 
             name = str(respons["result"]["result_user"][0]["user_ad_name"])
-            text = str("คุณ "+name+"\n\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_time_att_detail)
+            text = str("คุณ "+name+"\n\n____________________\nคลิกดูรายละเอียดเวลาเข้าออกงาน\n"+Util().liff_url_profile_detail_askinout)
 
             body = {    
                 "replyToken": str(devicetoken),
@@ -388,7 +386,7 @@ class ResponsTimeAtFlex:
                                 "action": {
                                 "type": "uri",
                                 "label": "รายละเอียด",
-                                "uri": Util().liff_url_time_att_detail
+                                "uri": Util().liff_url_profile_detail_askinout
                                 },
                                 "color": "#D39D2B",
                                 "style": "primary"

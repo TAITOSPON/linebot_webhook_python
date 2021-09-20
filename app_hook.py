@@ -13,12 +13,15 @@ from python.Respons_user.ResponsMenu import ResponsMenu
 from python.Respons_user.ResponsQuickReply import ResponsQuickReply
 from python.Respons_user.ResponsChecklogout import ResponsChecklogout
 from python.Respons_user.ResponsLogout import ResponsLogout
-from python.Respons_user.ResponsLeave import ResponsLeave
+
 from python.Respons_user.ResponsListItem import ResponsListItem
 from python.Respons_user.ResponsTimeAtFlex import ResponsTimeAtFlex
+from python.Respons_user.ResponsTimeAtFlexAndVaccine import ResponsTimeAtFlexAndVaccine
 from python.Respons_user.ResponsMemberFlex import ResponsMemberFlex
 from python.Respons_user.ResponsPushmessage import ResponsPushmessage
 from python.Respons_user.ResponsItemHos import ResponsItemHos
+
+from python.Respons_user.ResponsFlextest import ResponsFlextest
 
 
 from python.Api_backend.PostToDialog import PostToDialog
@@ -163,7 +166,7 @@ def checktextcase(body,text):
             if CheckUserLogin(body):
                 result_user = PostUserWithUid(user_uid)
                 user_ad_name = str(result_user[0]["user_ad_name"])
-                text = "สวัสดีคุณ "+user_ad_name+" \nขอต้อนรับเข้าสู่ระบบ TOAT CHATBOT \nนี่คือระบบต้นแบบที่จะช่วยคุณ"
+                text = "สวัสดีคุณ "+user_ad_name+" \nขอต้อนรับเข้าสู่ระบบ LINE TOAT CHATBOT \nนี่คือระบบที่ช่วยให้คุณทำงานได้เร็วขึ้น"
                 ResponsQuickReply(user,text)
             
             return True
@@ -197,7 +200,8 @@ def checktextcase(body,text):
 
         elif text == Util().intent_time_work:
             if CheckUserLogin(body):
-                ResponsTimeAtFlex(user,body)
+                # ResponsTimeAtFlex(user,body)
+                ResponsTimeAtFlexAndVaccine(user,body)
             return True
 
         elif text == Util().intent_time_att:
@@ -251,8 +255,9 @@ def checktextcase(body,text):
 
 
         elif text == "Nuengdev":
-    
-            ResponsReply(Util().serverToken,user,str(body))
+       
+            # ResponsFlextest(user,body)
+            ResponsReply(Util().serverToken,user,  str( body ))
             return True
 
         return False
