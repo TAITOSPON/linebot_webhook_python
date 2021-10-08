@@ -123,7 +123,7 @@ class ResponsHelpCenter:
                                                               
                                                                 {
                                                                     "type": "text",
-                                                                    "text": "รายงานปัญหา",
+                                                                    "text": "รายงานปัญหาในการใช้งาน",
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",

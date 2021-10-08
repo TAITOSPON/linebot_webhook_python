@@ -324,80 +324,19 @@ class ResponsMenu:
                                             "type": "box",
                                             "layout": "horizontal",
                                             "contents": [
-                                                {
-                                                    "type": "box",
-                                                    "layout": "vertical",
-                                                    "backgroundColor": "#D39D2B",
-                                                    "cornerRadius": "5px",
-                                                    "action": {
-                                                        "type": "uri",
-                                                        "label": "Action",
-                                                        "uri": "https://www.facebook.com/1816390398587022/posts/3714079538818089/"
-                                                    },
-                                                    "contents": [
-                                                        {
-                                                            "type": "spacer",
-                                                            "size": "xl"
-                                                        },
-                                                        {
-                                                            "type": "box",
-                                                            "layout": "baseline",
-                                                            "contents": [
-                                                                {
-                                                                    "type": "spacer"
-                                                                },
-
-                                                              
-                                                             
-                                                          
-
-                                                                {
-                                                                    "type": "text",
-                                                                    "text": " บ้านเราชาวยาสูบ",
-                                                                    "color": "#FFFFFFFF",
-                                                                    "align": "start",
-                                                                    "gravity": "center",
-                                                                    "offsetBottom": "2px",
-                                                                    "offsetStart": "2px",
-                                                                    "contents": []
-                                                                },
-
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/facebook_icon.png",
-                                                                    "size" : "xl"
-                                                                    
-                                                                }, 
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/trans.png",
-                                                                    "size" : "sm"
-                                                                }, 
-                                                               
-
-                                                            
-                                                             
-                                                            ]
-                                                        },
-                                                        {
-                                                            "type": "spacer",
-                                                            "size": "xl"
-                                                        }
-                                                    ]
-
-                                                },
+                        
 
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
-                                                    "margin": "xs",
+                                            
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
 
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://www.facebook.com/177054399691705/posts/932717964125341/"
+                                                        "uri": "https://www.facebook.com/177054399691705/posts/949355252461612/"
                                                     },
                                                     "contents": [
                                                         {

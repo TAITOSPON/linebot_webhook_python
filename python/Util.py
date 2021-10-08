@@ -29,6 +29,8 @@ class Util:
         self.liff_url_logout = "https://liff.line.me/1655109480-GoLo5myJ"
         self.liff_url_help_center = "https://liff.line.me/1655109480-jXW76xR8"
         self.liff_url_covid_emp_form = " https://liff.line.me/1655109480-VjdKrvBX"
+
+        self.liff_url_km_and_im = "https://liff.line.me/1655109480-Ka61NvXx"
         
        
 
