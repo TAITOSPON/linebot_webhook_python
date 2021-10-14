@@ -200,8 +200,8 @@ def checktextcase(body,text):
 
         elif text == Util().intent_time_work:
             if CheckUserLogin(body):
-                # ResponsTimeAtFlex(user,body)
-                ResponsTimeAtFlexAndVaccine(user,body)
+                ResponsTimeAtFlex(user,body)
+                # ResponsTimeAtFlexAndVaccine(user,body)
             return True
 
         elif text == Util().intent_time_att:

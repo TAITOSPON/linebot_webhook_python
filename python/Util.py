@@ -26,6 +26,8 @@ class Util:
         self.liff_url_profile_detail_searchtelephonenumber = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_SearchTelephoneNumber"  
         self.liff_url_profile_detail_askinout = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Askinout"  
         self.liff_url_profile_detail_taxt = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Tax"  
+        self.liff_url_profile_detail_lineoaformsettingtelephonenumber = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Lineoaformsettingtelephonenumber"  
+        
         self.liff_url_logout = "https://liff.line.me/1655109480-GoLo5myJ"
         self.liff_url_help_center = "https://liff.line.me/1655109480-jXW76xR8"
         self.liff_url_covid_emp_form = " https://liff.line.me/1655109480-VjdKrvBX"
@@ -37,6 +39,8 @@ class Util:
         self.url_profile_detail = "https://memberapp.toat.co.th/memberttm/"
         self.url_timeat = "https://change.toat.co.th/timeatt/"
         self.profile_detail_leaveyear = "https://memberapp.toat.co.th/memberttm/leaveyear"
+        self.profile_detail_lineoaformsettingtelephonenumber = "https://memberapp.toat.co.th/memberttm/lineoaformsettingtelephonenumber"
+        
         
         self.line_api_reply = "https://api.line.me/v2/bot/message/reply"
         self.line_api_push = "https://api.line.me/v2/bot/message/push"
@@ -53,6 +57,7 @@ class Util:
         self.intent_login = "เข้าสู่ระบบ"
         self.intent_profile_sys = "ระบบสมาชิก"
         self.intent_leave = "ข้อมูลการขาดลา"
+        self.edit_tel ="ปรับปรุงเบอร์โทรภายใน"
         self.intent_financial = "สลิปเงินเดือน"
         self.intent_searchtelephonenumber = "ค้นหาเบอร์โทรพนักงาน"
         self.intent_cooperativesaving = "สหกรณ์ฯยาสูบ"
@@ -72,6 +77,7 @@ class Util:
         self.api_log_out = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_logout"
         self.api_get_user_with_uid = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_with_uid"
         self.api_get_data_time_at_with_uid = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_TimeAt/TimeAt_feed"
+        self.api_get_user_datail_with_ad = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Member/Member_User_Profile_withAD"
 
 
         self.api_leave_get_year_for_select = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year_select"
