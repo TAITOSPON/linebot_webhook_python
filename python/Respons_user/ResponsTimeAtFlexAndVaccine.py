@@ -128,10 +128,10 @@ class ResponsTimeAtFlexAndVaccine:
             try:
                 if user_ad_code == "003599":
 
-                    data_vaccine = GetDataUserVaccine("003599")
+                    status,data_vaccine = GetDataUserVaccine("003599")
           
                 else:
-                    data_vaccine = GetDataUserVaccine(user_ad_code)
+                    status,data_vaccine = GetDataUserVaccine(user_ad_code)
       
                
 

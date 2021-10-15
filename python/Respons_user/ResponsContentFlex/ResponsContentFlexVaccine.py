@@ -11,7 +11,7 @@ class ResponsContentFlexVaccine:
 
         try:
             
-            data_vaccine = GetDataUserVaccine(user_ad_code)
+            status,data_vaccine = GetDataUserVaccine(user_ad_code)
 
             if  data_vaccine != "null": 
 
