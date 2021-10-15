@@ -516,7 +516,7 @@ class ResponsContentFlexVaccine:
                                     "separator":True
                                 }
                             }
-                        },
+                        }
 
 
                 else : #ไม่มีนัด

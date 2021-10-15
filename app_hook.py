@@ -37,6 +37,9 @@ from python.Controller.TimeThai import TimeThai
 
 from python.Respons_user.ResponsHelpCenter import ResponsHelpCenter
 
+from python.Respons_user.ResponsContentFlex.ResponsContentFlexVaccine import ResponsContentFlexVaccine
+
+
 
 app = Flask(__name__)
 
@@ -200,8 +203,8 @@ def checktextcase(body,text):
 
         elif text == Util().intent_time_work:
             if CheckUserLogin(body):
-                ResponsTimeAtFlex(user,body)
-                # ResponsTimeAtFlexAndVaccine(user,body)
+                # ResponsTimeAtFlex(user,body)
+                ResponsTimeAtFlexAndVaccine(user,body)
             return True
 
         elif text == Util().intent_time_att:
@@ -255,9 +258,11 @@ def checktextcase(body,text):
 
 
         elif text == "Nuengdev":
-       
+            ResponsTimeAtFlex(user,body)
+
+            # status_flex_vaccine,content_vaccine = ResponsContentFlexVaccine("002906")
             # ResponsFlextest(user,body)
-            ResponsReply(Util().serverToken,user,  str( body ))
+            # ResponsReply(Util().serverToken,user,  str(content_vaccine ))
             return True
 
         return False
