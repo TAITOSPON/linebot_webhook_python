@@ -29,11 +29,13 @@ from python.Api_backend.PostCheckLogin import PostCheckLogin
 from python.Api_backend.PostLogout import PostLogout
 from python.Api_backend.PostUserWithUid import PostUserWithUid
 
+
+
 from python.Controller.CheckUserLogin import CheckUserLogin
 from python.Controller.Leave import Leave
 from python.Controller.TimeAt import TimeAt
 from python.Controller.TimeThai import TimeThai
-
+from python.Controller.CheckPermitSaleReport import CheckPermitSaleReport
 
 from python.Respons_user.ResponsHelpCenter import ResponsHelpCenter
 
@@ -217,6 +219,11 @@ def checktextcase(body,text):
 
         elif text == Util().intent_menu:
             ResponsMenu(Util().serverToken,user)
+            return True
+
+        elif text == Util().work_system:
+            if CheckUserLogin(body):
+                CheckPermitSaleReport(user,user_uid)
             return True
         
         elif text == Util().intent_hos_ben:

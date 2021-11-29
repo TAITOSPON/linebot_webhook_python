@@ -34,7 +34,7 @@ class Util:
 
         self.liff_url_km_and_im = "https://liff.line.me/1655109480-Ka61NvXx"
         
-       
+        self.liff_url_work_system_report_sale = "line://app/1655109480-k7MoQ9jP?liff.state=SystemWorkPage%2FSystemWork_Sale_report"
 
         self.url_profile_detail = "https://memberapp.toat.co.th/memberttm/"
         self.url_timeat = "https://change.toat.co.th/timeatt/"
@@ -70,14 +70,21 @@ class Util:
         self.intent_hos_ben = "รพ.สวนเบญฯ"
         self.intent_covid_form ="ประเมินความเสี่ยงโควิด19"
         self.intent_covid_confrim ="ยืนยันพนักงานประเมินความเสี่ยง"
-        self.help_center ="ศูนย์ช่วยเหลือ"
+        self.help_center = "ศูนย์ช่วยเหลือ"
+        self.help_rules = "กฎระเบียบ ยสท."
+        self.work_system = "ระบบงาน ยสท."
         
+        self.help_rules_link = "https://datastudio.google.com/u/0/reporting/e8d25a8f-c147-439e-a2cf-2e301cd855ff/page/p_6ohwqwbbnc?s=qJ-q59gnbhU"
+        self.facebook_hos_link = "https://www.facebook.com/177054399691705/posts/953322305398240/"
+    
+
         # path backend
         self.api_check_login = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_check_login"
         self.api_log_out = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_logout"
         self.api_get_user_with_uid = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_with_uid"
         self.api_get_data_time_at_with_uid = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_TimeAt/TimeAt_feed"
         self.api_get_user_datail_with_ad = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Member/Member_User_Profile_withAD"
+        self.api_check_permit_sale_report = "https://change.toat.co.th/api_list/index.php/api/users/chkPermit"
 
 
         self.api_leave_get_year_for_select = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year_select"
