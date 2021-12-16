@@ -314,7 +314,6 @@ class ResponsMenu:
                                 },
 
                                 
-
                                 {
                                     "type": "box",
                                     "margin": "xs",
@@ -324,19 +323,18 @@ class ResponsMenu:
                                             "type": "box",
                                             "layout": "horizontal",
                                             "contents": [
-                        
-
+                                                
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
-                                            
+                                                    # "margin": "xs",
                                                     "backgroundColor": "#D39D2B",
                                                     "cornerRadius": "5px",
 
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "Action",
-                                                        "uri": "https://www.facebook.com/177054399691705/posts/953322305398240/"
+                                                        "uri": Util().facebook_hos_link
                                                     },
                                                     "contents": [
                                                         {
@@ -384,12 +382,61 @@ class ResponsMenu:
                                                         }
                                                     ]
                                                    
-                                                }
+                                                },
+
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "margin": "xs",
+                                                    "backgroundColor": "#D39D2B",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": Util().help_rules_link,
+                                                        "altUri": {
+                                                            "desktop" : Util().help_rules_link
+                                                        }
+                                                    },
+                                                       
+                                            
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                            
+                                                                {
+                                                                    "type": "text",
+                                                                    "text":  Util().help_rules,
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                },
+
                                             ]
                                         }
                                     ]
                                 },
-
+              
                                 {
                                     "type": "box",
                                     "margin": "xs",
@@ -493,6 +540,70 @@ class ResponsMenu:
                                     ]
                                 },
 
+                                {
+                                    "type": "box",
+                                    "margin": "xs",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "contents": [
+                                                
+                                                {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                            
+                                                    "backgroundColor": "#d02030",
+                                                    "cornerRadius": "5px",
+
+                                                    "action": {
+                                                        "type":"message",
+                                                        "label": Util().work_system,
+                                                        "text": Util().work_system
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+
+                                                                  
+                                                          
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": Util().work_system,
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                },
+
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                   
+                                                }, 
+
+                                        
+
+                                            ]
+                                        }
+                                    ]
+                                },
 
                                 
                               

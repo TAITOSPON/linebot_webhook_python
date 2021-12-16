@@ -38,6 +38,7 @@ class Util:
 
         self.url_profile_detail = "https://memberapp.toat.co.th/memberttm/"
         self.url_timeat = "https://change.toat.co.th/timeatt/"
+        self.url_member_tax = "https://memberapp.toat.co.th/memberttm/tax/"
         self.profile_detail_leaveyear = "https://memberapp.toat.co.th/memberttm/leaveyear"
         self.profile_detail_lineoaformsettingtelephonenumber = "https://memberapp.toat.co.th/memberttm/lineoaformsettingtelephonenumber"
         
