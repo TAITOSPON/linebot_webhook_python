@@ -76,7 +76,7 @@ class Util:
         self.work_system = "ระบบงาน ยสท."
         
         self.help_rules_link = "https://datastudio.google.com/u/0/reporting/e8d25a8f-c147-439e-a2cf-2e301cd855ff/page/p_6ohwqwbbnc?s=qJ-q59gnbhU"
-        self.facebook_hos_link = "https://www.facebook.com/177054399691705/posts/953322305398240/"
+        self.facebook_hos_link = "https://www.facebook.com/177054399691705/posts/995900297807107/"
     
 
         # path backend

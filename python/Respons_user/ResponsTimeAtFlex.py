@@ -37,7 +37,7 @@ class ResponsTimeAtFlex:
                     "contents":[
                         
                         content_time,
-                        content_edit_taxt,
+                        # content_edit_taxt,
                         content_edit_tel,
                         content_leave,
                         content_vaccine,
@@ -50,7 +50,7 @@ class ResponsTimeAtFlex:
                     "contents":[
                         
                         content_time,
-                        content_edit_taxt,
+                        # content_edit_taxt,
                         content_edit_tel,
                         content_leave,
             
@@ -65,7 +65,7 @@ class ResponsTimeAtFlex:
                     "contents":[
                         
                         content_time,
-                        content_edit_taxt,
+                        # content_edit_taxt,
                         content_edit_tel,
                         content_vaccine,
 
@@ -78,7 +78,7 @@ class ResponsTimeAtFlex:
                     "contents":[
                         
                         content_time,
-                        content_edit_taxt,
+                        # content_edit_taxt,
                         content_edit_tel,
                         
                     ]

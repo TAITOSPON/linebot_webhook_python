@@ -332,9 +332,13 @@ class ResponsMenu:
                                                     "cornerRadius": "5px",
 
                                                     "action": {
-                                                        "type": "uri",
-                                                        "label": "Action",
-                                                        "uri": Util().facebook_hos_link
+                                                        # "type": "uri",
+                                                        # "label": "Action",
+                                                        # "uri": Util().facebook_hos_link
+                                                        "type":"message",
+                                                        "label": Util().intent_hos_ben,
+                                                        "text": Util().intent_hos_ben
+                                                       
                                                     },
                                                     "contents": [
                                                         {

@@ -227,7 +227,7 @@ def checktextcase(body,text):
             return True
         
         elif text == Util().intent_hos_ben:
-            ResponsItemHos(user)
+            ResponsItemHos(user,body)
             return True
         
         elif text == Util().intent_covid:
