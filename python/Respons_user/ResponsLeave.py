@@ -54,7 +54,7 @@ class ResponsLeave:
                                     "label": "ข้อมูลการขาด - ลา",
                                     "data": str(data)
                                 },
-                                "color": "#D39D2B",
+                                "color": "#d3af04",
                                 "style": "primary"
                             },
                             {
@@ -65,7 +65,7 @@ class ResponsLeave:
                                     "label": "บันทึกใบลา",
                                     "uri": Util().liff_url_create_leave
                                 },
-                                "color": "#D39D2B",
+                                "color": "#d3af04",
                                 "style": "primary"
                              
                             }

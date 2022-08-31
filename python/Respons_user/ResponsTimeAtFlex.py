@@ -9,7 +9,7 @@ from python.Respons_user.ResponsContentFlex.ResponsContentFlexEditTaxt import Re
 from python.Respons_user.ResponsContentFlex.ResponsContentFlexEditTel import ResponsContentFlexEditTel
 from python.Respons_user.ResponsContentFlex.ResponsContentFlexLeave import ResponsContentFlexLeave
 from python.Respons_user.ResponsContentFlex.ResponsContentFlexVaccine import ResponsContentFlexVaccine
-
+from python.Respons_user.ResponsContentFlex.ResponsContentFlexDoctorAppointment import ResponsContentFlexDoctorAppointment
 
 
 class ResponsTimeAtFlex:
@@ -22,68 +22,127 @@ class ResponsTimeAtFlex:
         status_flex_leave,content_leave = ResponsContentFlexLeave(body)
 
         user_ad_code = str(respons_timeatt["result"]["result_user"][0]["user_ad_code"])
+        # name = str(respons_timeatt["result"]["result_user"][0]["user_ad_name"])
+
         status_flex_vaccine,content_vaccine = ResponsContentFlexVaccine(user_ad_code)
 
         status_flex_edittel,content_edit_tel = ResponsContentFlexEditTel(user_ad_code)
 
         status_flex_edittaxt,content_edit_taxt = ResponsContentFlexEditTaxt(user_ad_code)   
 
+        status_flex_doctor_appointment,content_doctor_appointment = ResponsContentFlexDoctorAppointment(user_ad_code)
+
         if status_flex_leave == "normal":
             
             if status_flex_vaccine == "normal":
+                if status_flex_doctor_appointment == "normal":
                     
-                contents = {
-                    "type":"carousel",
-                    "contents":[
-                        
-                        content_time,
-                        # content_edit_taxt,
-                        content_edit_tel,
-                        content_leave,
-                        content_vaccine,
+                    contents = {
+                        "type":"carousel",
+                        "contents":[
+                            
+                            content_time,
+                            # content_edit_taxt,
+                            # content_edit_tel,
+                            content_doctor_appointment,
+                            content_leave,
+                            content_vaccine,
+                    
 
-                    ]
-                }
+                        ]
+                    }
+                else: 
+                    contents = {
+                        "type":"carousel",
+                        "contents":[
+                            
+                            content_time,
+                            # content_edit_taxt,
+                            # content_edit_tel,
+                            content_leave,
+                            content_vaccine,                    
+
+                        ]
+                    }
             else :
-                contents = {
-                    "type":"carousel",
-                    "contents":[
-                        
-                        content_time,
-                        # content_edit_taxt,
-                        content_edit_tel,
-                        content_leave,
-            
-                    ]
-                }
+                if status_flex_doctor_appointment == "normal":
+                    contents = {
+                        "type":"carousel",
+                        "contents":[
+                            
+                            content_time,
+                            # content_edit_taxt,
+                            # content_edit_tel,
+                            content_doctor_appointment,
+                            content_leave,
+                           
+                        ]
+                    }
+                else:
+                    contents = {
+                        "type":"carousel",
+                        "contents":[
+                            
+                            content_time,
+                            # content_edit_taxt,
+                            # content_edit_tel,
+                            content_leave,
+                            
+                        ]
+                    } 
         else:
 
             if status_flex_vaccine == "normal":
+                if status_flex_doctor_appointment == "normal":  
+                    contents = {
+                        "type":"carousel",
+                        "contents":[
+                            
+                            content_time,
+                            # content_edit_taxt,
+                            # content_edit_tel,
+                            content_doctor_appointment,
+                            content_vaccine,
+                         
+
+                        ]
+                    }
+                else:
+                    contents = {
+                        "type":"carousel",
+                        "contents":[
+                            
+                            content_time,
+                            # content_edit_taxt,
+                            # content_edit_tel,
+                            content_vaccine,
+
+                        ]
+                    } 
                     
-                contents = {
-                    "type":"carousel",
-                    "contents":[
-                        
-                        content_time,
-                        # content_edit_taxt,
-                        content_edit_tel,
-                        content_vaccine,
-
-                    ]
-                }
-                
             else :
-                contents = {
-                    "type":"carousel",
-                    "contents":[
-                        
-                        content_time,
-                        # content_edit_taxt,
-                        content_edit_tel,
-                        
-                    ]
-                }
-
+                if status_flex_doctor_appointment == "normal": 
+                    contents = {
+                        "type":"carousel",
+                        "contents":[
+                            
+                            content_time,
+                            # content_edit_taxt,
+                            # content_edit_tel,
+                            content_doctor_appointment,
+                        ]
+                    }
+                else:
+                    contents = {
+                        "type":"carousel",
+                        "contents":[
+                            
+                            content_time,
+                            # content_edit_taxt,
+                            # content_edit_tel,
+                            
+                        ]
+                    }
 
        
         body = {    

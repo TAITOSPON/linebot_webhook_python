@@ -40,7 +40,8 @@ class ResponsMenu:
                                             "contents": [
                                                 {
                                                     "type": "icon",
-                                                    "url": "https://www.thaitobacco.or.th/th/wp-content/uploads/2015/09/logo-ttm-admin.png",
+                                                    "url": "https://webhook.toat.co.th/linebot/web/src/800px_logo_full.png",
+                                                    # "url": "https://webhook.toat.co.th/linebot/web/src/toat_logo_2022.png",
                                                     "size": "5xl"
                                                 }
 
@@ -85,13 +86,13 @@ class ResponsMenu:
                                         }
                                     ]
                                 },
-                                {
-                                    "type": "text",
-                                    "text": "การยาสูบแห่งประเทศไทย",
-                                    "size": "xxs",
-                                    "color": "#AAAAAA",
-                                    "contents": []
-                                }
+                                # {
+                                #     "type": "text",
+                                #     "text": "การยาสูบแห่งประเทศไทย",
+                                #     "size": "xxs",
+                                #     "color": "#AAAAAA",
+                                #     "contents": []
+                                # }
                             ]
                         },
                         "footer": {
@@ -113,7 +114,7 @@ class ResponsMenu:
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#cf0a2c",
                                                     "cornerRadius": "5px",
                                                     "action": {
                                                         "type": "uri",
@@ -159,7 +160,7 @@ class ResponsMenu:
                                                     "type": "box",
                                                     "layout": "vertical",
                                                     "margin": "xs",
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#cf0a2c",
                                                     "cornerRadius": "5px",
                                                     "action": {
                                                         "type": "uri",
@@ -219,7 +220,7 @@ class ResponsMenu:
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#cf0a2c",
                                                     "cornerRadius": "5px",
                                                     "action": {
                                                         "type": "uri",
@@ -266,7 +267,7 @@ class ResponsMenu:
                                                     "type": "box",
                                                     "layout": "vertical",
                                                     "margin": "xs",
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#cf0a2c",
                                                     "cornerRadius": "5px",
                                                     "action": {
                                                         "type": "uri",
@@ -328,7 +329,7 @@ class ResponsMenu:
                                                     "type": "box",
                                                     "layout": "vertical",
                                                     # "margin": "xs",
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#cf0a2c",
                                                     "cornerRadius": "5px",
 
                                                     "action": {
@@ -392,7 +393,7 @@ class ResponsMenu:
                                                     "type": "box",
                                                     "layout": "vertical",
                                                     "margin": "xs",
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#cf0a2c",
                                                     "cornerRadius": "5px",
                                                     "action": {
                                                         "type": "uri",
@@ -455,7 +456,7 @@ class ResponsMenu:
                                                     "type": "box",
                                                     "layout": "vertical",
                                        
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#cf0a2c",
                                                     "cornerRadius": "5px",
                                                     "action": {
                                                         "type": "uri",
@@ -500,7 +501,7 @@ class ResponsMenu:
                                                     "type": "box",
                                                     "layout": "vertical",
                                                     "margin": "xs",
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#cf0a2c",
                                                     "cornerRadius": "5px",
                                                     "action": {
                                                         "type": "message",
@@ -558,7 +559,7 @@ class ResponsMenu:
                                                     "type": "box",
                                                     "layout": "vertical",
                                             
-                                                    "backgroundColor": "#d02030",
+                                                    "backgroundColor": "#d3af04",
                                                     "cornerRadius": "5px",
 
                                                     "action": {
@@ -608,7 +609,75 @@ class ResponsMenu:
                                         }
                                     ]
                                 },
+                                
+                                # {
+                                #     "type": "box",
+                                #     "margin": "xs",
+                                #     "layout": "vertical",
+                                #     "contents": [
+                                #         {
+                                #             "type": "box",
+                                #             "layout": "horizontal",
+                                #             "contents": [
+                                                
+                                #                 {
+                                #                     "type": "box",
+                                #                     "layout": "vertical",
+                                            
+                                #                     "backgroundColor": "#2098d0",
+                                #                     "cornerRadius": "5px",
 
+                                #                        "action": {
+                                #                         "type": "uri",
+                                #                         "label": "Action",
+                                #                         "uri": Util().research_software_link,
+                                #                         "altUri": {
+                                #                             "desktop" : Util().research_software_link
+                                #                         }
+                                #                     },
+                                                       
+                                #                     "contents": [
+                                #                         {
+                                #                             "type": "spacer",
+                                #                             "size": "xl"
+                                #                         },
+                                #                         {
+                                #                             "type": "box",
+                                #                             "layout": "baseline",
+                                #                             "contents": [
+                                #                                 {
+                                #                                     "type": "spacer"
+                                #                                 },
+
+                                                                  
+                                                          
+                                #                                 {
+                                #                                     "type": "text",
+                                #                                     "text": Util().research_software,
+                                #                                     "color": "#FFFFFFFF",
+                                #                                     "align": "start",
+                                #                                     "gravity": "center",
+                                #                                     "offsetBottom": "2px",
+                                #                                     "offsetStart": "2px",
+                                #                                     "contents": []
+                                #                                 },
+
+                                #                             ]
+                                #                         },
+                                #                         {
+                                #                             "type": "spacer",
+                                #                             "size": "xl"
+                                #                         }
+                                #                     ]
+                                                   
+                                #                 }, 
+
+                                        
+
+                                #             ]
+                                #         }
+                                #     ]
+                                # },
                                 
                               
                             ]

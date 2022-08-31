@@ -63,7 +63,7 @@ class ResponsChecklogout:
                                     "label": "ยืนยัน",
                                     "uri": Util().liff_url_logout
                                 },
-                                "color": "#D39D2B",
+                                "color": "#d3af04",
                                 "style": "primary"
                             }
                             

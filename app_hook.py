@@ -263,9 +263,9 @@ def checktextcase(body,text):
 
 
         elif text == "Nuengdev":
-            ResponsTimeAtFlex(user,body)
+            # ResponsTimeAtFlex(user,body)
            
-            # ResponsReply(Util().serverToken,user,  str(status ))
+            ResponsReply(Util().serverToken,user,  str(body ))
             return True
 
         return False

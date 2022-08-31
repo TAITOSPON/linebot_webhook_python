@@ -30,12 +30,15 @@ class Util:
         
         self.liff_url_logout = "https://liff.line.me/1655109480-GoLo5myJ"
         self.liff_url_help_center = "https://liff.line.me/1655109480-jXW76xR8"
-        self.liff_url_covid_emp_form = " https://liff.line.me/1655109480-VjdKrvBX"
+        self.liff_url_covid_emp_form = "https://liff.line.me/1655109480-VjdKrvBX"
 
         self.liff_url_km_and_im = "https://liff.line.me/1655109480-Ka61NvXx"
         
         self.liff_url_work_system_report_sale = "line://app/1655109480-k7MoQ9jP?liff.state=SystemWorkPage%2FSystemWork_Sale_report"
+        self.liff_url_work_system_timeatt_period = "line://app/1655109480-k7MoQ9jP?liff.state=SystemWorkPage%2FTimeattPeriod"
 
+        self.liff_url_detail_doctor_appointment = "line://app/1655109480-2XKglnaX?liff.state=UserDoctorAppointmentStart/"
+        
         self.url_profile_detail = "https://memberapp.toat.co.th/memberttm/"
         self.url_timeat = "https://change.toat.co.th/timeatt/"
         self.url_member_tax = "https://memberapp.toat.co.th/memberttm/tax/"
@@ -62,7 +65,7 @@ class Util:
         self.intent_financial = "สลิปเงินเดือน"
         self.intent_searchtelephonenumber = "ค้นหาเบอร์โทรพนักงาน"
         self.intent_cooperativesaving = "สหกรณ์ฯยาสูบ"
-        self.intent_time_work = "ตรวจสอบเวลาเข้างาน"
+        self.intent_time_work = "ตรวจสอบข้อมูล"
         self.intent_time_att = "บันทึกเวลา"
         self.intent_meet = "จองห้องประชุม"
         self.intent_menu  = "เมนู"
@@ -74,7 +77,9 @@ class Util:
         self.help_center = "ศูนย์ช่วยเหลือ"
         self.help_rules = "กฎระเบียบ ยสท."
         self.work_system = "ระบบงาน ยสท."
-        
+        self.research_software = "สำรวจการใช้งานซอฟแวร์"
+
+        self.research_software_link = "https://docs.google.com/forms/d/e/1FAIpQLSeMBFqJULCrY_n5G_7VzWkn8qxoHLN3xZ6cea5hRlyE9nlU6A/viewform"
         self.help_rules_link = "https://datastudio.google.com/u/0/reporting/e8d25a8f-c147-439e-a2cf-2e301cd855ff/page/p_6ohwqwbbnc?s=qJ-q59gnbhU"
         self.facebook_hos_link = "https://www.facebook.com/177054399691705/posts/995900297807107/"
     
@@ -91,7 +96,7 @@ class Util:
         self.api_leave_get_year_for_select = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year_select"
         self.api_leave_get_by_year = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_Leave/Leave_year"
 
-    
+        self.api_user_doctor_appointment = "https://mis.thaitobacco.or.th/TOAT_HOSPITAL/api/AAPPMNTPatience?"
 
         #text_leave
         self.Leave_info = "Leave_info"

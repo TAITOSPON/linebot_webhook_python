@@ -176,7 +176,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         "type": "text",
                                                                         "text": "วันที่ : "+str(date),
                                                                         "size": "sm",
-                                                                        "color": "#D39D2B",
+                                                                        "color": "#d3af04",
                                                                         "contents": []
                                                                     },
                                                                     {
@@ -344,7 +344,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                     }
                                                                 },
                                                                 
-                                                                "color": "#D39D2B",
+                                                                "color": "#d3af04",
                                                                 "style": "primary"
                                                             }
                                                         ]
@@ -375,7 +375,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         "type": "text",
                                                                         "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
                                                                         "size": "sm",
-                                                                        "color": "#D39D2B",
+                                                                        "color": "#d3af04",
                                                                         "contents": []
                                                                     },
                                                                     {
@@ -467,7 +467,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                     }
                                                                 },
                                                                 
-                                                                "color": "#D39D2B",
+                                                                "color": "#d3af04",
                                                                 "style": "primary"
                                                             }
                                                         ]
@@ -731,7 +731,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         "type": "text",
                                                                         "text": "วันที่ : "+str(date),
                                                                         "size": "sm",
-                                                                        "color": "#D39D2B",
+                                                                        "color": "#d3af04",
                                                                         "contents": []
                                                                     },
                                                                     {
@@ -899,7 +899,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                     }
                                                                 },
                                                                 
-                                                                "color": "#D39D2B",
+                                                                "color": "#d3af04",
                                                                 "style": "primary"
                                                             }
                                                         ]
@@ -930,7 +930,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         "type": "text",
                                                                         "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
                                                                         "size": "sm",
-                                                                        "color": "#D39D2B",
+                                                                        "color": "#d3af04",
                                                                         "contents": []
                                                                     },
                                                                     {
@@ -1022,7 +1022,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                     }
                                                                 },
                                                                 
-                                                                "color": "#D39D2B",
+                                                                "color": "#d3af04",
                                                                 "style": "primary"
                                                             }
                                                         ]
@@ -1362,7 +1362,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         "type": "text",
                                                                         "text": "วันที่ : "+str(date),
                                                                         "size": "sm",
-                                                                        "color": "#D39D2B",
+                                                                        "color": "#d3af04",
                                                                         "contents": []
                                                                     },
                                                                     {
@@ -1530,7 +1530,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                     }
                                                                 },
                                                                 
-                                                                "color": "#D39D2B",
+                                                                "color": "#d3af04",
                                                                 "style": "primary"
                                                             }
                                                         ]
@@ -1561,7 +1561,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         "type": "text",
                                                                         "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
                                                                         "size": "sm",
-                                                                        "color": "#D39D2B",
+                                                                        "color": "#d3af04",
                                                                         "contents": []
                                                                     },
                                                                     {
@@ -1653,7 +1653,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                     }
                                                                 },
                                                                 
-                                                                "color": "#D39D2B",
+                                                                "color": "#d3af04",
                                                                 "style": "primary"
                                                             }
                                                         ]
@@ -1978,7 +1978,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                             "type": "text",
                                                                             "text": "วันที่ : "+str(date),
                                                                             "size": "sm",
-                                                                            "color": "#D39D2B",
+                                                                            "color": "#d3af04",
                                                                             "contents": []
                                                                         },
                                                                         {
@@ -2146,7 +2146,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         }
                                                                     },
                                                                     
-                                                                    "color": "#D39D2B",
+                                                                    "color": "#d3af04",
                                                                     "style": "primary"
                                                                 }
                                                             ]
@@ -2177,7 +2177,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                             "type": "text",
                                                                             "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
                                                                             "size": "sm",
-                                                                            "color": "#D39D2B",
+                                                                            "color": "#d3af04",
                                                                             "contents": []
                                                                         },
                                                                         {
@@ -2269,7 +2269,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         }
                                                                     },
                                                                     
-                                                                    "color": "#D39D2B",
+                                                                    "color": "#d3af04",
                                                                     "style": "primary"
                                                                 }
                                                             ]
@@ -2519,7 +2519,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                             "type": "text",
                                                                             "text": "วันที่ : "+str(date),
                                                                             "size": "sm",
-                                                                            "color": "#D39D2B",
+                                                                            "color": "#d3af04",
                                                                             "contents": []
                                                                         },
                                                                         {
@@ -2687,7 +2687,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         }
                                                                     },
                                                                     
-                                                                    "color": "#D39D2B",
+                                                                    "color": "#d3af04",
                                                                     "style": "primary"
                                                                 }
                                                             ]
@@ -2718,7 +2718,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                             "type": "text",
                                                                             "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
                                                                             "size": "sm",
-                                                                            "color": "#D39D2B",
+                                                                            "color": "#d3af04",
                                                                             "contents": []
                                                                         },
                                                                         {
@@ -2810,7 +2810,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                                         }
                                                                     },
                                                                     
-                                                                    "color": "#D39D2B",
+                                                                    "color": "#d3af04",
                                                                     "style": "primary"
                                                                 }
                                                             ]
@@ -3060,7 +3060,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                         "type": "text",
                                                         "text": "วันที่ : "+str(date),
                                                         "size": "sm",
-                                                        "color": "#D39D2B",
+                                                        "color": "#d3af04",
                                                         "contents": []
                                                     },
                                                     {
@@ -3228,7 +3228,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                     }
                                                 },
                                                 
-                                                "color": "#D39D2B",
+                                                "color": "#d3af04",
                                                 "style": "primary"
                                             }
                                         ]
@@ -3278,7 +3278,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                     "type": "text",
                                                     "text": "วันที่ : "+str(date),
                                                     "size": "sm",
-                                                    "color": "#D39D2B",
+                                                    "color": "#d3af04",
                                                     "contents": []
                                                 },
                                                 {
@@ -3446,7 +3446,7 @@ class ResponsTimeAtFlexAndVaccine:
                                                 }
                                             },
                                             
-                                            "color": "#D39D2B",
+                                            "color": "#d3af04",
                                             "style": "primary"
                                         }
                                     ]
@@ -3498,7 +3498,7 @@ class ResponsTimeAtFlexAndVaccine:
                                     "type": "text",
                                     "text": " ",
                                     "size": "sm",
-                                    "color": "#D39D2B",
+                                    "color": "#d3af04",
                                     "contents": []
                                 },
                                
@@ -3517,7 +3517,7 @@ class ResponsTimeAtFlexAndVaccine:
                                 "label": "รายละเอียด",
                                 "uri": Util().liff_url_profile_detail_askinout
                                 },
-                                "color": "#D39D2B",
+                                "color": "#d3af04",
                                 "style": "primary"
                             }
                             ]

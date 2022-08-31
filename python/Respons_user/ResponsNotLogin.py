@@ -24,35 +24,45 @@ class ResponsNotLogin:
                         "type": "bubble",
                         "size": "kilo",
                         "direction": "ltr",
-                        "hero": {
-                            "type": "image",
-                            "url": "https://www.thaitobacco.or.th/th/wp-content/uploads/2015/09/logo-ttm-admin.png",
-                            "size": "full",
-                            "aspectRatio": "20:13",
-                        },
-                        "body": {
+                        "header": {
                             "type": "box",
                             "layout": "vertical",
-                            "spacing": "xs",
+                            "flex": 0,
                             "contents": [
                                 {
-                                    "type": "text",
-                                    "text": "คุณยังไม่ได้เข้าสู่ระบบ",
-                                    "weight": "bold",
-                                    "align": "center",
-                                    "gravity": "bottom",
-                                    "contents": []
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "กรุณาเข้าสู่ระบบก่อน",
-                                    "size": "xxs",
-                                    "color": "#AAAAAA",
-                                    "align": "center",
-                                    "contents": []
+                                    "type": "spacer"
                                 }
                             ]
                         },
+                        "hero": {
+                            "type": "image",
+                            "url": "https://webhook.toat.co.th/linebot/web/src/800px_logo_full.png",
+                            "size": "full",
+                            "aspectRatio": "20:13",
+                        },
+                        # "body": {
+                        #     "type": "box",
+                        #     "layout": "vertical",
+                        #     "spacing": "xs",
+                        #     "contents": [
+                        #         {
+                        #             "type": "text",
+                        #             "text": "คุณยังไม่ได้เข้าสู่ระบบ",
+                        #             "weight": "bold",
+                        #             "align": "center",
+                        #             "gravity": "bottom",
+                        #             "contents": []
+                        #         },
+                        #         {
+                        #             "type": "text",
+                        #             "text": "กรุณาเข้าสู่ระบบก่อน",
+                        #             "size": "xxs",
+                        #             "color": "#AAAAAA",
+                        #             "align": "center",
+                        #             "contents": []
+                        #         }
+                        #     ]
+                        # },
                         "footer": {
                             "type": "box",
                             "layout": "vertical",
@@ -69,7 +79,7 @@ class ResponsNotLogin:
                                         }
                                     },
                                     
-                                    "color": "#D39D2B",
+                                    "color": "#cf0a2c",
                                     "style": "primary"
                                 },
                                

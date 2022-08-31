@@ -520,8 +520,8 @@ class ResponsContentFlexVaccine:
 
 
                 else : #ไม่มีนัด
-                    
-                    if data_vaccine["VaccineDate3"] != "": #ครบ 3 เข็ม
+                      
+                    if data_vaccine["VaccineDate4"] != "": #ครบ 4 เข็ม
                         
                         body = {
                             "type":"bubble",
@@ -704,7 +704,7 @@ class ResponsContentFlexVaccine:
                                                 ]
                                             },
 
-                                                {
+                                            {
                                                 "type":"separator",
                                                 "color":"#ffffff",
                                                 "margin":"md"
@@ -776,7 +776,364 @@ class ResponsContentFlexVaccine:
                                                     }
                                                 ]
                                             },
+
+
+                                            {
+                                                "type":"separator",
+                                                "color":"#ffffff",
+                                                "margin":"md"
+                                            },
+
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                
+                                                    {
+                                                        "type":"text",
+                                                        "text":"วันที่รับวัคซีน (เข็มที่ 4) :",
+                                                        "size":"sm",
+                                                        "color":"#555555",
+                                                        "flex":0
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text": str(data_vaccine["VaccineDate4"]),
+                                                        "size":"sm",
+                                                        "color":"#111111",
+                                                        "align":"end"
+                                                    },
+                                                    
+                                                ]
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                    {
+                                                        "type":"text",
+                                                        "text":"ชื่อวัคซีน :",
+                                                        "size":"sm",
+                                                        "color":"#555555",
+                                                        "flex":0
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text":str(data_vaccine["VaccineName4"]),
+                                                        "size":"sm",
+                                                        "color":"#111111",
+                                                        "align":"end"
+                                                    },
+                                                    
+                                                    
+                                                ]
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                    {
+                                                    "type":"text",
+                                                    "text":"รุ่นการผลิต :",
+                                                    "size":"sm",
+                                                    "color":"#555555"
+                                                    },
+                                                    {
+                                                    "type":"text",
+                                                    "text":str(data_vaccine["VaccineLot4"]),
+                                                    "size":"sm",
+                                                    "color":"#111111",
+                                                    "align":"end",
+                                                    "wrap": True,
+                                                    }
+                                                ]
+                                            },
                                         
+                                        ]
+                                    },
+                                    {
+                                        "type":"separator",
+                                        "color":"#ffffff",
+                                        "margin":"md"
+                                    },
+                                
+                                ]
+                            },
+                            "styles":{
+                                "footer":{
+                                    "separator":True
+                                }
+                            }
+                        }
+                    
+                    else : 
+                        
+                        if data_vaccine["VaccineDate3"] != "": #ครบ 3 เข็ม
+                        
+                            body = {
+                            "type":"bubble",
+                            "hero":{
+                                "type":"image",
+                                "url":"https://webhook.toat.co.th/linebot/web/src/hos_1.jpg",
+                                "size":"full",
+                                "aspectRatio":"10:3",
+                                "aspectMode":"fit"
+                            },
+                            "body":{
+                                "type":"box",
+                                "layout":"vertical",
+                                "backgroundColor":"#d9ebce",
+                                "contents":[
+                                    
+                                    {
+                                        "type":"text",
+                                        "text":str(data_vaccine["Name"]),
+                                        "size":"md",
+                                        "color":"#000000",
+                                        "margin":"sm",
+                                        "wrap":True
+                                    },
+
+                                    {
+                                        "type":"separator",
+                                        "color":"#ffffff",
+                                        "margin":"md"
+                                    },
+                                    {
+                                        "type":"box",
+                                        "layout":"vertical",
+                                        "margin":"sm",
+                                        "spacing":"sm",
+                                        "contents":[
+
+                                            
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                
+                                                    {
+                                                        "type":"text",
+                                                        "text":"วันที่รับวัคซีน (เข็มที่ 1) :",
+                                                        "size":"sm",
+                                                        "color":"#555555",
+                                                        "flex":0
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text": str(data_vaccine["VaccineDate1"]),
+                                                        "size":"sm",
+                                                        "color":"#111111",
+                                                        "align":"end",
+                                                        "wrap": True,
+                                                    },
+                                                    
+                                                ]
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                    {
+                                                        "type":"text",
+                                                        "text":"ชื่อวัคซีน :",
+                                                        "size":"sm",
+                                                        "color":"#555555",
+                                                        "flex":0
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text":str(data_vaccine["VaccineName1"]),
+                                                        "size":"sm",
+                                                        "color":"#111111",
+                                                        "align":"end",
+                                                        "wrap": True,
+                                                    },
+                                                    
+                                                    
+                                                ]
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                    {
+                                                    "type":"text",
+                                                    "text":"รุ่นการผลิต :",
+                                                    "size":"sm",
+                                                    "color":"#555555"
+                                                    },
+                                                    {
+                                                    "type":"text",
+                                                    "text":str(data_vaccine["VaccineLot1"]),
+                                                    "size":"sm",
+                                                    "color":"#111111",
+                                                    "align":"end",
+                                                    "wrap": True,
+                                                    }
+                                                ]
+                                            },
+                                            
+                                            
+                        
+                                            {
+                                                "type":"separator",
+                                                "color":"#ffffff",
+                                                "margin":"md"
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                
+                                                    {
+                                                        "type":"text",
+                                                        "text":"วันที่รับวัคซีน (เข็มที่ 2) :",
+                                                        "size":"sm",
+                                                        "color":"#555555",
+                                                        "flex":0
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text": str(data_vaccine["VaccineDate2"]),
+                                                        "size":"sm",
+                                                        "color":"#111111",
+                                                        "align":"end"
+                                                    },
+                                                    
+                                                ]
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                    {
+                                                        "type":"text",
+                                                        "text":"ชื่อวัคซีน :",
+                                                        "size":"sm",
+                                                        "color":"#555555",
+                                                        "flex":0
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text":str(data_vaccine["VaccineName2"]),
+                                                        "size":"sm",
+                                                        "color":"#111111",
+                                                        "align":"end"
+                                                    },
+                                                    
+                                                    
+                                                ]
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                    {
+                                                    "type":"text",
+                                                    "text":"รุ่นการผลิต :",
+                                                    "size":"sm",
+                                                    "color":"#555555"
+                                                    },
+                                                    {
+                                                    "type":"text",
+                                                    "text":str(data_vaccine["VaccineLot2"]),
+                                                    "size":"sm",
+                                                    "color":"#111111",
+                                                    "align":"end",
+                                                    "wrap": True,
+                                                    }
+                                                ]
+                                            },
+
+                                            {
+                                                "type":"separator",
+                                                "color":"#ffffff",
+                                                "margin":"md"
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                
+                                                    {
+                                                        "type":"text",
+                                                        "text":"วันที่รับวัคซีน (เข็มที่ 3) :",
+                                                        "size":"sm",
+                                                        "color":"#555555",
+                                                        "flex":0
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text": str(data_vaccine["VaccineDate3"]),
+                                                        "size":"sm",
+                                                        "color":"#111111",
+                                                        "align":"end"
+                                                    },
+                                                    
+                                                ]
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                    {
+                                                        "type":"text",
+                                                        "text":"ชื่อวัคซีน :",
+                                                        "size":"sm",
+                                                        "color":"#555555",
+                                                        "flex":0
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text":str(data_vaccine["VaccineName3"]),
+                                                        "size":"sm",
+                                                        "color":"#111111",
+                                                        "align":"end"
+                                                    },
+                                                    
+                                                    
+                                                ]
+                                            },
+
+                                            {
+                                                "type":"box",
+                                                "layout":"horizontal",
+                                                "contents":[
+                                                    {
+                                                    "type":"text",
+                                                    "text":"รุ่นการผลิต :",
+                                                    "size":"sm",
+                                                    "color":"#555555"
+                                                    },
+                                                    {
+                                                    "type":"text",
+                                                    "text":str(data_vaccine["VaccineLot3"]),
+                                                    "size":"sm",
+                                                    "color":"#111111",
+                                                    "align":"end",
+                                                    "wrap": True,
+                                                    }
+                                                ]
+                                            },
+
+
+                                            {
+                                                "type":"separator",
+                                                "color":"#ffffff",
+                                                "margin":"md"
+                                            },
+
                                         ]
                                     },
                                     {
@@ -795,11 +1152,11 @@ class ResponsContentFlexVaccine:
                         }
 
                             
-                    else :  #ครบ 2 เข็ม
-                        if data_vaccine["VaccineDate2"] == "": #ครบ 2 เข็ม (no data)
+                        else :  #ครบ 2 เข็ม
+                            if data_vaccine["VaccineDate2"] == "": #ครบ 2 เข็ม (no data)
                             
                         
-                            body = {
+                                body = {
                                 "type":"bubble",
                                 "hero":{
                                     "type":"image",
@@ -998,9 +1355,9 @@ class ResponsContentFlexVaccine:
                             }
 
                     
-                        else :
+                            else :
                             
-                            body = {
+                                body = {
                                 "type":"bubble",
                                 "hero":{
                                     "type":"image",

@@ -56,7 +56,7 @@ class ResponsFlextest:
                                                 "type": "text",
                                                 "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
                                                 "size": "sm",
-                                                "color": "#D39D2B",
+                                                "color": "#d3af04",
                                                 "contents": []
                                             },
                                             {
@@ -225,7 +225,7 @@ class ResponsFlextest:
                                             }
                                         },
                                         
-                                        "color": "#D39D2B",
+                                        "color": "#d3af04",
                                         "style": "primary"
                                     }
                                 ]

@@ -136,7 +136,7 @@ class ResponsContentFlexTimeatt:
                                     "type": "text",
                                     "text": "วันที่ : "+str(date),
                                     "size": "sm",
-                                    "color": "#D39D2B",
+                                    "color": "#cf0a2c",
                                     "contents": []
                                 },
                                 {
@@ -304,7 +304,7 @@ class ResponsContentFlexTimeatt:
                                 }
                             },
                             
-                            "color": "#D39D2B",
+                            "color": "#cf0a2c",
                             "style": "primary"
                         }
                     ]
@@ -341,7 +341,7 @@ class ResponsContentFlexTimeatt:
                             "type": "text",
                             "text": " ",
                             "size": "sm",
-                            "color": "#D39D2B",
+                            "color": "#cf0a2c",
                             "contents": []
                         },
                         
@@ -360,7 +360,7 @@ class ResponsContentFlexTimeatt:
                         "label": "รายละเอียด",
                         "uri": Util().liff_url_profile_detail_askinout
                         },
-                        "color": "#D39D2B",
+                        "color": "#cf0a2c",
                         "style": "primary"
                     }
                     ]

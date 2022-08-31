@@ -18,19 +18,131 @@ class CheckPermitSaleReport:
             
             
             status_permit = PostDataPermitSaleReport(user_ad_code)
-            status_permit = str(status_permit["status"])
-
-            # ResponsReply(Util().serverToken,user,str(status_permit ))
-            
-            if status_permit == "true":
-                ResponsWorkSystem(user)
-                # ResponsReply(Util().serverToken,user,"Developing..\uDBC0\uDC84\nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
-            elif status_permit == "false":
-                # ResponsWorkSystem(user)
-                ResponsReply(Util().serverToken,user,"Developing..\uDBC0\uDC84\nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
+            status = str(status_permit["status"])
+            result = status_permit["result"]
 
 
+            contents_report_sale =  {
+                                        "type": "box",
+                                        "layout": "vertical",
+                                        "backgroundColor": "#d3af04",
+                                        "cornerRadius": "5px",
+                                        "action": {
+                                            "type": "uri",
+                                            "label": "Action",
+                                            "uri": Util().liff_url_work_system_report_sale,
+                                            
+                                        },
+                                        "contents": [
+                                            {
+                                                "type": "spacer",
+                                                "size": "xl"
+                                            },
+                                            {
+                                                "type": "box",
+                                                "layout": "baseline",
+                                                "contents": [
+                                                    {
+                                                        "type": "spacer"
+                                                    },
+                                                    
+                                                    {
+                                                        "type": "text",
+                                                        "text": "รายงานการขาย",
+                                                        "color": "#FFFFFFFF",
+                                                        "align": "start",
+                                                        "gravity": "center",
+                                                        "offsetBottom": "2px",
+                                                        "offsetStart": "2px",
+                                                        "contents": []
+                                                    },
+                                        
 
+                                                ]
+                                            },
+
+                                            
+                                            
+                                            {
+                                                "type": "spacer",
+                                                "size": "xl"
+                                            }
+                                        ]
+
+                                    }
+                            
+            contents_period  =  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "margin": "xs",
+                                    "backgroundColor": "#d3af04",
+                                    "cornerRadius": "5px",
+
+                                        "action": {
+                                        "type": "uri",
+                                        "label": "Action",
+                                        "uri": Util().liff_url_work_system_timeatt_period
+                                    },
+                                    "contents": [
+                                        {
+                                            "type": "spacer",
+                                            "size": "xl"
+                                        },
+                                        {
+                                            "type": "box",
+                                            "layout": "baseline",
+                                            "contents": [
+                                                {
+                                                    "type": "spacer"
+                                                },
+                                                
+                                                {
+                                                    "type": "text",
+                                                    "text": "ระบบการแลกเปลี่ยนเวร",
+                                                    "color": "#FFFFFFFF",
+                                                    "align": "start",
+                                                    "gravity": "center",
+                                                    "offsetBottom": "2px",
+                                                    "offsetStart": "2px",
+                                                    "contents": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "spacer",
+                                            "size": "xl"
+                                        }
+                                    ]
+                                    
+                                }
+                                    
+
+            contents = []       
+            for data in result :
+                if data == "1" :
+                    # contents.append()
+                    contents.append(contents_report_sale)
+                elif data == "2" :
+                    contents.append(contents_period)
+                else :
+                    print()
+
+            # ResponsReply(Util().serverToken,user,str(contents))
+            ResponsWorkSystem(user,contents)
+
+
+            # if status_permit == "true":
+                # ResponsWorkSystem(user,contents)
+            #     # ResponsReply(Util().serverToken,user,"Developing..\uDBC0\uDC84\nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
+            # elif status_permit == "false":
+            #     # ResponsWorkSystem(user)
+            #     ResponsReply(Util().serverToken,user,"Developing..\uDBC0\uDC84\nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
+
+
+     
+         
+                            
+                     
 
         except:
             ResponsReply(Util().serverToken,user,"Developing..\uDBC0\uDC84\nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")

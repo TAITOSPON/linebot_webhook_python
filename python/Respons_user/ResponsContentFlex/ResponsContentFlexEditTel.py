@@ -40,7 +40,7 @@ class ResponsContentFlexEditTel:
                                     "type": "text",
                                     "text": user_detail["result"]["personal"]["PersonalName"],
                                     "size": "sm",
-                                    "color": "#D39D2B",
+                                    "color": "#d3af04",
                                     "contents": []
                                 },
                                 {
@@ -132,7 +132,7 @@ class ResponsContentFlexEditTel:
                                 }
                             },
                             
-                            "color": "#D39D2B",
+                            "color": "#d3af04",
                             "style": "primary"
                         }
                     ]

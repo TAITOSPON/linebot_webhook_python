@@ -54,7 +54,7 @@ class ResponsHelpCenter:
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#d3af04",
                                                     "cornerRadius": "5px",
                                                     "action": {
                                                         "type": "uri",
@@ -100,7 +100,7 @@ class ResponsHelpCenter:
                                                     "type": "box",
                                                     "layout": "vertical",
                                                     "margin": "xs",
-                                                    "backgroundColor": "#D39D2B",
+                                                    "backgroundColor": "#d3af04",
                                                     "cornerRadius": "5px",
 
                                                      "action": {

@@ -75,7 +75,7 @@ class ResponsMemberFlex:
         #                                 "type": "text",
         #                                 "text": " ",
         #                                 "size": "sm",
-        #                                 "color": "#D39D2B",
+        #                                 "color": "#d3af04",
         #                                 "contents": []
         #                             },
                                 
@@ -94,7 +94,7 @@ class ResponsMemberFlex:
         #                             "label": "คลิก",
         #                             "uri": liff
         #                             },
-        #                             "color": "#D39D2B",
+        #                             "color": "#d3af04",
         #                             "style": "primary"
         #                         }
         #                     ]

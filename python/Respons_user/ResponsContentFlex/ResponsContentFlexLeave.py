@@ -41,7 +41,7 @@ class ResponsContentFlexLeave:
                                     "type": "text",
                                     "text": "ปีงบประมาณ : "+str(LeaveYearSelect[0]["Value"]),
                                     "size": "sm",
-                                    "color": "#D39D2B",
+                                    "color": "#cf0a2c",
                                     "contents": []
                                 },
                                 {
@@ -133,7 +133,7 @@ class ResponsContentFlexLeave:
                                 }
                             },
                             
-                            "color": "#D39D2B",
+                            "color": "#cf0a2c",
                             "style": "primary"
                         }
                     ]

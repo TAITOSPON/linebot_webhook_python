@@ -24,7 +24,7 @@ class ResponsContentFlexEditTaxt:
                     "contents": [
                     {
                         "type": "image",
-                        "url": "https://www.thaitobacco.or.th/th/wp-content/uploads/2015/09/logo-ttm-admin.png",
+                        "url": "https://memberapp.toat.co.th/memberttm/Content/assets/media/logos/toat-logo-red-full-2.png",
                         "size": "full",
                         "aspectMode": "fit",
                         "aspectRatio": "2:3",
