@@ -23,6 +23,7 @@ class Util:
         self.liff_url_profile_detail_leave = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Leave"
         self.liff_url_profile_detail_financial = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Financial"   
         self.liff_url_profile_detail_cooperativesaving = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Cooperativesaving"   
+        self.liff_url_profile_detail_thaipvd = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_thaipvd"   
         self.liff_url_profile_detail_searchtelephonenumber = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_SearchTelephoneNumber"  
         self.liff_url_profile_detail_askinout = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Askinout"  
         self.liff_url_profile_detail_taxt = "line://app/1655109480-j7nN8VqP?liff.state=MemberPage%2FMember_TOAT_Tax"  
@@ -65,6 +66,7 @@ class Util:
         self.intent_financial = "สลิปเงินเดือน"
         self.intent_searchtelephonenumber = "ค้นหาเบอร์โทรพนักงาน"
         self.intent_cooperativesaving = "สหกรณ์ฯยาสูบ"
+        self.intent_thaipvd = "กองทุนสำรองเลี้ยงชีพ"
         self.intent_time_work = "ตรวจสอบข้อมูล"
         self.intent_time_att = "บันทึกเวลา"
         self.intent_meet = "จองห้องประชุม"
@@ -78,11 +80,13 @@ class Util:
         self.help_rules = "กฎระเบียบ ยสท."
         self.work_system = "ระบบงาน ยสท."
         self.research_software = "สำรวจการใช้งานซอฟแวร์"
+        self.intent_hearing_form ="TOAT group hearing"
 
         self.research_software_link = "https://docs.google.com/forms/d/e/1FAIpQLSeMBFqJULCrY_n5G_7VzWkn8qxoHLN3xZ6cea5hRlyE9nlU6A/viewform"
         self.help_rules_link = "https://datastudio.google.com/u/0/reporting/e8d25a8f-c147-439e-a2cf-2e301cd855ff/page/p_6ohwqwbbnc?s=qJ-q59gnbhU"
-        self.facebook_hos_link = "https://www.facebook.com/177054399691705/posts/995900297807107/"
-    
+        self.facebook_hos_link = "https://m.facebook.com/story.php?story_fbid=pfbid02gJfbYTCZuZ3Te7QBAwZnTPTNx27Lhn33mSk7kcvRQgQWn6kqHqrMnZYwXeHzfkMZl&id=100057499717096"
+        self.web_hos_link = "https://sites.google.com/thaitobacco.or.th/benchakittiparkhospital/"
+        self.km_im_link = "https://kmim.toat.co.th/"
 
         # path backend
         self.api_check_login = "https://webhook.toat.co.th/linebot/web/index.php/api/Api_User/User_check_login"
@@ -103,6 +107,9 @@ class Util:
     
         self.User_logout = "User_logout"
         
+
+        #URL AD 
+        self.Hearing = "https://docs.google.com/forms/d/e/1FAIpQLSdek8jiViWLfap63WpnVKs5og1hrbX-rO-sqJ8jGvLDB4wBQw/viewform"
 
         return self
 

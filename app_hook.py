@@ -39,7 +39,7 @@ from python.Controller.CheckPermitSaleReport import CheckPermitSaleReport
 
 from python.Respons_user.ResponsHelpCenter import ResponsHelpCenter
 
-
+from python.Respons_user.ResponsContentFlex.ResponsContentFlexHearing import ResponsContentFlexHearing
 
 app = Flask(__name__)
 
@@ -169,7 +169,7 @@ def checktextcase(body,text):
             if CheckUserLogin(body):
                 result_user = PostUserWithUid(user_uid)
                 user_ad_name = str(result_user[0]["user_ad_name"])
-                text = "สวัสดีคุณ "+user_ad_name+" \nขอต้อนรับเข้าสู่ระบบ LINE TOAT CHATBOT \nนี่คือระบบที่ช่วยให้คุณทำงานได้เร็วขึ้น"
+                text = "สวัสดีคุณ "+user_ad_name+" \nขอต้อนรับเข้าสู่ระบบ LINE TOAT CHATBOT"
                 ResponsQuickReply(user,text)
             
             return True
@@ -204,6 +204,7 @@ def checktextcase(body,text):
         elif text == Util().intent_time_work:
             if CheckUserLogin(body):
                 ResponsTimeAtFlex(user,body)
+                #  ResponsReply(Util().serverToken,user,"ขออภัยปิดปรุงระบบชั่วคราว")
                 # ResponsTimeAtFlexAndVaccine(user,body)
             return True
 
@@ -214,6 +215,8 @@ def checktextcase(body,text):
 
         elif text == Util().intent_meet:
             if CheckUserLogin(body):
+                
+                # ResponsContentFlexHearing('user_ad_code',user,'single')
                 ResponsReply(Util().serverToken,user,"กำลังพัฒนาจ้า ใจเย็นๆนะจ๊ะ\uDBC0\uDC84\n\nคณะวิเคราะห์สารสนเทศ \nสำนักเทคโนโลยีสารสนเทศ\udbc0\udc30\udbc0\udc3b")
             return True
 
@@ -239,6 +242,10 @@ def checktextcase(body,text):
             return True
         elif text == Util().intent_covid_confrim:
             CheckUserLogin(body)
+            return True
+        elif text == Util().intent_hearing_form:
+            if CheckUserLogin(body):
+                ResponsContentFlexHearing('user_ad_code',user,'single')
             return True
 
         elif text == Util().help_center:

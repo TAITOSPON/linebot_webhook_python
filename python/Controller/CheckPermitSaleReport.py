@@ -115,6 +115,51 @@ class CheckPermitSaleReport:
                                     ]
                                     
                                 }
+            
+            contents_km_im  =  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "margin": "xs",
+                                    "backgroundColor": "#d3af04",
+                                    "cornerRadius": "5px",
+
+                                        "action": {
+                                        "type": "uri",
+                                        "label": "Action",
+                                        "uri": Util().km_im_link
+                                    },
+                                    "contents": [
+                                        {
+                                            "type": "spacer",
+                                            "size": "xl"
+                                        },
+                                        {
+                                            "type": "box",
+                                            "layout": "baseline",
+                                            "contents": [
+                                                {
+                                                    "type": "spacer"
+                                                },
+                                                
+                                                {
+                                                    "type": "text",
+                                                    "text": "KM & IM",
+                                                    "color": "#FFFFFFFF",
+                                                    "align": "start",
+                                                    "gravity": "center",
+                                                    "offsetBottom": "2px",
+                                                    "offsetStart": "2px",
+                                                    "contents": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "spacer",
+                                            "size": "xl"
+                                        }
+                                    ]
+                                    
+                                }
                                     
 
             contents = []       
@@ -124,10 +169,11 @@ class CheckPermitSaleReport:
                     contents.append(contents_report_sale)
                 elif data == "2" :
                     contents.append(contents_period)
-                else :
+                else :  
                     print()
-
+           
             # ResponsReply(Util().serverToken,user,str(contents))
+            # contents.append(contents_km_im)
             ResponsWorkSystem(user,contents)
 
 

@@ -333,13 +333,12 @@ class ResponsMenu:
                                                     "cornerRadius": "5px",
 
                                                     "action": {
-                                                        # "type": "uri",
-                                                        # "label": "Action",
-                                                        # "uri": Util().facebook_hos_link
-                                                        "type":"message",
-                                                        "label": Util().intent_hos_ben,
-                                                        "text": Util().intent_hos_ben
-                                                       
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": Util().liff_url_profile_detail_thaipvd,
+                                                        "altUri": {
+                                                            "desktop" : Util().url_profile_detail+"thaipvd"
+                                                        }
                                                     },
                                                     "contents": [
                                                         {
@@ -356,29 +355,16 @@ class ResponsMenu:
 
                                                                   
                                                           
-                                                              
                                                                 {
                                                                     "type": "text",
-                                                                    "text": " รพ.สวนเบญจกิติฯ",
+                                                                    "text": Util().intent_thaipvd,
                                                                     "color": "#FFFFFFFF",
                                                                     "align": "start",
                                                                     "gravity": "center",
                                                                     "offsetBottom": "2px",
                                                                     "offsetStart": "2px",
                                                                     "contents": []
-                                                                },
-
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/facebook_icon.png",
-                                                                    "size" : "xl"
-                                                                    
-                                                                }, 
-                                                                {
-                                                                    "type": "icon",
-                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/trans.png",
-                                                                    "size" : "sm"
-                                                                }, 
+                                                                }
                                                             ]
                                                         },
                                                         {
@@ -452,7 +438,141 @@ class ResponsMenu:
                                             "layout": "horizontal",
                                             "contents": [
                                             
+                                                 {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    # "margin": "xs",
+                                                    "backgroundColor": "#cf0a2c",
+                                                    "cornerRadius": "5px",
+
+                                                    "action": {
+                                                        # "type": "uri",
+                                                        # "label": "Action",
+                                                        # "uri": Util().facebook_hos_link
+                                                        "type":"message",
+                                                        "label": Util().intent_hos_ben,
+                                                        "text": Util().intent_hos_ben
+                                                       
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+
+                                                                  
+                                                          
+                                                              
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": " รพ.สวนเบญจกิติฯ",
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                },
+
+                                                                # {
+                                                                #     "type": "icon",
+                                                                #     "url": "https://webhook.toat.co.th/linebot/web/src/facebook_icon.png",
+                                                                #     "size" : "xl"
+                                                                    
+                                                                # }, 
+                                                                # {
+                                                                #     "type": "icon",
+                                                                #     "url": "https://webhook.toat.co.th/linebot/web/src/trans.png",
+                                                                #     "size" : "sm"
+                                                                # }, 
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                   
+                                                },
+
                                                 {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "margin": "xs",
+                                                    "backgroundColor": "#cf0a2c",
+                                                    "cornerRadius": "5px",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "Action",
+                                                        "uri": Util().km_im_link
+                                                    },
+
+                                                    
+                                                    "contents": [
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        },
+                                                        {
+                                                            "type": "box",
+                                                            "layout": "baseline",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "spacer"
+                                                                },
+                                                            
+                                                                {
+                                                                    "type": "text",
+                                                                    "text": "KM & IM",
+                                                                    "color": "#FFFFFFFF",
+                                                                    "align": "start",
+                                                                    "gravity": "center",
+                                                                    "offsetBottom": "2px",
+                                                                    "offsetStart": "2px",
+                                                                    "contents": []
+                                                                },
+
+                                                                {
+                                                                    "type": "icon",
+                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/km_im_log_white.png",
+                                                                    "size" : "xl"
+                                                                    
+                                                                }, 
+                                                                {
+                                                                    "type": "icon",
+                                                                    "url": "https://webhook.toat.co.th/linebot/web/src/trans.png",
+                                                                    "size" : "sm"
+                                                                }, 
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                        }
+                                                    ]
+                                                },
+                                            ]
+                                        }
+                                    ]
+                                },
+
+                                {
+                                    "type": "box",
+                                    "margin": "xs",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "contents": [
+                                                   {
                                                     "type": "box",
                                                     "layout": "vertical",
                                        
@@ -497,6 +617,7 @@ class ResponsMenu:
                                                     ]
                                                 },
 
+                                                
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
@@ -540,11 +661,13 @@ class ResponsMenu:
                                                         }
                                                     ]
                                                 },
+                                        
+
                                             ]
                                         }
                                     ]
                                 },
-
+                                
                                 {
                                     "type": "box",
                                     "margin": "xs",
@@ -555,10 +678,12 @@ class ResponsMenu:
                                             "layout": "horizontal",
                                             "contents": [
                                                 
+
+                                                
                                                 {
                                                     "type": "box",
                                                     "layout": "vertical",
-                                            
+                                                    # "margin": "xs",
                                                     "backgroundColor": "#d3af04",
                                                     "cornerRadius": "5px",
 
@@ -609,6 +734,7 @@ class ResponsMenu:
                                         }
                                     ]
                                 },
+                                
                                 
                                 # {
                                 #     "type": "box",

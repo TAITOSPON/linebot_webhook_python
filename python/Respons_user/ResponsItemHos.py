@@ -27,9 +27,118 @@ class ResponsItemHos:
                         "type":"carousel",
                         "contents":[
                             
+                         
+
+                            {
+                            "type": "bubble",
+                            "body": {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                {
+                                    "type": "image",
+                                    "url": "https://webhook.toat.co.th/linebot/web/src/log_hos.PNG",
+                                    "size": "full",
+                                    "aspectMode": "fit",
+                                    "aspectRatio": "2:2",
+                                    "gravity": "top"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                    {
+                                        "type": "box",
+                                        "layout": "vertical",
+                                        "contents": [
+                                        {
+                                            "type": "text",
+                                            "text": "แจ้งผลติดเชื้อ Covid-19",
+                                            "size": "xl",
+                                            "color": "#ffffff",
+                                            "weight": "bold"
+                                        }
+                                        ]
+                                    },
+                                    {
+                                        "type": "box",
+                                        "layout": "vertical",
+                                        "contents": [
+                                        {
+                                            "type": "filler"
+                                        },
+                                        {
+                                            "type": "box",
+                                            "layout": "baseline",
+                                            "contents": [
+                                            {
+                                                "type": "filler"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "แจ้งผล",
+                                                "color": "#ffffff",
+                                                "flex": 0,
+                                                "offsetTop": "-2px"
+                                            },
+                                            {
+                                                "type": "filler"
+                                            }
+                                            ],
+                                            "spacing": "sm"
+                                        },
+                                        {
+                                            "type": "filler"
+                                        }
+                                        ],
+                                        "borderWidth": "1px",
+                                        "cornerRadius": "4px",
+                                        "spacing": "sm",
+                                        "borderColor": "#ffffff",
+                                        "margin": "xxl",
+                                        "height": "40px"
+                                    }
+                                    ],
+                                    "position": "absolute",
+                                    "offsetBottom": "0px",
+                                    "offsetStart": "0px",
+                                    "offsetEnd": "0px",
+                                    "backgroundColor": "#03303Acc",
+                                    "paddingAll": "20px",
+                                    "paddingTop": "18px"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "Covid19",
+                                        "color": "#ffffff",
+                                        "align": "center",
+                                        "size": "xs",
+                                        "offsetTop": "3px"
+                                    }
+                                    ],
+                                    "position": "absolute",
+                                    "cornerRadius": "20px",
+                                    "offsetTop": "18px",
+                                    "backgroundColor": "#ff334b",
+                                    "offsetStart": "18px",
+                                    "height": "25px",
+                                    "width": "53px"
+                                }
+                                ],
+                                "paddingAll": "0px",
+                                "action": {
+                                "type": "uri",
+                                "label": "action",
+                                "uri": "line://app/1655109480-2XKglnaX?liff.state=Covid19_admid_form"
+                                }
+                            }
+                            },
+
                             content_doctor_appointment,
-                            content_vaccine,
-                          
 
                             {
                                 "type": "bubble",
@@ -113,11 +222,22 @@ class ResponsItemHos:
                                         "type": "button",
                                         "action": {
                                         "type": "uri",
-                                        "label": "โทร",
-                                        "uri": "tel:026564500"
+                                        "label": "ข้อมูลเพิ่มเติม",
+                                        "uri": Util().web_hos_link
                                         },
-                            
+                                        "height": "sm",
+                                        "style": "link"
                                     },
+                                    
+                                    # {
+                                    #     "type": "button",
+                                    #     "action": {
+                                    #     "type": "uri",
+                                    #     "label": "โทร",
+                                    #     "uri": "tel:026564500"
+                                    #     },
+                            
+                                    # },
                                 
                                     {
                                         "type": "button",
@@ -135,7 +255,8 @@ class ResponsItemHos:
                                     }
                                     ]
                                 }
-                            }
+                            },
+                            content_vaccine,
 
                         ]
                     }
@@ -144,7 +265,7 @@ class ResponsItemHos:
                         "type":"carousel",
                         "contents":[
                             
-                            content_vaccine,
+                           
                        
                             {
                                 "type": "bubble",
@@ -228,11 +349,21 @@ class ResponsItemHos:
                                         "type": "button",
                                         "action": {
                                         "type": "uri",
-                                        "label": "โทร",
-                                        "uri": "tel:026564500"
+                                        "label": "ข้อมูลเพิ่มเติม",
+                                        "uri": Util().web_hos_link
                                         },
-                            
+                                        "height": "sm",
+                                        "style": "link"
                                     },
+                                    # {
+                                    #     "type": "button",
+                                    #     "action": {
+                                    #     "type": "uri",
+                                    #     "label": "โทร",
+                                    #     "uri": "tel:026564500"
+                                    #     },
+                            
+                                    # },
                                 
                                     {
                                         "type": "button",
@@ -250,7 +381,8 @@ class ResponsItemHos:
                                     }
                                     ]
                                 }
-                            }
+                            },
+                            content_vaccine,
 
                         ]
                     }

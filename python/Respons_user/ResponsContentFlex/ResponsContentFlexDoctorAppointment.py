@@ -28,10 +28,15 @@ class ResponsContentFlexDoctorAppointment:
                 if len(user_doctor_appointment) > 2:
                     for i in range(2):
                         AppointDateTime = str(user_doctor_appointment[i]['AppointDateTime'])
+                       
                         ClinicName = str(user_doctor_appointment[i]['ClinicCode'])+" "+str(user_doctor_appointment[i]['ClinicName'])
-                        DocName = str(user_doctor_appointment[i]['DocName'])
-                        DocName = DocName.split('\\')
-                        DocName = str(DocName[1])+str(DocName[0])
+                       
+                        try:
+                            DocName = str(user_doctor_appointment[i]['DocName'])
+                            DocName = DocName.split('\\')
+                            DocName = str(DocName[1])+str(DocName[0])
+                        except:
+                            DocName = str(user_doctor_appointment[i]['DocName'])
                         Hn = str(user_doctor_appointment[i]['HN'])
                     
                         date_time_str = AppointDateTime.split()
@@ -211,9 +216,13 @@ class ResponsContentFlexDoctorAppointment:
                     for i in range(len(user_doctor_appointment)):
                         AppointDateTime = str(user_doctor_appointment[i]['AppointDateTime'])
                         ClinicName = str(user_doctor_appointment[i]['ClinicCode'])+" "+str(user_doctor_appointment[i]['ClinicName'])
-                        DocName = str(user_doctor_appointment[i]['DocName'])
-                        DocName = DocName.split('\\')
-                        DocName = str(DocName[1])+str(DocName[0])
+                        try:
+                            DocName = str(user_doctor_appointment[i]['DocName'])
+                            DocName = DocName.split('\\')
+                            DocName = str(DocName[1])+str(DocName[0])
+                        except:
+                            DocName = str(user_doctor_appointment[i]['DocName'])
+
                         Hn = str(user_doctor_appointment[i]['HN'])
                     
                         date_time_str = AppointDateTime.split()
